@@ -1,0 +1,40 @@
+﻿.programme-control {
+    background: #fff;
+    padding: 30px 0;
+
+    .col-md-5, .col-md-7 {
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+    }
+
+    .col-md-5 {
+        width: 40.66666667%;
+    }
+
+    .col-md-7 {
+        width: 58.9%;
+        padding-right: 0;
+    }
+
+
+    h4 {
+        color: #2f3339;
+        @include remsize(font-size, 22px);
+    }
+
+    .programme-buttons {
+        display: none;
+        text-align: right;
+    }
+
+    .build-btn {
+        color: #fff;
+        background: #468be6;
+
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}

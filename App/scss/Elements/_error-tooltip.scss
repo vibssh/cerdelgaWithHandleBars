@@ -1,0 +1,87 @@
+﻿.error-block {
+    display: inline-block;
+    width: 75%;
+    text-align: right;
+    margin: 5px 0 8px;
+
+    .arrow_box {
+        position: relative;
+        background: #fff9e9;
+        border: 1px solid #f6bb42;
+        text-align: left;
+        padding: 0 10px;
+        
+        @include remsize(font-size, 14px);
+        color:#434a54;
+    }
+
+    .arrow_box:after, .arrow_box:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow_box:after {
+        border-color: rgba(255, 249, 233, 0);
+        border-bottom-color: #fff9e9;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+
+    .arrow_box:before {
+        border-color: rgba(246, 187, 66, 0);
+        border-bottom-color: #f6bb42;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+
+    &.current-password-validation {
+        display: none;
+    }
+
+    &.new-password-validation {
+        display: none;
+
+        &.showMe {
+            display: inline-block;
+        }
+    }
+
+    .new-password-item{
+        padding: 0;
+
+        .new-password-list {
+            padding: 0;
+
+            .fa-times{
+                color: #ed5565;
+            }
+
+            .fa-check{
+                display: none;
+            }
+
+            &.valid {
+                .fa-times{
+                    display: none;
+            }
+
+            .fa-check{
+                display: inline-block;
+            }
+            }
+
+
+        }
+
+
+
+    }
+
+
+}

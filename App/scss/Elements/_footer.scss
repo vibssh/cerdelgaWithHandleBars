@@ -1,0 +1,176 @@
+﻿/* Footer */
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+footer {
+    width: 100%;
+    background: #fafcfd;
+    border-top: 2px solid #ccd1d9;
+    padding: 22px 0 0;
+
+    a {
+        text-decoration: underline;
+    }
+
+    .inverted-triangle {
+        color: #000;
+    }
+
+    @include breakpoint($desktop) {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .col-md-4, .col-md-8 {
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+    }
+
+    .col-md-8 {
+        width: 65.9%;
+    }
+
+    .col-md-6 {
+        padding: 0 10px 0 15px;
+    }
+
+    .footer-company-logo {
+        text-align: left;
+
+        .footer-logo {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 13px;
+        }
+
+        .footer-logo-link {
+            @include remsize(font-size, 15px);
+        }
+    }
+
+    .footer-details {
+        h3 {
+            @include remsize(font-size, 14px);
+            color: #434a54;
+            margin-bottom: 15px;
+        }
+    }
+
+    .adverse-details {
+        h5 {
+            @include remsize(font-size, 12px);
+            color: #434a54;
+        }
+
+        p {
+            @include remsize(font-size, 12px);
+            line-height: 17px;
+            color: #7f8893;
+            margin-top: 5px;
+
+            strong {
+                
+                font-weight: normal;
+                @include remsize(font-size, 12px);
+                color: #434a54;
+            }
+        }
+    }
+
+    .footer-contact-details {
+        p {
+            margin: 0;
+        }
+    }
+
+
+    .post-footer {
+        background: #2e6fc4;
+        margin-top: 30px;
+        padding: 10px 0;
+        width: 100%;
+        color: #fff;
+
+        a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: underline;
+            @include remsize(font-size, 13px);
+            padding-right: 14px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        } 
+
+
+        ol {
+            display: inline-block;  
+            margin: 0; 
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                padding-left: 0;
+                padding-right: 14px;
+                @include remsize(font-size, 13px);
+
+
+                &:last-child {
+                    padding: 0;
+
+                    a {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+
+        .post-footer-copyright {
+            p {
+                display: inline-block;
+                margin: 0;
+                @include remsize(font-size, 13px);
+                color: #fff;
+            }
+        }
+
+
+
+        .post-footer-right {
+            text-align: right;
+
+            ol {
+                li {
+                    text-align: right;
+                }
+            }
+        }
+
+        .post-footer-jobcode {
+            p {
+                color: #fff;
+                @include remsize(font-size, 13px);
+                margin: 0;
+                text-align: right;
+                padding-left: 0;
+                padding-right: 10px;
+                display: inline-block;
+
+                @include breakpoint($large) {
+                    padding-right: 12px;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+﻿.info-panel {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffedef;
+    border: 1px solid #da4453;
+
+    .info-text {
+        margin: 0;
+        text-align: center;
+        color: #c80d1f;
+        @include remsize(font-size, 14px);
+    }
+}

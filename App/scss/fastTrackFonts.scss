@@ -1,0 +1,222 @@
+﻿@import 'Base/mixins';
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(/fonts/MaterialIcons-Regular.woff) format('woff'), url(/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+
+/* Font Declaration */
+
+@font-face {
+    font-family: 'cabin-regular';
+    src: url('/fonts/Cabin-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'cabin-bold';
+    src: url('/fonts/Cabin-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'changa-bold';
+    src: url('/fonts/Changa-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+// Defining Fonts to be used
+$primary-regular-font: 'cabin-regular', Georgia, sans-serif;
+$primary-bold-font: 'cabin-bold', Georgia, sans-serif;
+$secondary-bold-font: 'changa-bold', Georgia, sans-serif;
+
+
+//Typography Variables
+
+//Common Heading Styles
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    font-family: $primary-bold-font;
+    font-weight: normal;
+
+    p { // This is just because Umbraco puts in a P tag inside H1
+        margin: 0;
+    }
+}
+
+//Heading Styles
+h1 {
+    font-family: $secondary-bold-font;
+    @include remsize(font-size, 30px);
+    @include remsize(line-height, 38px);
+}
+
+h2 {
+
+    @include remsize(font-size, 28px);
+    @include remsize(line-height, 34px);
+}
+
+h3 {
+    @include remsize(font-size, 24px);
+    @include remsize(line-height, 29px);
+}
+
+h4, h5 {
+    @include remsize(font-size, 18px);
+    @include remsize(font-size, 22px);
+}
+
+// Paragraph Style
+p {
+    color: #656d78;
+    font-family: $primary-regular-font;
+}
+
+a {
+    font-family: $primary-regular-font;
+    color: #468be6;
+
+    &:hover, &:focus {
+        color: #2E6Fc4;
+    }
+}
+
+
+body {
+    font-family: $primary-regular-font;
+}
+
+button {
+font-family: $primary-bold-font;
+}
+
+//Emphasis Style
+em {
+    font-style: italic; //Inherits the font-size 18px as body
+    //color: #158b6e;
+}
+
+
+.change-font {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}
+
+
+.step-count {
+    font-family: $primary-bold-font;
+}
+
+.step-title {
+    font-family: $primary-regular-font;
+}
+
+li.active {
+    span {
+        &.step-title {
+            font-family: $primary-bold-font;
+        }
+    }
+}
+
+li.completed {
+    span {
+        &.step-title {
+            font-family: $primary-bold-font;
+        }
+    }
+}
+
+.arrow_box {
+    font-family: $primary-bold-font;
+}
+
+.adverse-details {
+    p {
+        strong {
+            font-family: $primary-bold-font;
+        }
+    }
+}
+
+.page-list-item {
+    font-family: $primary-regular-font;
+
+    label {
+        font-family: $primary-bold-font;
+    }
+}
+
+.pam-filter-panel {
+    span {
+        font-family: $primary-bold-font;
+    }
+}
+
+
+#filter-level {
+    &:checked {
+        + label {
+            font-family: $primary-bold-font;
+        }
+    }
+}
+
+.show-btn {
+    font-family: $primary-bold-font;
+}
+
+.success-verify {
+    font-family: $primary-bold-font;
+}
+
+.choice-title {
+    p {
+        &:first-child {
+            font-family: $primary-bold-font;
+            font-weight: normal;
+        }
+    }
+}
+
+.cc-cookies {
+    font-family: $primary-bold-font;
+}
+
+.profile-view-navbar {
+    .nurse-title {
+        font-family: $primary-bold-font;
+    }
+}
+
+.nurse-tab-link {
+    &.active {
+        font-family: $primary-bold-font;
+    }
+}
+
+.form-field {
+    input {
+        font-family: $primary-bold-font;
+    }
+}
+
+.toggle-password {
+    font-family: $primary-bold-font;
+}
+
+.page-title {
+    font-family: $primary-bold-font;
+}
+
+strong {
+    font-family: $primary-bold-font;
+}

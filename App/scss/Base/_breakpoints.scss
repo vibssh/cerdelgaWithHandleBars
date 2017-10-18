@@ -1,0 +1,19 @@
+﻿// Define your Site Breakpoints here
+$small              :  23.4375rem;//375px
+$narrow             :  30rem; //480px
+$x-narrow           :  37.5rem; //600px
+$tablet             :  48rem; //768px
+$bootstrap-md       :  62rem; //992px;
+$desktop            :  64rem; //1024px;
+$medium             :  68.75rem; //1100px;
+$large              :  75rem; //1200px;
+$med-large          :  87.5rem; //1400px;
+$x-large            :  100rem; //1600px;
+$xx-large           :  112.5rem; //1800;
+
+//Max-width Query
+$mobile-width       : (max-width 63.93rem); //max 1023px
+$tablet-max         : (max-width 47.93em); //max 767px
+
+$desktop-max         : (max-width 68.688em); //max 1099px
+    

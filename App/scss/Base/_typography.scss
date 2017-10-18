@@ -1,0 +1,219 @@
+﻿//Typography Variables
+
+//Common Heading Styles
+h1, h2, h3, h4, h5 {
+    margin: 0;    
+    font-weight: 700;
+
+    p { // This is just because Umbraco puts in a P tag inside H1
+        margin: 0;
+    }
+}
+
+//Heading Styles
+h1 {    
+    @include remsize(font-size, 30px);
+    @include remsize(line-height, 38px);
+}
+
+h2 {
+    @include remsize(font-size, 28px);
+    @include remsize(line-height, 34px);
+}
+
+h3 {
+    @include remsize(font-size, 24px);
+    @include remsize(line-height, 29px);
+}
+
+h4, h5 {
+    @include remsize(font-size, 18px);
+    @include remsize(font-size, 22px);
+}
+
+// Paragraph Style
+p {
+    color: #656d78;
+    font-weight: 400;
+}
+
+a {
+    font-weight: 400;
+    color: #468be6;
+
+    &:hover, &:focus {
+        color: #2E6Fc4;
+    }
+}
+
+
+
+button {
+    font-weight: 700;
+}
+
+//Emphasis Style
+em {
+    font-style: italic; //Inherits the font-size 18px as body
+    //color: #158b6e;
+}
+
+
+.change-font {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}
+
+
+.step-count {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.step-title {
+    //font-family: $primary-regular-font;
+    font-weight: 400;
+}
+
+li.active {
+    span {
+        &.step-title {
+            //font-family: $primary-bold-font;
+            font-weight: 700;
+        }
+    }
+}
+
+li.completed {
+    span {
+        &.step-title {
+            //font-family: $primary-bold-font;
+            font-weight: 700;
+        }
+    }
+}
+
+.arrow_box {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.adverse-details {
+    p {
+        strong {
+            //font-family: $primary-bold-font;
+            font-weight: 700;
+        }
+    }
+}
+
+.page-list-item {
+    //font-family: $primary-regular-font;
+    font-weight: 400;
+
+    label {
+        //font-family: $primary-bold-font;
+        font-weight: 700;
+    }
+}
+
+.pam-filter-panel {
+    span {
+        //font-family: $primary-bold-font;
+        font-weight: 700;
+    }
+}
+
+
+#filter-level {
+    &:checked {
+        + label {
+            //font-family: $primary-bold-font;
+            font-weight: 700;
+        }
+    }
+}
+
+.show-btn {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.success-verify {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.choice-title {
+    p {
+        &:first-child {
+            //font-family: $primary-bold-font;
+            //font-weight: normal;
+            font-weight: 700;
+        }
+    }
+}
+
+.cc-cookies {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.profile-view-navbar {
+    .nurse-title {
+        //font-family: $primary-bold-font;
+        font-weight: 700;
+    }
+}
+
+.nurse-tab-link {
+    &.active {
+        //font-family: $primary-bold-font;
+        font-weight: 700;
+    }
+}
+
+.form-field {
+    input {
+        //font-family: $primary-bold-font;
+        font-weight: 700;
+    }
+}
+
+.toggle-password {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.page-title {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+strong {
+    //font-family: $primary-bold-font;
+    font-weight: 700;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */ 
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+

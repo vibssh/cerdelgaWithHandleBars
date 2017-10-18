@@ -1,0 +1,31 @@
+﻿//Treatment Centre Details sent for Review
+.treatment-centre-review {
+    text-align: center;
+    margin-top: 44px;
+
+    h4 {
+        //font-family: $primary-bold-font;
+        @include remsize(font-size, 17px);
+        color: #434a54;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    span {
+        display: inline-block;
+        color: #7f8893;
+        @include remsize(font-size, 14px);
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    &.hide-me {
+        display: none;
+    }
+
+    .info-panel {
+        margin-bottom: 50px;
+    }
+}

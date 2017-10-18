@@ -1,0 +1,253 @@
+﻿.registration {
+    max-width: 100%;
+    padding-top: 0;
+
+    .registration-title {
+        h1 {
+            text-align: center;
+            color: #434a54;
+            @include remsize(font-size, 30px);
+            font-style: normal;
+            padding-bottom: 20px;
+        }
+    }
+    /* Form */
+    #registration-form {
+        display: block;
+        padding: 20px;
+        background: #f5f8fa;
+
+        fieldset {
+            border: none;
+            margin: 0;
+            padding-bottom: 0;
+
+            .col-md-3 {
+                padding: 0;
+                padding-top: 0.15em;
+            }
+
+            .col-md-9 {
+                padding: 0;
+                margin-bottom: 10px;
+            }
+
+            .row {
+
+                &:last-child {
+                    .col-md-9 {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            label {
+                display: block;
+                padding-top: 0.75em;
+                @include remsize(font-size, 15px);
+                color: #434a54;
+                text-align: left;
+            }
+        }
+
+        .show-wrapper {
+            display: inline-block;
+            width: 63px;
+            height: 40px;
+            padding: 12px 0;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ccd1d9;
+            vertical-align: middle;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .show-btn {
+                display: block;
+                text-align: center;
+                width: 100%;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #468be6;
+                font-family: "cabin-bold",Georgia,sans-serif;
+                font-weight: normal;
+                font-size: 12px;
+                font-size: .75rem;
+            }
+
+            .hide-btn {
+                @extend .show-btn;
+                display: none;
+            }
+        }
+    }
+
+    .continue-setup-btn {
+        margin-top: 40px;
+        text-align: center;
+
+
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            background: #f0f3f6;
+            color: #7f8893;
+            font-size: 16px;
+
+            &:hover, &:focus {
+                text-decoration: none;
+            }
+
+            &.disabled {
+                pointer-events: none;
+            }
+
+            &.active {
+                background: #468be6;
+                color: #ffffff;
+                pointer-events: auto;
+
+                &:hover {
+                    background: #2e6fc4;
+                }
+            }
+        }
+    }
+    /*Treatment Center Setup */
+    .treatment-setup {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .treatment-centre-buttons {
+        text-align: center;
+        margin-top: 30px;
+
+        .setup-btn {
+            display: inline-block;
+            width: 47%;
+            text-align: center;
+
+            a {
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                width: 100%;
+                padding: 12px;
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+
+            &.back-btn {
+                margin-right: 20px;
+
+                a {
+                    border: 1px solid #5d9cec;
+                    color: #5d9cec;
+                }
+            }
+
+            &.finish-btn {
+                a {
+                    background: #f0f3f6;
+                    color: #7f8893;
+
+                    &.disabled {
+                        pointer-events: none;
+                    }
+
+                    &.enabled {
+                        pointer-events: auto;
+                        background: #5d9cec;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    // Add Treatment Centre
+    .add-treatment-centre {
+        #add-treatment-centre {
+            input {
+                width: 100%;
+            }
+            .form-button-wrapper {
+                padding: 20px 15px;
+                overflow: hidden; 
+            }
+
+            input.new-centre-submit {
+                width: auto;
+                display: inline-block;
+            }
+        }
+    }
+    //Final Success message
+    .final-success {
+        display: none;
+        text-align: center;
+
+        .success-icon {
+            margin-bottom: 20px;
+        }
+
+        .success-heading {
+            h1 {
+               
+                color: #434a54;
+                @include remsize(font-size, 30px);
+            }
+        }
+
+        .success-blurb {
+            color: #7f8893;
+            @include remsize(font-size, 14px);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .success-verify {
+            @extend .success-blurb;
+            margin-top: 20px;
+            max-width: 360px;
+            color: #69707b;
+            
+        }
+
+        .success-continue {
+            margin-top: 35px;
+            display: inline-block;
+            text-align: center;
+
+            a {
+                display: block;
+                width: 100%;
+                padding: 12px 30px;
+                min-width: 150px;
+                @include remsize(font-size, 15px);
+                background: #468be7;
+                color: #ffffff;
+                text-align: center;
+
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    //Password Criteria
+    .error-block.new-password-validation {
+        width: 82%;
+        //display: block;
+        margin-top: 12px;
+    }
+}

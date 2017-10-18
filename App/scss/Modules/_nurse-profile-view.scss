@@ -1,0 +1,488 @@
+﻿.nurse-profile-view {
+    .back-link {
+        display: inline-block;
+        padding: 16px 0;
+        @include remsize(font-size, 15px);
+        text-decoration: underline;
+
+        i {
+            margin-right: 5px;
+        }
+    }
+}
+
+.profile-view-navbar {
+    display: block;
+    width: 100%;
+    background: #f0f3f6;
+    border-bottom: 1px solid #ccd1d9;
+    padding-top: 55px;
+
+    .nurse-title {
+        color: #434a54;
+        @include remsize(font-size, 22px);
+        padding-bottom: 36px;
+    }
+}
+
+/* Tab Navigation */
+.nurse-tab {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 0; // this is to close in the gap that is created by the inline-block element
+    .nurse-tab-list {
+        display: inline-block;
+        padding: 0;
+        padding-right: 45px;
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+    .nurse-tab-link {
+        display: block;
+        text-decoration: none;
+        @include remsize(font-size, 16px);
+        color: #656d78;
+        padding-bottom: 10px;
+        border-bottom: 3px solid transparent;
+        -moz-transition: all .2s linear;
+        -o-transition: all .2s linear;
+        -webkit-transition: all .2s linear;
+        transition: all .2s linear;
+
+        &.active {
+            color: #434a54;
+            border-bottom: 3px solid #468be7;
+        }
+    }
+}
+
+/* Tabs */
+.tabs {
+    display: none;
+    padding: 50px 0;
+
+    &.active {
+        display: block;
+    }
+
+    h2 {
+        color: #434a54;
+        @include remsize(font-size, 19px);
+    }
+}
+
+/* Nurse Details Form */
+
+.form-field {
+    padding: 40px 0 5px 0;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #ccd1d9;
+
+    label {
+        @include remsize(font-size, 15px);
+        color: #656d78;
+        padding-left: 0;
+    }
+
+    input {
+        width: 75%;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        color: #474e58;
+
+        &:focus {
+            outline: none;
+            border: none;
+        }
+
+        &:disabled {
+            background: transparent;
+        }
+    }
+
+    a {
+        position: absolute;
+        right: 0;
+        top: 40px;
+
+        i {
+            @include remsize(font-size, 13px);
+        }
+
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+
+        &.lock {
+            color: #434a54;
+            pointer-events: none;
+
+            &:hover, &:focus {
+                color: #434a54;
+            }
+        }
+    }
+}
+
+.password-block {
+    padding-top: 50px;
+
+    h2 {
+        color: #434a54;
+        @include remsize(font-size, 19px);
+    }
+}
+
+.edit-block {
+    display: none;
+    background: #f5f8fa;
+    padding: 20px;
+    text-align: right;
+
+    .edit-block-wrapper {
+        margin-bottom: 10px;
+
+        .pwd-update-wrap {
+            text-align: right;
+            margin-top: 25px;
+
+
+            input[type='submit'] {
+                padding-top: 0;
+                padding-bottom: 0;
+                background: #ccd1d9;
+            }
+
+            .pwd-cancel {
+                @include remsize(font-size, 15px);
+                display: inline-block;
+
+                a {
+                    background: transparent;
+                    text-decoration: underline;
+                    color: #468be6;
+                    border: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .pwd-update {
+                margin-left: 15px;
+                @include remsize(font-size, 15px);
+                padding: 10px;
+                background: #ccd1d9;
+                color: #7f8893;
+                display: inline-block;
+
+                a {
+                    background: #ccd1d9;
+                    color: #7f8893;
+
+                    &:focus, &:hover {
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    label {
+        color: #656d78;
+        @include remsize(font-size, 15px);
+        padding-top: 12px;
+        padding-left: 0;
+        text-align: left;
+    }
+
+    input {
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border: 1px solid #ccd1d9;
+
+        &:focus {
+            border: 1px solid #7f8893;
+
+            + .pwd-toggle-wrapper {
+                border-left: 1px solid #7f8893;
+            }
+        }
+    }
+
+    .password-wrapper {
+        position: relative;
+        overflow: hidden;
+
+        .pwd-toggle-wrapper {
+            position: absolute;
+            right: 0;
+            height: 44px;
+            border-left: 1px solid #ccd1d9;
+
+            .toggle-password {
+                @include remsize(font-size, 12px);
+                text-transform: uppercase;
+                padding: 14px 15px;
+                display: block;
+                text-align: center;
+                width: 66px;
+
+                &:focus, &:hover {
+                    text-decoration: none;
+                    color: #468be6;
+                }
+
+                &.hidePassword {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.form-link {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.change-centre {
+    display: block;
+    @include remsize(font-size, 15px);
+    text-align: right;
+    color: #5d9cec;
+    text-decoration: underline;
+
+    &:hover {
+        color: #5d9cec;
+        text-decoration: underline;
+    }
+}
+
+.incorrect-centre {
+    @extend .change-centre;
+}
+
+/* View Treatment Centre */
+.view-treatment-centre {
+    &.hide-me {
+        display: none;
+    }
+}
+
+/* Add Treatment Centre */
+.add-treatment-centre {
+    &.hide-me {
+        display: none;
+    }
+}
+
+form#add-treatment-centre {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f5f8fa;
+    text-align: right;
+
+    .form-field {
+        padding: 10px 0 0;
+        border: none;
+
+        label {
+            padding-top: 10px;
+            padding-right: 0;
+            text-align: left;
+        }
+
+        input {
+            border: 1px solid #CCD1E4;
+            padding: 9px 10px;
+
+            &:focus {
+                border: 1px solid #7f8893;
+            }
+        }
+    }
+
+    span.required-field {
+        @include remsize(font-size, 12px);
+        color: #6c7581;
+        display: inline-block;
+        text-align: right;
+    }
+}
+
+
+/* Update Treatment Centre */
+.update-treatment-centre {
+    &.hide-me {
+        display: none;
+    }
+}
+
+form#update-treatment-centre {
+    @extend #add-treatment-centre;
+
+    .form-field {
+        label {
+            @include remsize(font-size, 14px);
+        }
+    }
+}
+
+.form-button-wrapper {
+    text-align: right;
+    padding: 20px 0;
+}
+
+.form-reset {
+    display: inline-block;
+
+    .reset {
+        @include remsize(font-size, 15px);
+        color: #5d9cec;
+        text-decoration: underline;
+
+        &:hover {
+            color: #5d9cec;
+            text-decoration: underline;
+        }
+    }
+}
+
+.form-submit {
+    display: inline-block;
+    
+
+    input {
+        outline: none;
+        border: none;
+        padding: 8px;
+        margin-left: 20px;
+        text-align: center;
+        box-shadow: none;
+        background: #468be7;
+        -webkit-appearance: none;
+        color: #ffffff;
+        @include remsize(font-size, 15px);
+    }
+}
+
+
+/* Treatment Centre Choice */
+.treatment-centre-choice {
+    &.hide-me {
+        display: none;
+    }
+}
+
+form#choose-treatment-centre {
+    @extend .update-treatment-centre;
+    padding: 15px;
+    background: #f5f8fa;
+
+    .add-new-centre {
+        display: block;
+        @include remsize(font-size, 15px);
+        text-align: right;
+        color: #5d9cec;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: underline;
+            color: #5d9cec;
+        }
+    }
+
+    label {
+        @include remsize(font-size, 14px);
+        width: 27%;
+        padding-top: 7px;
+    }
+
+    select {
+        width: 100%;
+        border: 1px solid #ccd1d9;
+        padding: 8px 15px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #434a54;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        z-index: 90;
+    }
+
+    .form-field {
+        border: none;
+        position: relative;
+    }
+
+    .select-wrapper {
+        display: inline-block;
+        width: 73%;
+        background: #ffffff;
+    }
+
+    .select-arrow {
+        position: absolute;
+        right: 2px;
+        top: 40px;
+        height: 40px;
+        padding: 5px 12px;
+        border-left: 1px solid #ccd1d9;
+
+        i {
+            @include remsize(font-size, 14px);
+            color: #468be6;
+        }
+    }
+
+    .form-submit {
+        background: #468be7;
+        padding-left: 10px;
+        margin-left: 20px;
+
+        .fa-check{
+            color: #fff;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        input {
+            background: transparent;
+            margin-left: 0;
+            padding-left: 5px;
+        }
+
+    }
+}
+
+.update-treatment-buttons {
+    &.hide-me {
+        display: none;
+    }
+}
+
+/* Success Message */
+.update-treatment-success {
+    h2 {
+        color: #434a54;
+        @include remsize(font-size, 19px);
+    }
+
+    &.hide-me {
+        display: none;
+    }
+}
+
+.add-treatment-success {
+    @extend .update-treatment-success;
+}

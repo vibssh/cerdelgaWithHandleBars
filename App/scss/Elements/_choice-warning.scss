@@ -1,0 +1,44 @@
+﻿.choice-warning {
+    width: 100%;
+    padding: 0 20px 20px;
+    text-align: center;
+    border: 1px solid #f6bb42;
+    background: #fff9e9;
+    position: relative;
+
+    p {
+        color: #474e58;
+        @include remsize(font-size, 14px);
+        text-align: center;
+        padding-bottom: 22px;
+    }
+
+    a {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+        text-decoration: none;
+        border-top: 1px solid #f6bb42;
+        background: #ffce54;
+        color: #2f3339;
+        @include remsize(font-size, 15px);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    // Different Warning Blocks
+    &.pam-create {
+        &.hide-me {
+            display: none;
+        }
+    }
+
+    &.personalised-choice{
+        margin-top: 20px;
+        &.hide-me {
+            display: none;
+        }
+    }
+}

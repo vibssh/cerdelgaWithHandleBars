@@ -1,0 +1,177 @@
+﻿.pam-explanation {
+    margin-top: 14px;
+    background: #f5f8fa;
+}
+
+.pam-explanation-link {
+    text-decoration: none;
+    border-bottom: 1px solid #468be6;
+    display: inline-block !important;
+    width: auto!important;
+}
+
+.pam-top-half {
+    display: block;
+    width: 100%;
+    padding: 40px 0;
+    background: #fff;
+}
+ 
+.back-pam-link {
+    a{
+        color: #468be6;
+        text-decoration: underline;
+        @include remsize(font-size, 15px);
+
+        sup{
+            display: inline-block;
+        }
+
+        i{
+            padding-right: 4px;
+            @include remsize(font-size, 14px);
+        }
+
+    }
+}
+
+.pam-introduction {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 45px 0 0;
+    width: 100%;
+    max-width: 490px;
+
+    h1{
+        color: #434a54;
+        margin: 0;
+        @include remsize(font-size, 30px);
+        //font-weight: normal;
+    }
+
+    p{
+        color: #7f8893;
+        @include remsize(font-size, 14px);
+    }
+}
+
+.level-container {
+    padding: 0;
+}
+
+.pam-level-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.pam-level-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    table-layout: fixed;
+
+   .container {
+       padding: 0;
+   }
+}
+
+.pam-level-cell {
+    display: table-cell;
+    width: 25%;
+    padding: 0;
+    border-right: 15px solid #f5f8fa;
+    vertical-align: top;
+    height: 100%;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.pam-level-cell-border {
+    border: 1px solid #ccd1d9;
+}
+
+.level-icon-block{
+    width: 100%;
+    padding: 30px;
+    background: #aab2bd;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.level-title-block {
+    width: 100%;
+    text-align: center;
+    background: #468be6;
+    padding: 5px 0;
+
+    h4 {
+        margin: 0;
+        @include remsize(font-size, 22px);
+        color: #fff;
+        //font-style: normal;
+    }
+}
+
+.level-content-block {
+    padding: 30px;
+
+    h3 {
+        font-style: normal;
+        @include remsize(font-size, 17px);
+        line-height: 1.5;
+        color: #434a54;
+        min-height: 58px;
+    }
+
+    p{
+        color: #7f8893;
+        @include remsize(font-size, 14px);
+        min-height: 150px;
+    }
+
+    h4 {
+        color:#454c56;
+        @include remsize(font-size, 14px);
+        margin: 0;
+    }
+
+    blockquote {
+        color:#7f8893;
+        @include remsize(font-size, 14px);
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        min-height: 50px;
+    }
+}
+
+.pam-col {
+    padding: 60px 0;
+
+    .col-md-6{
+        padding-left: 0;
+    }
+}
+
+.pam-col-title {
+    h3{
+        @include remsize(font-size, 22px);
+        font-style: normal;
+        color: #434a54;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.pam-col-content {
+    p{
+        margin: 0;
+        color: #434a54;
+        @include remsize(font-size, 14px);
+    }
+}

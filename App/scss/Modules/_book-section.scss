@@ -1,0 +1,591 @@
+﻿/*Front Page Book Selection Section */
+
+.book-creator {
+    background: #f0f3f6;
+}
+
+.book {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 75px;
+    padding: 0;
+    list-style: none;
+    //counter-reset: section-counter;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(240, 243, 246, 0.7);
+        z-index: 100;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-checkbox {
+        display: none;
+    }
+
+    .main-book-list {
+        margin-bottom: 10px;
+        //counter-increment: section-counter;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+
+    li {
+        display: block;
+        background: #fff;
+        padding: 0 0 0 45px;
+        overflow: hidden;
+        cursor: pointer;
+
+
+        .main-icon {
+            display: inline-block;
+            width: 43px;
+            height: 43px;
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+            margin-top: 16px;
+            margin-left: 4px;
+        }
+
+        .main-title {
+            display: inline-block;
+            width: calc(100% - 140px);
+            vertical-align: middle;
+            padding-left: 16px;
+            padding-top: 0;
+            position: relative;
+
+            .main-title-counter {
+                display: inline-block;
+                color: #656d78;
+                @include remsize(font-size, 12px);
+                position: relative;
+                top: 5px;
+            }
+            /*
+             &:before {
+                //content: 'Section 'counter(section-counter, decimal-leading-zero);
+                color: #656d78;
+                @include remsize(font-size, 12px);
+                position: relative;
+                top: 5px;
+            }*/
+            h4 {
+                @include remsize(font-size, 16px);
+                color: #656d78;
+                margin: 0;
+            }
+        }
+
+        .main-button {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+            float: right;
+
+            .book-btn {
+                background: transparent;
+                float: right;
+                //margin-right: -9px;
+                border-left: 1px solid #dedede;
+
+                &:hover {
+                    background: #5d9cec;
+
+                    &:before {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        // Selected Li state
+        &.selected {
+            background: #468be6;
+
+            .main-icon {
+                // change background position of the sprite icon
+                background-position: 0 -43px;
+            }
+
+            .main-title {
+                h4 {
+                    color: #fff;
+                }
+
+                /*&:before {
+                    color: #fff;
+                }*/
+
+                .main-title-counter {
+                    color: #fff;
+                }
+            }
+
+            .main-button {
+                background: #2e6fc4;
+
+                .book-btn {
+                    border-color: #2e6fc4;
+
+                    &:before {
+                        @extend .material-icons;
+                        content: '\E15B';
+                        color: #fff;
+                        font-size: 1.5em;
+                    }
+                }
+            }
+        }
+    }
+    //Accordian Content
+    .book-section {
+        display: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .book-subsection {
+        display: none;
+
+        &.show-me {
+            display: block;
+        }
+    }
+
+
+    .book-btn {
+        position: relative;
+        width: 50px;
+        height: 74px;
+        -webkit-appearance: none;
+        background: #dedede;
+        outline: none;
+        box-shadow: none;
+        border: none;
+
+        &:before {
+            @extend .material-icons;
+            content: '\E145';
+            color: #5d9cec;
+            font-size: 1.5em;
+            position: relative;
+            top: 0.15em;
+        }
+
+        &.book-subsection-btn {
+            width: 50px;
+            height: 51px;
+        }
+    }
+    //UL page
+    .page {
+        margin-top: 10px;
+        margin-left: 20px;
+
+        .subpage-list-item {
+            display: block;
+            background: #f5f8fa;
+            height: 74px;
+            border: 1px solid #ccd1d9;
+            position: relative;
+        }
+    }
+    //UL Pages
+    .pages {
+        .page-list {
+            margin: 10px 15px;
+            margin-bottom: 0;
+            margin-right: 0;
+            position: relative;
+
+            .preview-wrapper {
+                display: inline-block;
+                padding-top: 10px;
+                padding-right: 10px;
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                i {
+                    color: #468be6;
+                    padding-right: 10px;
+
+                    &:before {
+                        @include remsize(font-size, 14px);
+                    }
+                }
+
+                a {
+                    text-decoration: underline;
+                    color: #468be6;
+                    @include remsize(font-size, 15px);
+
+                    &:hover {
+                        color: #468be6;
+                    }
+                }
+            }
+
+            .level-wrapper {
+                //display: none;
+                display: block;
+                margin-left: 12px;
+                //margin-top: -18px;
+                .page-level {
+                    display: inline-block;
+                    background: #d9eaff;
+                    border: 1px solid #468be7;
+                    margin-right: 10px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    span {
+                        display: block;
+                        padding: 0 5px;
+                        text-align: center;
+                        color: #468be7;
+                        @include remsize(font-size, 11px);
+
+                        &:before {
+                            content: 'Level';
+                            display: inline-block;
+                            text-align: left;
+                            color: #468be7;
+                            padding-right: 3px;
+                            @include remsize(font-size, 11px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .page-list-item {
+            overflow: hidden;
+            border: 1px solid #ccd1d9;
+            background: #f5f8fa;
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            @include remsize(font-size, 16px);
+            
+            font-weight: normal;
+            color: #434a54;
+            line-height: 1.8;
+            text-align: left;
+            vertical-align: middle;
+            cursor: auto;
+
+            .pages-checkbox-span {
+                content: "";
+                text-align: center;
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                margin-right: 15px;
+                font-family: FontAwesome;
+                @include remsize(font-size, 14px);
+                vertical-align: middle;
+                background: transparent;
+                border: 1px solid #656d78;
+                position: relative;
+                margin-top: 11px;
+                top: 0;
+
+                &.selected {
+                    content: "";
+                    display: inline-block;
+                    text-align: left;
+                    color: #fff;
+                    background: #434a54;
+                    border: 1px solid #656d78;
+                    font-family: FontAwesome;
+                    @include remsize(font-size, 14px);
+                    font-weight: normal;
+                    font-style: normal;
+                    padding-top: 0;
+                    padding-left: 5px;
+                }
+
+                &.indeterminate {
+                    content: "";
+                    background: #434a54;
+                    color: #fff;
+                    font-size: 14px;
+                    font-family: FontAwesome;
+                    text-align: center;
+                    font-weight: normal;
+                    padding-left: 1px;
+                }
+
+
+                input[type='checkbox'] {
+                    display: none;
+                }
+            } 
+
+            label {
+                display: inline-block;
+                @include remsize(font-size, 16px);
+                
+                font-weight: normal;
+                color: #434a54;
+                padding-top: 13px;
+                line-height: 1.8;
+                text-align: center;
+                background: transparent;
+                vertical-align: middle;
+                cursor: pointer;
+                //position: absolute;
+                //z-index: 999;
+            }
+
+
+            .page-button {
+                display: inline-block;
+                float: right;
+
+                .book-btn {
+                    //padding-bottom: 10px;
+                    background: transparent;
+                    border-left: 1px solid #ccd1d9;
+
+                    &:before {
+                        color: #434a54;
+                    }
+                }
+            }
+
+            &.selected {
+                background: #ccd1d9;
+                border: 1px solid #7F8893;
+
+
+                .page-button {
+                    .book-btn {
+                        background: #7f8893;
+
+                        &:before {
+                            @extend .material-icons;
+                            content: '\E15B';
+                            color: #fff;
+                            font-size: 1.5em;
+                        }
+                    }
+                }
+            }
+
+            &.indeterminate {
+                background: #ccd1d9;
+                border: 1px solid #7f8893;
+
+                .page-button {
+                    .book-btn {
+                        background: #7f8893;
+
+                        &:before {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                input[type='checkbox'] {
+                    + label {
+                        &:before {
+                            content: "";
+                            background: #434a54;
+                            color: #fff;
+                            font-size: 14px;
+                            font-family: FontAwesome;
+                            text-align: center;
+                            font-weight: normal;
+                            padding-left: 1px;
+                        }
+                    }
+                }
+            }
+
+            &.checked-all {
+                @extend .indeterminate;
+
+                input[type='checkbox'] {
+                    + label {
+                        &:before {
+                            content: "";
+                            display: inline-block;
+                            text-align: left;
+                            color: #fff;
+                            background: #434a54;
+                            border: 1px solid #656d78;
+                            font-family: FontAwesome;
+                            @include remsize(font-size, 14px);
+                            font-weight: normal;
+                            font-style: normal;
+                            padding-top: 0;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*.page {
+    .subpage-list-item {
+        input[type='checkbox'] {
+
+            + label {
+                position: relative;
+                pointer-events: none;
+
+                &:before {
+                    content: "";
+                    text-align: right;
+                    display: inline-block;
+                    color: #fff;
+                    width: 25px;
+                    height: 25px;
+                    margin-right: 20px;
+                    border: none;
+                    vertical-align: middle;
+                    background: url('/images/icons/locked-checkbox.png');
+                }
+            }
+        }
+    }
+}*/
+
+//Checkboxes
+input[type='checkbox'].book-check {
+    display: inline-block;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #434a54;
+    padding-left: 0;
+    text-align: left;
+    cursor: pointer;
+    padding-bottom: 0;
+    line-height: 1;
+    visibility: hidden;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 1px solid #ccd1d9;
+        background: transparent;
+        vertical-align: middle;
+        margin-right: 10px;
+        position: relative;
+        top: 25px;
+        left: 10px;
+        visibility: visible;
+    }
+}
+
+input[type="checkbox"].book-check:checked {
+    &:before {
+        content: "";
+        display: inline-block;
+        text-align: left;
+        color: #468be7;
+        background: #ffffff;
+        border: 1px solid #ccd1d9;
+        font-family: FontAwesome;
+        @include remsize(font-size, 14px);
+        font-weight: normal;
+        font-style: normal;
+        padding-top: 4px;
+        padding-left: 5px;
+        visibility: visible;
+    }
+}
+
+
+//Locked Section CheckBoxes
+
+
+input[type='checkbox'].book-check.locked-checkbox {
+    //position: relative;
+    pointer-events: none;
+
+    &:before {
+        content: "";
+        text-align: right;
+        display: inline-block;
+        color: #fff;
+        border: none;
+        width: 25px;
+        height: 25px;
+        margin-right: 20px;
+        vertical-align: middle;
+        background: url('/images/icons/locked-checkbox.png');
+        top: 25px;
+        left: 10px;
+    }
+}
+
+
+
+
+.pages-label {
+    &:before {
+        top: -3px !important;
+    }
+}
+
+
+//Muted
+.unmuted {
+    // Remove Programe Buttons
+    .book {
+        &:before {
+            display: none;
+        }
+    }
+
+    .main-book-list {
+        -webkit-filter: none;
+        filter: none;
+    }
+
+    .programme-control {
+        .programme-buttons {
+            display: inline-block;
+        }
+    }
+
+    .pam-filter {
+        background: #f5f8fa;
+        border: none;
+    }
+}
+
+.main-book-list-item {
+    position: relative;
+
+    .book-check {
+        position: absolute;
+        left: 0;
+        z-index: 100;
+    }
+}

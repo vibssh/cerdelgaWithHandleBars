@@ -1,0 +1,47 @@
+﻿// Reset Files
+@import "third-party/normalize-scss/normalize";
+
+//Third Party Libraries
+@import "third-party/breakpoint/breakpoint";
+@import "third-party/bootstrap/bootstrap";
+@import "third-party/font-awesome/font-awesome";
+@import "third-party/simple-line-icons/simple-line-icons";
+ 
+// Partial Files
+
+/* Base Section */
+//@import "Base/fonts";
+@import "Base/breakpoints";
+@import "Base/base"; 
+@import "Base/typography"; 
+  
+/* Elements */ 
+@import "Elements/header"; 
+@import "Elements/buttons";
+@import "Elements/loading";
+@import "Elements/forms"; 
+@import "Elements/choice-warning";
+@import "Elements/step-counter";   
+@import "Elements/review-message";   
+@import "Elements/info-panel"; 
+@import "Elements/error-tooltip";
+@import "Elements/footer";
+    
+ 
+/* Modules */
+@import "Modules/programme-control"; 
+@import "Modules/book-section";
+@import "Modules/pam-filters";
+@import "Modules/login"; 
+@import "Modules/forgottenpassword";
+@import "Modules/registration"; 
+@import "Modules/pam-explanation";  
+@import "Modules/pam-choice";
+@import "Modules/personalised-pack"; 
+@import "Modules/cookies"; 
+@import "Modules/pam-questionnaire"; 
+@import "Modules/welcome-section"; 
+@import "Modules/nurse-profile-view"; 
+@import "Modules/pages"; 
+@import "Modules/modal";    
+  

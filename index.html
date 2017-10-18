@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
+  <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
+  <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
+  
+  <meta name='theme-color' content='#ffffff'>
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+  <link rel="stylesheet" href="css/app.min.css">
+  <title>Cerdelga - Refactor </title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header"></div>
+
+    <section id="content">
+      <!-- Login Page by Default - rest all the pages come in dynamic here  -->
+    </section>
+
+    <div id="footer"></div>
+  </div>
+  <!-- End of UI -->
+
+  <!-- JS Reference -->
+
+  <!-- External Libraries -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.runtime.js"></script>
+
+
+  <!-- Application Modules -->
+  <script src='scripts/templates.js'></script>
+  <script src='scripts/app.js'></script>
+
+  <!-- Expose JSPublic API -->
+  <script type='text/javascript'>
+  
+    /* These API's are needed for the start up */
+    _HandlebarsTemplate.init();
+     
+      
+    //_CustomFontLoader.init(); /* Not used currently as changed to cdn library for fonts */
+   
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "handlebarsgulp",
+  "version": "1.0.0",
+  "description": "'A Handlebar Gulp Project'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leo Jacobs",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-declare": "latest",    
+    "gulp-notify": "latest",
+    "gulp-precompile-handlebars": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "gulp-wrap": "latest"
+  }
+}

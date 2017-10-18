@@ -1,0 +1,202 @@
+﻿//Mixins
+
+// Rem-to-px fallback mixin
+$base-font-size: 16px;
+
+@mixin remsize($prop, $px, $base: $base-font-size) {
+    #{$prop}: $px;
+    //#{$prop} : ($px / $base) * 1em;
+    #{$prop}: ($px / $base) * 1rem;
+    //
+	 //Usage :
+	 //	@include remsize(font-size, 20px);
+	
+	//
+}
+
+// Vertical Align within a box
+@mixin vertical-align($t,$y) {
+    position: relative;
+    top: $t;
+    @include transform(translateY($y));
+}
+
+// Hide Text to Show just background image
+@mixin hide-text {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+//This is a container to hold content for mobile
+@mixin container($width) {
+    display: block;
+    width: $width;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+// Centering an image
+@mixin img-center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 100%;
+}
+// Retina Images
+@mixin image-2x($image,$width, $height, $type) {
+
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+        /* on retina, use image that's scaled by 2 */
+        background-image: url($image + "@2x." + $type);
+        background-size: $width $height;
+        background-repeat: no-repeat;
+    }
+
+    background-image: url($image + "." +$type);
+    background-repeat: no-repeat;
+}
+
+// This is for Neat Mixin
+@mixin omega-reset($nth) {
+    &:nth-child(#{$nth}) {
+        margin-right: flex-gutter();
+    }
+
+    &:nth-child(#{$nth}+1) {
+        clear: none;
+    }
+}
+
+// SVG with PNG Fallback
+@mixin svg-bg($path,$name,$extension: png, $color: transparent, $position: 0 0, $repeat: no-repeat) {
+  background: url(../../Images/#{$path}/#{$name}.#{$extension}) $color $position $repeat;
+  background: none, url(../../Images/#{$path}/#{$name}.svg) $color $position $repeat;
+}
+
+//.background {
+  /*
+   * Here we can pass parameters: name, extension, color, position, repeat
+   * with this example we will just repeat the graphic
+   */
+ // @include svg-bg('path','graphic-name', $repeat: repeat);
+//}
+
+
+
+// WebFonts Mixin
+@function wf-str-replace($string, $find, $replace, $all: true) {
+  $index: str-index($string, $find);
+  @if $index {
+    $before: str-slice($string, 1, $index - 1);
+    $after: str-slice($string, $index + str-length($find), str-length($string));
+    $string: $before + $replace + $after;
+
+    @if $all and not str-index($find, $replace) {
+      $string: wf-str-replace($string, $find, $replace);
+    }
+  }
+  @return $string;
+}
+
+@function wf-url-encode($string) {
+  $replacements: (
+    "!": "%21",
+    "#": "%23",
+    "$": "%24",
+    "&": "%26",
+    "'": "%27",
+    "(": "%28",
+    ")": "%29",
+    "*": "%2A",
+    "+": "%2B",
+    ",": "%2C",
+    "/": "%2F",
+    ":": "%3A",
+    ";": "%3B",
+    "=": "%3D",
+    "?": "%3F",
+    "@": "%40",
+    "[": "%5B",
+    "]": "%5D",
+    " ": "%20"
+  );
+
+  @each $from, $to in $replacements {
+    $string: wf-str-replace($string, $from, $to);
+  }
+
+  @return $string;
+}
+
+@function wf-implode($list, $separator: ',') {
+  $string: '';
+  @for $i from 1 through length($list) {
+    $el: nth($list, $i);
+    $string: $string + $el;
+    @if ($i < length($list)) {
+      $string: $string + $separator;
+    }
+  }
+  @return $string;
+}
+
+@function wf-serialize($fonts) {
+  @if type-of($fonts) == 'list' or type-of($fonts) == 'arglist' {
+    $serialized: ();
+    @each $font in $fonts {
+      $serialized: append($serialized, wf-serialize($font));
+    }
+    @return wf-implode($serialized, '|');
+  }
+
+  @if type-of($fonts) == 'map' {
+    $serialized: ();
+    @each $family, $variants in $fonts {
+      $variants: wf-implode($variants, ',');
+      $variants: wf-str-replace($variants, ' ', '');
+      $serialized: append($serialized, "#{$family}:#{$variants}");
+    }
+    @return wf-serialize($serialized);
+  }
+
+  @if type-of($fonts) == 'string' {
+    @return wf-url-encode($fonts);
+  }
+
+  @warn "Unsupported font type: #{type-of($fonts)}";
+}
+
+@function wf-protocol() {
+  $web-fonts-protocol: '' !global !default;
+  $protocol: $web-fonts-protocol;
+  @if str-length($protocol) > 0 {
+    $protocol: $protocol + ':';
+  }
+  @return $protocol;
+}
+
+@function wf-query-string-encode($params) {
+  $query-string: "";
+  @each $key, $value in $params {
+    $query-string: $query-string + wf-url-encode($key) + "=";
+    $query-string: $query-string + wf-url-encode($value) + "&";
+  }
+  // remove trailing ampersand
+  $query-string: str-slice($query-string, 1, -2);
+  @return $query-string;
+}
+
+@function wf-params-string($fonts) {
+  $web-fonts-params: () !global !default;
+  $params: map-merge((family: wf-serialize($fonts)), $web-fonts-params);
+  @return wf-query-string-encode($params);
+}
+
+@function web-fonts-url($fonts...) {
+  $protocol: wf-protocol();
+  $query-string: wf-params-string($fonts);
+  $url: "https://fonts.googleapis.com/css?#{$query-string}";
+  @return $url;
+}

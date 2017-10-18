@@ -1,0 +1,160 @@
+﻿.personlised-choice {
+    max-width: 100%;
+    padding-top: 0;
+    .personalised-choice-title {
+        h1 {
+            text-align: center;
+            color: #434a54;
+            @include remsize(font-size, 30px);
+            font-style: normal;
+        }
+    }
+}
+
+.personalised-choice-container {
+    @extend .pam-choice;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.personalised-content {
+    .personalised-icon {
+        display: block;
+        width: 126px;
+        height: 111px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        &.home-address {
+            background-image: url('/images/icons/sprite_home_option.png');
+        }
+        &.centre-address {
+            background-image: url('/images/icons/sprite_treatment_option.png');
+        }
+    }
+    .dosing-choice {
+        display: block;
+        width: 69px;
+        height: 85px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        &.one {
+            background-image: url('/images/icons/sprite_onemedication_option.png');
+        }
+        &.two {
+            background-image: url('/images/icons/sprite_twomedication_option.png');
+        }
+    }
+    &:hover {
+        .personalised-icon {
+            background-position: 0 -111px;
+        }
+        .dosing-choice {
+            background-position: 0 -85px;
+        }
+    }
+    &.selected {
+        color: #468be6;
+        border: 1px solid #468be6;
+        text-decoration: none;
+        background: #d9eaff;
+        .personalised-icon {
+            background-position: 0 -111px;
+        }
+        .dosing-choice {
+            background-position: 0 -85px;
+        }
+        .choice-title {
+            p {
+                color: #468be6;
+            }
+        }
+    }
+}
+
+.continue-btn {
+    visibility: hidden;
+    width: 100%;
+    margin: 30px 0;
+    @include remsize(font-size,
+    16px);
+}
+
+//General Details
+.general-details {
+    &.hide-me {
+        display: none;
+    }
+    .pam-choice {
+        padding-top: 0 !important;
+    }
+}
+
+.delivery-information {
+    padding-top: 60px;
+}
+
+#delivery-info-home {
+    @extend form#update-treatment-centre;
+    margin-top: 10px !important;
+}
+
+
+/* Dosing Information */
+
+.dosing-information {
+    padding-top: 40px;
+    p {
+        @include remsize(font-size,
+        14px);
+        color: #7f8893;
+    }
+}
+
+#home-address {
+    display: none;
+}
+
+#treatment-address {
+    display: none;
+}
+
+
+/* PAM Questionnaire in the delivery steps */
+
+#pam-questionnaire {
+    .programme-control {
+        padding-top: 0 !important;
+    }
+}
+
+
+/* Reference panel for General Details */
+
+#reference {
+    display: block;
+    position: absolute;
+    bottom: 260px;
+    width: 100%;
+    background: #fafcfd;
+    padding: 1em 0;
+    h4 {
+        @include remsize(font-size,
+        15px);
+    }
+    ol {
+        margin: 0;
+        padding: 0;
+        list-style-type: decimal;
+        li {
+            @include remsize(font-size,
+            12px);
+            cursor: auto;
+            padding: 0;
+            display: list-item;
+            list-style-position: inside;
+            list-style-type: decimal;
+        }
+    }
+}

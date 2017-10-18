@@ -1,0 +1,44 @@
+﻿/* buttons */
+.anchor-btn {
+    display: inline-block;
+    color: #fff;
+    background: #468be6;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+
+    &:hover, &:focus, &:active {
+        text-decoration: none;
+        background: #2E6FC4;
+        color: #fff;
+    }
+
+    &.ghost-btn {
+        background: transparent;
+        border: 1px solid #468be6;
+        color:#468be6;
+    }
+}
+
+.anchor-icon-btn {
+    font-weight: normal;
+    @include remsize(font-size, 15px);
+    text-align: center;
+    padding: 13px 15px;
+    border: 1px solid #468be6;
+    margin-right: 10px;
+
+    &:hover, &:focus, &:active {
+        text-decoration: none;
+        color:#468be6; 
+    }
+
+    &:last-child {
+        margin: 0;
+    }
+
+    i{
+        padding: 10px;  
+        padding-left: 0;
+    }
+}

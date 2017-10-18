@@ -1,0 +1,113 @@
+<script>
+    (function () {
+        isLoggedInModule.init();
+        pamLevels.init();
+        _PAMExplanation.init($('.pam-explanation-link'));
+    }());
+</script>
+<div class="programme-control" style="padding-top:78px;">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12 centered">
+                <h2>Patient Activation Measure (PAM)
+                    <sup>&reg;</sup>
+                </h2>
+                <p class="sub-title">This can be filled out with the patient online as part of the consultation or as a printed questionnaire
+                    prior to the consultation. Download a printable version of the PAM®
+                    <a href="/images/downloads/PAMQuestionnaire.pdf" target="_blank">here</a>
+                </p>
+                <p style="margin-bottom: 0; font-size: 15px;">
+                    <a href="#" class="pam-explanation-link">What are the PAM
+                        <sup>&reg;</sup> levels?</a>
+                </p>
+                <a href="#" class="skip-pam hide-me">Skip to Book Creator</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row book-creator">
+    <div class="container">
+            <ul class="pages">
+                <!-- This is where the data  come from iteration -->
+                {{#each questions}}
+                <div class="page-list">
+                    <li class="page-list-item" data-subpage="{{@index}}">
+                        <span class="pam-checkbox-span" data-subpage="{{@index}}">
+                            <input type="checkbox" id="pgsLabel" data-check="{{@index}}" class="pages-checkbox">
+                        </span>
+                        <label class="pages-label">{{text}}</label>
+                        <div class="page-button">
+                            <button class="book-btn book-subsection-btn" data-subpage="{{@index}}"></button>                            
+                        </div>
+                    </li>
+                    
+                    <div class="book-subsection" data-subpage="{{@index}}" style="display:none;">
+                        {{#each answers}}
+                        <div class="answer" data-points="{{points}}">
+                            <div class="pam-sprite pam-sprite-strongdisagree"></div>
+                            <div class="pam-sprite-text">{{text}}</div>
+                        </div>
+                        {{!-- <div class="answer" data-points="2">
+                            <div class="pam-sprite pam-sprite-disagree"></div>
+                            <div class="pam-sprite-text">Disagree</div>
+                        </div>
+                        <div class="answer" data-points="3">
+                            <div class="pam-sprite pam-sprite-agree"></div>
+                            <div class="pam-sprite-text">Agree</div>
+                        </div>
+                        <div class="answer" data-points="4">
+                            <div class="pam-sprite pam-sprite-strongagree"></div>
+                            <div class="pam-sprite-text">Agree Strongly</div>
+                        </div>
+                        <div class="answer" data-points="0">
+                            <div class="pam-sprite pam-sprite-na"></div>
+                            <div class="pam-sprite-text">Not Applicable</div>
+                        </div> --}}
+                        {{/each}}
+                    </div>
+                </div>
+                {{/each}}
+            </ul>
+    </div>
+</div>
+<div class="row book-creator">
+    <div class="container">
+        <button class="pam-results pull-right disabled" disabled>
+            Get PAM
+            <sup>&reg;</sup> Results
+        </button>
+        <div id= "pam-result-beforeSend"></div>
+    </div>
+</div>
+<div class="row book-creator">
+    <div class="container">
+        <div class="insignia-health">
+            <p class="insignia-health-text centered">
+                Insignia Health. Patient Activation Measure
+                <sup>&reg;</sup>; Copyright © 2003-2016, University of Oregon. All Rights reserved
+                <br /> To license, contact
+                <a href="http://www.insigniahealth.com" target="_blank">Insignia Health</a> at
+                <a href="mailto:info@insigniahealth.com">info@insigniahealth.com</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Alert -->
+<!-- Modal Disclaimer -->
+<div class="m-modal m-modal--pamAlert">
+    <div class="m-modal__table">
+        <div class="m-modal__table-cell">
+            <div class="m-modal__block container">
+                <div class="m-modal__text">
+                    <h2>Unusual answer pattern!</h2>
+                    <p>It’s possible the survey respondent didn’t understand the questions or did not answer truthfully</p>
+                    <div class="modal-action-btn">
+                        <button href="#" class="modal-action-btn__accept">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

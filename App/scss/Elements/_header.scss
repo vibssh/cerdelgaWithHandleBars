@@ -1,0 +1,150 @@
+﻿/* HEADER */
+header {
+    display: block;
+    width: 100%;
+    background: #2e6fc4;
+    padding: 25px 0;
+    border-bottom: 5px solid #ffce54;
+    position: fixed;
+    top:0;
+    z-index: 100;
+
+    .pre-header{
+        border-bottom: 2px solid #205dae;
+        margin-bottom: 8px;
+        p{
+            margin: 0;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+            @include remsize(font-size, 12px);
+        }
+
+        ol{
+            margin: 0;
+            padding: 0;
+            text-align: right;
+            list-style: none;
+            
+
+            li {
+                display: inline-block;
+                vertical-align: middle;
+                a{
+                    color: #fff;
+                    text-decoration: none;
+                    @include remsize(font-size, 12px);
+                    padding-right: 15px;
+
+                    &:hover, &:focus {
+                        color: #fff;
+                        text-decoration: underline;
+                    }
+                }
+
+                &:last-child {
+                    a{
+                        padding-right: 0;
+                       
+                    }
+                }
+            }
+        }
+
+        .col-md-6{
+            
+            &:first-child {
+            padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+
+
+        }
+
+
+
+
+    }
+
+    .col-md-4{
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+        width: 32.9%;
+
+        &.logo {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+            padding-top: 15px;
+        }
+
+        
+    }
+
+    .logo {
+        padding-left:0;
+
+        h1 {
+            margin: 0;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .header-title {
+
+        h3 {
+            color: #fff;
+            @include remsize(font-size, 24px);
+            text-align: center;
+        }
+
+        p{
+            @include remsize(font-size, 11px);
+            margin:0;
+            color: #c0dbff;
+        }
+    }
+
+    .header-nav {
+        ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: right;
+            margin-top: 15px;
+
+            li {
+                display: inline-block;
+
+                &:first-child {
+                    padding-right: 10px;
+                }
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    display: block;
+                    width: 100%;
+                    @include remsize(font-size, 15px);
+
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        &.hide-me {
+            display: none;
+        }
+    }
+}

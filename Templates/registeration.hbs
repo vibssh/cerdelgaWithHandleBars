@@ -1,0 +1,349 @@
+<!-- Registeration Details -->
+<div class="step-counter">
+  <div class="step-title-container">
+    <ol>
+      <li class="active">
+        <span class="step-count">Step 1</span>
+        <span class="step-title">Set Up Your Profile</span>
+        <div class="circle-line">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+      </li>
+      <li>
+        <span class="step-count">Step 2</span>
+        <span class="step-title">Treatment Centre Details</span>
+        <div class="circle-line">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="registration">
+  <div class="registration-form-container">
+    <!-- Registration Profile Setup up -->
+    <div class="registration-profile">
+      <div class="registration-title">
+        <h1>Set Up Your Profile</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-lg-6 col-md-offset-3">
+            <form id="registration-form" autocomplete="off">
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="RegFullName">
+                      Full name
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                    <input type="text" value="" id="RegFullName" name="RegFullName" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="RegEmail">
+                      Email
+                    </label>
+                  </div>
+
+                  <div class="col-md-9">
+                    <input type="email" value="" id="RegEmail" name="RegEmail" autocomplete="off" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="RegPassword">
+                      Password
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="password-wrapper">
+                      <input type="password" value="" id="RegPassword" name="RegEmail" autocomplete="off" />
+                      <div class="show-wrapper">
+                        <a href="#" class="show-btn">Show</a>
+                        <a href="#" class="hide-btn">Hide</a>
+                      </div>
+                    </div>
+
+                    <!-- New Password validation tooltip -->
+                    <div class="error-block new-password-validation">
+                      <div class="arrow_box">
+                        <p>Minimum of 8 characters consisting of at least: </p>
+                        <ul class="new-password-item">
+                          <li class="lowercase new-password-list">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>1 lowercase character</span>
+                          </li>
+                          <li class="uppercase new-password-list">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>1 uppercase character</span>
+                          </li>
+                          <li class="number new-password-list">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>1 number</span>
+                          </li>
+                          <li class="special new-password-list">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>1 special character</span>
+                          </li>
+                          <li class="strength new-password-list">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span>8 characters</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+
+            <div class="continue-setup-btn">
+              <a href="#" class="disabled">Continue to step 2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Treatment Centre Details -->
+    <div class="treatment-setup">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-lg-6 col-md-offset-3">
+            <div class="registration-title">
+              <h1>Treatment Centre Details </h1>
+            </div>
+            <!-- Treatment Centre Choice -->
+            <div class="treatment-centre-choice">
+              <form id="choose-treatment-centre">
+                <div class="form-field">
+                  <label for="chooseTreatmentCentre" class="col-md-3">Treatment centre</label>
+                  <div class="select-wrapper">
+                    <select id="chooseTreatmentCentre" class="col-md-9">
+                      <option value="">Choose a Treatment Centre</option>
+                    </select>
+                    <div class="select-arrow">
+                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- Add new Centre -->
+                <div>
+                  <a href="#" class="add-new-centre">My treatment centre isn't in the list</a>
+                </div>
+
+                <!-- Error Message / Loading Message -->
+
+              </form>
+
+
+
+              <!-- Review Treatment Centre Block -->
+              <div class="treatment-centre-review hide-me">
+                <h4>Your Treatment Centre Details Have Been Sent for Review </h4>
+                <span>This will take up to 3 days to be reviewed.</span>
+
+                <div class="info-panel">
+                  <p class="info-text">
+                    You can create a pack now but the delivery time will be delayed until your treatment centre details have been reviewed and
+                    approved
+                  </p>
+                </div>
+              </div>
+
+
+              <!-- Submission Button -->
+              <div class="treatment-centre-buttons">
+                <div class="setup-btn back-btn">
+                  <a href="#">Back</a>
+                </div>
+
+                <div class="setup-btn finish-btn ">
+                  <a href="#" class="disabled">Finish setup</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add New Treatment Centre -->
+            <div class="add-treatment-centre hide-me">
+              <form id="add-treatment-centre">
+                <span class="required-field">Please fill in all fields below</span>
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addCentreName">Centre name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addCentreName" id="addCentreName" placeholder="New Centre Name" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addUnitName">Unit name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addUnitName" id="addUnitName" placeholder="New Unit Name" />
+                  </div>
+                </div>
+
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addStreetName">Street name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addStreetName" id="addStreetName" placeholder="New Street Name" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addCity">City</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addCity" id="addCity" placeholder="New City Name" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addCounty">County</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addCounty" id="addCounty" placeholder="New County Name" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addPostCode"> Postcode</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addPostCode" id="addPostCode" placeholder="XXX XXX" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <div class="col-md-4">
+                    <label for="addPhone"> Phone number</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="addPhone" id="addPhone" placeholder="+XX(0)XXXX XXX XXX" />
+                  </div>
+                </div>
+
+
+                <div class="form-button-wrapper">
+                  <div class="form-reset">
+                    <a href="#" class="reset cancel">Cancel</a>
+                  </div>
+                  <div class="form-submit">
+                    <input type="submit" value="Submit new treatment centre" class="new-centre-submit" />
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <!-- Review Treatment Centre Block -->
+            <div class="treatment-centre-review hide-me">
+              <h4>Your Treatment Centre Details Have Been Sent for Review </h4>
+              <span>This will take up to 3 days to be reviewed.</span>
+
+              <div class="info-panel">
+                <p class="info-text">
+                  You can create a pack now but the delivery time will be delayed until your treatment centre details have been reviewed and
+                  approved
+                </p>
+              </div>
+
+              <!-- Submission Button -->
+              <div class="treatment-centre-buttons">
+                <!--<div class="setup-btn back-btn">
+                                    <a href="#">Back</a>
+                                </div>-->
+
+                <div class="setup-btn finish-btn ">
+                  <a href="/" class="enabled">Finish setup</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Treatment Centre Added successfully -->
+            <div class="add-treatment-success hide-me">
+              <h2>Your Treatment Centre has been added</h2>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <div class="col-md-7 col-lg-6 col-md-offset-3">
+              <div id="login-error-message">
+                <div class="panel panel-danger">
+                  <div class="panel-heading">
+                    Panel Heading
+                  </div>
+                  <div class="panel-body">
+                    Panel content
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Final Success -->
+    <div class="final-success">
+      <div class="success-icon">
+        <img src="/images/icons/success-icon.png" alt="Successful Registration Icon" />
+      </div>
+
+      <div class="success-heading">
+        <h1>Success!</h1>
+      </div>
+
+      <div class="success-blurb">
+        Your account has been created and you will shortly receive a confirmation email. You can now log in to the pack creator.
+      </div>
+
+      <div class="success-verify">
+        You need to verify your account before you log in to Cerdelga
+        <sup>&reg;</sup> Life
+      </div>
+
+      <div class="success-continue">
+        <a href="#" id="verify-link">Return to login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    (function () {
+        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
+        registration.init($endpoint);
+        updateTreatmentCentre.init();
+        treatmentCentreChoice.init();
+        newPasswordValidation.init($('#RegPassword'));
+        //showPassword.init();
+        addTreatmentCentre.init($('#add-treatment-centre'));
+
+
+        
+    }());
+</script>

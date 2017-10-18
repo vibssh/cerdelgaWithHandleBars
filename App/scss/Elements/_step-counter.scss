@@ -1,0 +1,144 @@
+﻿.step-counter {
+    overflow: visible;
+    position: relative;
+
+    .step-title-container {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        margin: 50px auto;
+
+
+        ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                width: 32.33%;
+                text-align: center;
+                position: relative;
+                overflow: visible;
+
+                span {
+                    display: block;
+                    width: 100%;
+
+                    &.step-count {
+                        @include remsize(font-size, 13px);
+                        font-weight: normal;
+                        color: #468be6;
+                        padding-bottom: 5px;
+                    }
+
+                    &.step-title {
+                        @include remsize(font-size, 15px);
+                        font-weight: normal;
+                        color: #656d78;
+                    }
+                }
+
+                .circle-line {
+                    display: block;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 14px;
+                    border: 1px solid #f6bb42;
+                    margin: 0 auto;
+                    margin-top: 15px;
+                    text-align: center;
+                    background: white;
+                    z-index: 2;
+                    position: relative;
+
+                    i {
+                        display: none;
+                        text-align: center;
+                        color: #f6bb42;
+                        @include remsize(font-size, 17px);
+                        font-style: normal;
+                        position: absolute;
+                        top: 4px;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: 0 auto;
+                    }
+                }
+
+                &:after {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background: #ccd1d9;
+                    position: absolute;
+                    bottom: 15px;
+                    z-index: -1;
+                }
+
+                &:first-child {
+                    &:after {
+                        width: 450%;
+                        left: -200%;
+                        margin-left: -200%;
+                        background: #f6bb42;
+                    }
+                }
+
+                &:nth-child(2) {
+
+                    &:after {
+                        width: 100%;
+                        left: 0;
+                        margin-left: -50%;
+                    }
+                }
+
+                &:last-child {
+                    &:after {
+                        width: 545%;
+                        right: -200%;
+                        margin-right: -200%;
+                    }
+                }
+                
+                /* Active Class */
+                
+                &.active {
+                    span {
+                        &.step-title {
+                            color: #434a54;
+                        }
+                    }
+
+
+
+                }
+
+                /* Completed Class*/
+                &.completed {
+                    .circle-line {
+                        background: #fff9e9;
+
+                        i {
+                            display: inline-block;
+                        }
+                    }
+
+                    &:after {
+                        content: '';
+                        background: #f6bb42;
+                    }
+
+                    span {
+                        &.step-title {
+                            color: #434a54;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,171 @@
+﻿// Welcome Parent container
+.welcome-screen {
+    padding-top: 100px;
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.welcome-screen-wrapper {
+    display: block;
+    width: 4120px; /* 4 slide with each approx 1030px wide*/
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    -moz-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+
+
+// Welcome Slides
+.welcome-slide {
+    width: 1000px;
+    text-align: center;
+    float: left;
+    position: relative;
+    //opacity: 0;
+    h2 {
+        color: #434a54;
+        @include remsize(font-size, 28px);
+    }
+
+    p {
+        color: #7f8893;
+        @include remsize(font-size, 14px);
+        @include remsize(line-height, 22px);
+        display: block;
+        max-width: 80%;
+        text-align: center;
+        margin: 14px auto;
+
+        a {
+            color: #468be6;
+            text-decoration: underline;
+
+            &:hover {
+                color: #468be6;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    a {
+        color: #468be6;
+        text-decoration: underline;
+        @include remsize(font-size, 15px);
+
+        &:hover {
+            color: #468be6;
+            text-decoration: underline;
+        }
+    }
+
+
+    img {
+        margin: 20px 0;
+    }
+
+    &.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .no-show-slide {
+        display: block;
+        margin-top: 40px;
+    }
+}
+
+
+//Welcome Controls
+.welcome-controls {
+    margin-bottom: 60px;
+
+    .welcome-dots {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        ol {
+            margin: 0 auto;
+            padding: 0;
+            text-align: center;
+
+            li {
+                display: inline-block;
+                padding: 0;
+                margin-left: 3px;
+                margin-right: 3px;
+
+                input[type='radio'] {
+                    position: absolute;
+                    left: -9999px;
+
+                    + label {
+                        display: block;
+                        text-align: center;
+                        margin: 0 auto;
+                        cursor: pointer;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background: #c0dbff;
+                    }
+
+                    &:checked {
+                        + label {
+                            background: #468be7;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .welcome-nav {
+        ul {
+            margin: 0 auto;
+            padding: 0;
+            text-align: center;
+
+            li {
+                display: inline-block;
+                text-align: center;
+                padding: 0;
+                font-size: 0;
+
+                .welcome-btn {
+                    display: block;
+                    color: #ffffff;
+                    background: #468be7;
+                    text-align: center;
+                    padding: 12px 0;
+                    width: 150px;
+                    @include remsize(font-size, 16px);
+
+                    &:hover, &:active, &:focus {
+                        text-decoration: none;
+                    }
+                }
+
+                &.back {
+                    display: none;
+
+                    .welcome-btn {
+                        background: transparent;
+                        color: #468be7;
+                        padding: 11px 60px;
+                        margin-right: 20px;
+                        border: 1px solid #468be7;
+                    }
+                }
+
+                &.finish {
+                    display: none;
+                }
+            }
+        }
+    }
+}

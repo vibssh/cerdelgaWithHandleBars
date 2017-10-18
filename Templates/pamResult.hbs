@@ -1,0 +1,28 @@
+<!-- PAM RESULTS -->
+<script type="text/javascript">
+    (function () {
+        isLoggedInModule.init();
+       _PAMExplanation.init($('.pam-explanation-link'));
+       _PAMResult.init();
+    }());
+</script>
+
+<div id="pam-result">
+    <div class="pam-choice">
+        <div class="row">
+            <div class="pam-choice-title">
+                <h1>Your Patient’s PAM
+                    <sup>&reg;</sup> Results</h1>
+            </div>
+            <div id="result" class="level-{{Level}}">
+            </div>
+            <div class="take-pam">
+                <a href="#" class="anchor-btn take-pam">Take another PAM
+                    <sup>&reg;</sup> test</a>
+                <a href="#" class="anchor-btn ghost-btn create-book">Create a Book</a>
+                <a href="#" class="pam-explanation-link">More Information about the PAM
+                    <sup>&reg;</sup> result</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+﻿.pam-filter {
+    width: 100%;
+    background: #fff9e9;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    border-color: #f6bb42;
+    padding: 6px 0;
+
+
+
+    p {
+        @include remsize(font-size, 12px);
+        width: 440px;
+    }
+
+    .filter-details {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+
+
+    .pam-filter-panel {
+        text-align: right;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+        width: 57.9%;
+        padding-right: 0;
+
+        span {
+            display: inline-block;
+            font-style: normal;
+            @include remsize(font-size, 14px);
+            color: #656d78;
+            float: none;
+            padding-right: 20px;
+            vertical-align: middle;
+        }
+    }
+
+
+    #filter-level {
+        display: inline-block;
+        float: none;
+        vertical-align: middle;
+        padding-left: 0;
+        padding-right: 0;
+
+        input[type='radio'] {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0 !important;
+            border: 0 !important;
+            height: 1px !important;
+            width: 1px !important;
+            overflow: hidden;
+
+            + label {
+                display: inline-block;
+                @include remsize(font-size, 14px);
+                color: #656d78;
+                padding: 1px 8px 1px 24px;
+                text-align: center;
+                background: #fff;
+                border: 1px solid #ccd1d9;
+                cursor: pointer;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    width: 13px;
+                    height: 13px;
+                    border: 1px solid #ccd1d9;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 6px;
+                    top: 6px;
+                }
+            }
+
+            &:checked {
+
+                + label {
+                    color: #2e6fc4;
+                    font-style: normal;
+                    background: #d9eaff;
+                    border-color: #468be6;
+
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        width: 13px;
+                        height: 13px;
+                        border: 1px solid #468be6;
+                        border-radius: 50%;
+                        background: #fff;
+                        position: absolute;
+                        left: 6px;
+                        top: 6px;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: inline-block;
+                        width: 7px;
+                        height: 7px;
+                        border: none;
+                        border-radius: 50%;
+                        background: #468be6;
+                        position: absolute;
+                        left: 9px;
+                        top: 9px;
+                    }
+                }
+            }
+        }
+    }
+}

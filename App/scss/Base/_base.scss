@@ -1,0 +1,147 @@
+// Mixin imports upfront so it can be used in the base file
+@import '_mixins.scss';
+
+// Base Variables
+//$base-font-family: $primary-regular-font;
+$base-font-family: 'Cabin', sans-serif;
+$base-line-height: 1.6;
+
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: $base-font-size;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    color: #2a2f32;
+    @include remsize(font-size, 18px);
+    font-family: $base-font-family;
+    line-height: $base-line-height;
+    font-weight: 400;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &.no-scroll {
+        overflow: hidden;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto !important;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    /*padding-bottom: 260px;*/
+    padding-bottom: 350px;
+}
+
+.container {
+    max-width: 1000px !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+#content {
+    padding-top: 106px; // As header is fixed so have to give padding top same as header height
+    //padding-bottom: 330px; // height of footer
+}
+
+/*.container {
+    @media (min-width: 992px) {
+        max-width: 1000px;
+        padding: 0 30px;
+    }
+}*/
+
+.is-mobile {
+    @include breakpoint($desktop) {
+        display: none !important;
+    }
+}
+
+.is-desktop {
+    @include breakpoint($mobile-width) {
+        display: none !important;
+    }
+}
+
+
+sup, sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+
+sub {
+    top: 0.4em;
+}
+
+/* No Script tag style */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    &.alert-danger {
+        p {
+            color: #a94442;
+            text-align: center;
+        }
+        
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+}
+
+//TODO TEST with GOOGLE HOSTING BUT WITH CSS CLASS
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal; 
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap; 
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
