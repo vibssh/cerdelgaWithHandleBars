@@ -43,8 +43,6 @@ var _Profile = (function (window) {
       })
     ).then(_getNurseSuccess);
 
-
-
     //TEWLibrary.fetchData(_Settings.$nurseEndPoint, 'GET', {}).done(_getNurseSuccess).fail(_getNurseFailure);
   };
 
@@ -60,11 +58,7 @@ var _Profile = (function (window) {
     console.info(xhr.status);
   }
 
-
-
-
   var bindUIActions = function () {
-
     /* Nurse / Patient Name click Event on the top  */
     $('.link-profile').on('click', function (e) {
       e.preventDefault();
@@ -77,7 +71,6 @@ var _Profile = (function (window) {
     //Tabs
     $(document).on('click','.nurse-tab-link', function (e) {
       e.preventDefault();
-      console.info('hello i am clicked');
       _nurseViewTabs($(this));
     });
 
@@ -85,11 +78,9 @@ var _Profile = (function (window) {
 
   };
 
-
-
-
   // 
   return {
     init: bindUIActions
   }
+  
 }());
