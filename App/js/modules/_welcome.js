@@ -36,6 +36,7 @@ var welcomeSettings,
             //Clicking Finish Button
             $('.welcome-btn.finish').click(function (e) {
                 e.preventDefault();
+                e.stopPropagation();
                 /* Template Loading and History State */
                 _TemplateLoader.init('pamChoice');
             });

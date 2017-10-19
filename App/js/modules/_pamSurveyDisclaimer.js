@@ -44,13 +44,16 @@ var pamSurveyDisclaimer = {
         //Questionnaire button click event
         $('.select-questionnaire').on('click', function (e) {
             e.preventDefault();
+            e.stopPropagation();
             var questionData = _pamQuestionnaireData.init();
             _TemplateLoader.init('pamQuestionnaire',questionData );
         });
 
         //Create a book button click event
-        $('.select-bookcreatore').on('click', function (e) {
+        $('.select-bookcreator').on('click', function (e) {
+            console.info('bookcreator link clicked');
             e.preventDefault();
+            e.stopPropagation();
             // var welcomeTPL = Cerdelga.templates.welcome;
             // $('#content').html(welcomeTPL);
         });

@@ -1,17 +1,4 @@
-﻿.nurse-profile-view {
-    .back-link {
-        display: inline-block;
-        padding: 16px 0;
-        @include remsize(font-size, 15px);
-        text-decoration: underline;
-
-        i {
-            margin-right: 5px;
-        }
-    }
-}
-
-.profile-view-navbar {
+﻿.profile-view-navbar {
     display: block;
     width: 100%;
     background: #f0f3f6;

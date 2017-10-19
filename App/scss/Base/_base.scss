@@ -71,7 +71,8 @@ a {
 }
 
 #content {
-    padding-top: 106px; // As header is fixed so have to give padding top same as header height
+    //padding-top: 106px; // As header is fixed so have to give padding top same as header height
+    padding-top: 120px;
     //padding-bottom: 330px; // height of footer
 }
 
@@ -145,3 +146,16 @@ sub {
     /* Support for IE. */
     font-feature-settings: 'liga';
 }
+
+//back link 
+.back-link {
+    display: inline-block;
+    padding: 16px 0;
+    @include remsize(font-size, 15px);
+    text-decoration: underline;
+
+    i {
+        margin-right: 5px;
+    }
+}
+ 

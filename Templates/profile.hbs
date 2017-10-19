@@ -1,0 +1,407 @@
+<!-- Profile Screen -->
+
+<div class="container">
+  <a href="#" class="back-link">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>Back
+  </a>
+</div>
+
+<div class="profile-view-navbar">
+  <div class="row">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="nurse-title">Jane Doe</h1>
+
+        <!-- Tab Navigation -->
+        <nav class="nurse-tab-nav">
+          <ul class="nurse-tab">
+            <li class="nurse-tab-list">
+              <a href="#" class="nurse-tab-link active" data-tab="details">
+                My Details
+              </a>
+            </li>
+            <li class="nurse-tab-list">
+              <a href="#" class="nurse-tab-link" data-tab="treatment">
+                Treatment Centre Details
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-wrapper">
+  <div class="row">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-3">
+        <!-- My Details Tab -->
+        <div class="tabs active" data-tab="details">
+          <h2> General Account Details </h2>
+
+          <form id="nurse-name-form">
+            {{#each Nurse}}
+            <div class="form-field">
+              <label for="fullName" class="col-md-3">Full Name</label>
+              <input type="text" value="{{FullName}}" id="fullName" class="col-md-9" disabled="disabled"/>
+              <a href="#" class="edit name-edit-btn">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+            </div>
+          
+            <!-- Name Change Block -->
+            <div class="edit-block name-edit-block">
+              <div class="edit-block-wrapper">
+                <label for="newName" class="col-md-3">New Name</label>
+                <div class="password-wrapper">
+                  <input type="text" value="" id="newName" name="newName" class="col-md-9" />
+                </div>
+
+
+                <div class="pwd-update-wrap">
+                  <div class="pwd-cancel">
+                    <a href="#" class="reset">Cancel</a>
+
+                  </div>
+                  <div class="pwd-update">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <input type="submit" value="Update" class="submit name-submit" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email" class="col-md-3">Email</label>
+              <input type="email" value="{{Email}}" id="email" class="col-md-9" disabled="disabled" />
+              <a href="#" class="lock">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </a>
+            </div>
+            
+          </form>
+
+          <form id="nurse-password-form">
+            <div class="password-block">
+              <h2> Password </h2>
+              <div class="form-field">
+                <label for="password" class="col-md-3">Password</label>
+                <input type="password" value="{{Password}}" id="password" class="col-md-9" disabled="disabled" />
+                <a href="#" class="edit password-edit-btn">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <!-- Password Change Block -->
+              <div class="edit-block password-edit-block">
+                <div class="edit-block-wrapper">
+                  <label for="currentPassword" class="col-md-3">Current</label>
+                  <div class="password-wrapper">
+                    <input type="password" value="" id="currentPassword" name="password" class="col-md-9" />
+                    <div class="pwd-toggle-wrapper">
+                      <a href="#" class="toggle-password showPassword">Show</a>
+                      <a href="#" class="toggle-password hidePassword">Hide</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Current Password validation tooltip -->
+                <div class="error-block current-password-validation">
+                  <div class="arrow_box">
+                    <p>Current Password entered does not match with exisiting password </p>
+                  </div>
+                </div>
+
+                <div class="edit-block-wrapper">
+                  <label for="currentPassword" class="col-md-3">New</label>
+                  <div class="password-wrapper">
+                    <input type="password" value="" id="newPassword" name="password" class="col-md-9" />
+                    <div class="pwd-toggle-wrapper">
+                      <a href="#" class="toggle-password showPassword">Show</a>
+                      <a href="#" class="toggle-password hidePassword">Hide</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- New Password validation tooltip -->
+                <div class="error-block new-password-validation">
+                  <div class="arrow_box">
+                    <p>Minimum of 8 characters consisting of at least: </p>
+                    <ul class="new-password-item">
+                      <li class="lowercase new-password-list">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>1 lowercase character</span>
+                      </li>
+                      <li class="uppercase new-password-list">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>1 uppercase character</span>
+                      </li>
+                      <li class="number new-password-list">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>1 number</span>
+                      </li>
+                      <li class="special new-password-list">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>1 special character</span>
+                      </li>
+                      <li class="strength new-password-list">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>8 characters</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="edit-block-wrapper">
+                  <div class="pwd-update-wrap">
+                    <div class="pwd-cancel">
+                      <a href="#" class="reset password-reset">Cancel</a>
+                    </div>
+                    <div class="pwd-update">
+                      <i class="fa fa-check" aria-hidden="true"></i>
+                      <input type="submit" value="Update" class="submit password-submit" disabled="disabled" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </form>
+        </div>
+
+        <!-- Treatment Centre Details -->
+        <div class="tabs" data-tab="treatment">
+          <!-- View Treatment Centre -->
+          <div class="view-treatment-centre">
+            <h2>Your Treatment Centre Details</h2>
+            <form id="nurse-treatment-centre-form">
+
+              <div class="form-field">
+                {{#each TreatmentCentre}}
+                  <label for="centreName" class="col-md-3"> Centre name</label>
+                  <input type="text" value="{{CentreName}}" id="centreName" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="form-field">
+                  <label for="unitName" class="col-md-3"> Unit name</label>
+                  <input type="text" value="{{UnitName}}" id="unitName" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="form-field">
+                  <label for="streetName" class="col-md-3"> Street name</label>
+                  <input type="text" value="{{StreetName}}" id="streetName" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="form-field">
+                  <label for="city" class="col-md-3"> City</label>
+                  <input type="text" value="{{City}}" id="city" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="form-field">
+                  <label for="county" class="col-md-3"> County</label>
+                  <input type="text" value="{{County}}" id="county" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="form-field">
+                  <label for="postCode" class="col-md-3"> Post Code</label>
+                  <input type="text" value="{{PostCode}}" id="postCode" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="form-field">
+                  <label for="phone" class="col-md-3"> Phone number </label>
+                  <input type="tel" value="{{PhoneNumber}}" id="phone" class="col-md-9" disabled="disabled" />
+                  <a href="#" class="lock">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="form-link">
+                  <a href="#" class="incorrect-centre">These details are incorrect</a>
+                  <a href="#" class="change-centre">Change my treatment centre</a>
+                </div>
+              {{/each}}
+            </form>
+          </div>
+
+          <!-- Update Treatment Centre -->
+          <div class="update-treatment-centre hide-me">
+            <h2>Update Treatment Centre Details</h2>
+            <form id="update-treatment-centre">
+              <!-- Fields to Update-->
+              <div class="form-field">
+                <label for="updateCentreName" class="col-md-3">Centre name</label>
+                <input type="text" id="updateCentreName" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updateUnitName" class="col-md-3">Unit name</label>
+                <input type="text" id="updateUnitName" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updateStreetName" class="col-md-3">Street name</label>
+                <input type="text" id="updateStreetName" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updateCity" class="col-md-3">City</label>
+                <input type="text" id="updateCity" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updateCounty" class="col-md-3">County</label>
+                <input type="text" id="updateCounty" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updatePostCode" class="col-md-3">Post code</label>
+                <input type="text" id="updatePostCode" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="updatePhoneNumber" class="col-md-3">Phone number</label>
+                <input type="text" id="updatePhoneNumber" class="col-md-9" />
+              </div>
+              <div class="form-button-wrapper">
+                <div class="form-reset">
+                  <a href="#" class="reset">Cancel</a>
+                </div>
+                <div class="form-submit">
+                  <input type="submit" value="Submit" class="new-centre-submit" disabled="disabled" />
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+
+          <div class="update-treatment-success hide-me">
+            <h2>Your Treatment Centre has been updated</h2>
+          </div>
+
+          <!-- Add New Treatment Centre -->
+          <div class="add-treatment-centre hide-me">
+            <h2>Add A New Treatment Centre</h2>
+            <form id="add-treatment-centre">
+              <div class="form-field">
+                <label for="addCentreName" class="col-md-3">Centre name</label>
+                <input type="text" id="addCentreName" placeholder="New Centre Name" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addUnitName" class="col-md-3">Unit name</label>
+                <input type="text" id="addUnitName" placeholder="New Unit Name" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addStreetName" class="col-md-3">Street name</label>
+                <input type="text" id="addStreetName" placeholder="New Street Name" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addCity" class="col-md-3">City</label>
+                <input type="text" id="addCity" placeholder="New City Name" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addCounty" class="col-md-3">County</label>
+                <input type="text" id="addCounty" placeholder="New County Name" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addPostCode" class="col-md-3"> Postcode</label>
+                <input type="text" id="addPostCode" placeholder="XXX XXX" class="col-md-9" />
+              </div>
+              <div class="form-field">
+                <label for="addPhone" class="col-md-3"> Phone number</label>
+                <input type="text" id="addPhone" placeholder="+XX(0)XXXX XXX XXX" class="col-md-9" />
+              </div>
+
+
+              <div class="form-button-wrapper">
+                <div class="form-reset">
+                  <a href="#" class="reset">Cancel</a>
+                </div>
+                <div class="form-submit">
+                  <input type="submit" value="Submit" class="new-centre-submit" />
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+          <div class="add-treatment-success hide-me">
+            <h2>Your Treatment Centre has been added</h2>
+          </div>
+
+          <!-- Treatment Centre Choice -->
+          <div class="treatment-centre-choice hide-me">
+            <h2>Treatment Centre Details </h2>
+            <form id="choose-treatment-centre">
+
+              <div class="form-field">
+                <label for="chooseTreatmentCentre" class="col-md-3">Treatment centre</label>
+                <div class="select-wrapper">
+                  <select id="chooseTreatmentCentre" class="col-md-9">
+                    <option value="">Choose a Treatment Centre</option>
+                  </select>
+                  <div class="select-arrow">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Add new Centre -->
+              <div>
+                <a href="#" class="add-new-centre">My treatment centre isn't in the list</a>
+              </div>
+
+              <div class="form-button-wrapper">
+                <div class="form-reset">
+                  <a href="#" class="reset">Cancel</a>
+                </div>
+                <div class="form-submit">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                  <input type="submit" value="Update" class="new-centre-submit" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Review Treatment Centre Block -->
+        <div class="treatment-centre-review hide-me">
+          <h4>Your Treatment Centre Details Have Been Sent for Review </h4>
+          <span>This will take up to 3 days to be reviewed.</span>
+          <div class="info-panel">
+            <p class="info-text">
+              You can create a pack now but the delivery time will be delayed until your treatment centre details have been reviewed and
+              approved
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    (function () {
+        isLoggedInModule.init();
+       // nurseViewProfile.init();
+       // updateTreatmentCentre.init();
+        // addTreatmentCentre.init();
+       // treatmentCentreChoice.init();
+       // newPasswordValidation.init($('#newPassword'));
+    }());
+</script>

@@ -5320,7 +5320,7 @@ a {
   padding: 0 !important; }
 
 #content {
-  padding-top: 106px; }
+  padding-top: 120px; }
 
 /*.container {
     @media (min-width: 992px) {
@@ -5378,6 +5378,15 @@ sub {
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga'; }
+
+.back-link {
+  display: inline-block;
+  padding: 16px 0;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  text-decoration: underline; }
+  .back-link i {
+    margin-right: 5px; }
 
 h1, h2, h3, h4, h5 {
   margin: 0;
@@ -7666,7 +7675,6 @@ li {
     height: 51px; }
 
 .pages {
-  margin-top: 40px;
   padding: 0; }
 
 .page-list {
@@ -8027,15 +8035,6 @@ li {
       .welcome-controls .welcome-nav ul li.finish {
         display: none; }
 
-.nurse-profile-view .back-link {
-  display: inline-block;
-  padding: 16px 0;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  text-decoration: underline; }
-  .nurse-profile-view .back-link i {
-    margin-right: 5px; }
-
 .profile-view-navbar {
   display: block;
   width: 100%;
@@ -8367,15 +8366,6 @@ form#choose-treatment-centre {
 
 .update-treatment-success.hide-me, .hide-me.add-treatment-success {
   display: none; }
-
-.pages .back-link {
-  display: inline-block;
-  padding: 16px 0;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  text-decoration: underline; }
-  .pages .back-link i {
-    margin-right: 5px; }
 
 .pages .page-heading-block {
   background: #f0f3f6;
