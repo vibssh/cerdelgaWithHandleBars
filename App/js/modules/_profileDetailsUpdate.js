@@ -145,9 +145,8 @@ var _ProfileDetailsUpdate = (function (window) {
      $('#nurse-name-form').find('.form-field').css('display', 'block');
 
     // Just for Display Purpose 
+    var firstName = name.substring(0, name.indexOf(' '));
     
-    var firstName = name.substring(0, name.indexOf(''));
-
     $('.nurse-title').html(name);
     $('.link-profile').html(firstName);
   };
