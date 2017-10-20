@@ -80,7 +80,8 @@ var _Profile = (function (window) {
 
   // 
   return {
-    init: bindUIActions
+    init: bindUIActions,
+    settings: _Settings
   }
   
 }());

@@ -124,26 +124,36 @@ var _ProfileDetailsUpdate = (function (window) {
       "Password": $('#password').val()
     };
 
-    TEWLibrary.fetchData(_Settings.nurseEndPoint, 'PUT', { $data: formData }).done(_updateFullNameSuccess).fail(_updateNameFail);
+    $.ajax({
+      url: _Settings.$nurseEndPoint,
+      type: 'PUT',
+      data: formData,
+      success: function(){
+        _updateFullNameSuccess(formData.FullName);
+      },
+      error: function(xhr){
+        console.info(xhr.status);
+      }
+    });
   };
  
-  var _updateFullNameSuccess = function(data){
-    $('.name-edit-block').hide();
-    $('#newName').val('');
-    //Updating the exisiting input field
-    $('#fullName').val(data.FullName);
-    $('#nurse-name-form').find('.form-field').css('display', 'block');
+  var _updateFullNameSuccess = function(name){    
+     $('.name-edit-block').hide();
+     $('#newName').val('');
+     //Updating the exisiting input field
+     $('#fullName').val(name);
+     $('#nurse-name-form').find('.form-field').css('display', 'block');
 
     // Just for Display Purpose 
-    var fullName = data.FullName;
-    var firstName = FullName.substring(0, FullName.indexOf(' '));
+    
+    var firstName = name.substring(0, name.indexOf(''));
 
-    $('.nurse-title').text(fullName);
-    $('.link-profile').text(firstName);
+    $('.nurse-title').html(name);
+    $('.link-profile').html(firstName);
   };
 
   var _updateNameFail = function(xhr){
-    console.info(xhr.status);
+    console.info(xhr);
   };
 
   return {
