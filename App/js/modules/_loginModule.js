@@ -1,6 +1,7 @@
 var _LoginModule = (function (window) {
   var _privateSettings = {
-    $loginEndPoint: 'http://soa.tew-dev.com/api/emsmock/login'
+    $loginEndPoint: 'http://soa.tew-dev.com/api/emsmock/login',
+    $nurseEndPoint: 'http://soa.cerdelga.tew-staging.com/api/Nurse/0'
   };
 
   var _loginBeforeSend = function () {
@@ -33,7 +34,23 @@ var _LoginModule = (function (window) {
       _TemplateLoader.init('welcome');
       
     }
+
+    //Ajax Call Here for Nurse Data only if success
+    TEWLibrary.fetchData(_privateSettings.$nurseEndPoint, 'GET', {            
+    }).done(_nurseSuccess).fail(_nurseFailure);
   };
+
+//Nurse data pulled into UI
+var _nurseSuccess = function(data){
+  var fullName = data.FullName;
+  var firstName = fullName.substring(0, fullName.indexOf(' '));  
+  $('.link-profile').html(firstName);  
+};
+
+var _nurseFailure = function(xhr){
+  console.info(xhr.status);
+};
+
 
   var _loginFailure = function (xhr) {
     $('.loading').remove();
@@ -71,11 +88,14 @@ var _LoginModule = (function (window) {
         "Password": authPwd
       };
 
-      //Ajax Call Here
+      //Ajax Call Here for login
       TEWLibrary.fetchData(_privateSettings.$loginEndPoint, 'POST', {
         $data: $data,
         $beforeSend: _loginBeforeSend
       }).done(_loginSuccess).fail(_loginFailure);
+
+      
+
     });
 
     /* Forgotten password template Loading */
