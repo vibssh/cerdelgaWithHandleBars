@@ -8,10 +8,16 @@ var _Profile = (function (window) {
 
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
     $nurseEndPoint: 'http://soa.cerdelga.tew-staging.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/0', /* 0 is hard coded this should be tied up with the nurse data api  */
+    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/0',
+    /* 0 is hard coded this should be tied up with the nurse data api  */
 
-    $profileData : {'Nurse': [], 'TreatmentCentre':[]}
-   
+    $profileId: $('.link-profile').data('id'),
+
+    $profileData: {
+      'Nurse': [],
+      'TreatmentCentre': []
+    }
+
   };
 
 
@@ -34,12 +40,14 @@ var _Profile = (function (window) {
     $('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
     //Ajax Call Here using Multiple Simultaenous call
     return $.when(
-      $.get(_Settings.$nurseEndPoint, function(data){
+      $.get(_Settings.$nurseEndPoint, function (data) {
         _Settings.$profileData.Nurse.push(data);
       }),
 
-      $.get(_Settings.$treatmentCentreEndPoint, function(data){
+      $.get(_Settings.$treatmentCentreEndPoint, function (data) {
         _Settings.$profileData.TreatmentCentre.push(data);
+
+
       })
     ).then(_getNurseSuccess);
 
@@ -69,13 +77,10 @@ var _Profile = (function (window) {
 
 
     //Tabs
-    $(document).on('click','.nurse-tab-link', function (e) {
+    $(document).on('click', '.nurse-tab-link', function (e) {
       e.preventDefault();
       _nurseViewTabs($(this));
     });
-
-
-
   };
 
   // 
@@ -83,5 +88,5 @@ var _Profile = (function (window) {
     init: bindUIActions,
     settings: _Settings
   }
-  
+
 }());

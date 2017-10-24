@@ -6,12 +6,13 @@ var _IsLoggedInEndPoint = 'http://soa.tew-dev.com/api/emsmock/isLoggedin/';
 var _HandlebarsTemplate = (function (window) {
 
   var _header = function () {
-
+   
     var headerTpl = Cerdelga.templates.header; // Without any data being passed
     $('#header').append(headerTpl);
-  };
+  }; 
 
   var _footer = function () {
+    
     var footerTpl = Cerdelga.templates.footer;
     $('#footer').append(footerTpl);
   };

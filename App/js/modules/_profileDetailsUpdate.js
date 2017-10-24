@@ -126,7 +126,6 @@ var _ProfileDetailsUpdate = (function (window) {
 
   }; //End of bindUIActions
 
-
   //METHODS 
   var _editFullName = function ($clicked) {
     $clicked.parent().hide();
