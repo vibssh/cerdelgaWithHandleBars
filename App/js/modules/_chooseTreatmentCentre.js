@@ -22,9 +22,12 @@ var _ChooseTreatmentCentre = (function(window){
   var _optionSelected = function(){
     _Settings.$selectedItem = null;
     _Settings.$selectedItem = $('#chooseTreatmentCentre').find(':selected').val();
-    console.info(_Settings.$selectedItem);
     
-  
+    //Incorrect link gets the data id 
+    $('.incorrect-centre').prop('data-id',_Settings.$selectedItem );
+    
+    //Update URL ID 
+    _updateTreatmentCentreSettings.$id = _Settings.$selectedItem;
   };
 
   var _fetchData = function(){
@@ -35,15 +38,22 @@ var _ChooseTreatmentCentre = (function(window){
   };
 
   var _success = function(data){
-    console.info(data);
+    
     //For UI only Remove Existing item from the TreatmentCentre 
     $('#centreName').val(data.CentreName);
     $('#unitName').val(data.UnitName);
     $('#streetName').val(data.StreetName);
     $('#city').val(data.City);
     $('#county').val(data.County);
+    $('#postCode').val(data.PostCode);
+    $('#phone').val(data.PhoneNumber);
     $('form').parent().addClass('hide-me');
     $('.view-treatment-centre').removeClass('hide-me');
+
+    // To give the .incorrect-centre link a data id
+    $('.incorrect-centre').attr('data-id', data.Id);
+    $('.link-profile').attr('data-id', data.Id);
+
   };
 
   var _failure = function(xhr){

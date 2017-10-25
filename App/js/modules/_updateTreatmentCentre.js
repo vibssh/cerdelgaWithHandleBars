@@ -4,38 +4,21 @@ var _updateTreatmentCentreSettings,
 
     settings: {
       $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/',
-      $id: '',
-      $url: ''
-
+      $putUrl: ''
     },
+
     init: function () {
       //   var id;
       //   var url;
       _updateTreatmentCentreSettings = this.settings;
+      _updateTreatmentCentreSettings.$id = $('.incorrect-centre').data('id');
       this.bindUIActions();
-
-      // // This is to populate the select list to change the treatment centre
-      // $.ajax({
-      //   url: _updateTreatmentCentreSettings.$treatmentCentreEndPoint,
-      //   type: 'GET',
-      //   success: function (data, jqXHR, textStatus) {
-      //     console.info(data);
-      //     $.each(data, function (index, treatmentcentre) {
-      //       //console.info(treatmentcentre);
-      //       $('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
-      //       //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
-      //     });
-      //   },
-      //   error: function (data, xhr, textStatus) {
-      //     console.info(xhr);
-      //   }
-      // });
     },
 
     bindUIActions: function () {
       $('.incorrect-centre').on('click', function (e) {
         e.preventDefault();
-        updateTreatmentCentre.getCentreData($(this));
+        updateTreatmentCentre.getCentreData();
       });
 
       // Enable Submit Update Button only if input value is changed
@@ -46,8 +29,9 @@ var _updateTreatmentCentreSettings,
       // Update TC 
       $('#update-treatment-centre').on('submit', function (e) {
         e.preventDefault();
-        updateTreatmentCentre.updateCentre();
+        updateTreatmentCentre.updateTreatmentCentre();
       });
+      
 
       // Add TC
       $('.add-new-centre').on('click', function (e) {
@@ -60,47 +44,31 @@ var _updateTreatmentCentreSettings,
         e.preventDefault();
         updateTreatmentCentre.reset();
       });
-     
+
     },
+    getCentreData: function ($clicked) {
+      //Get the input fields value and push it to the next screen
+      var $centreName = $('#centreName').val(),
+        $unitName = $('#unitName').val(),
+        $streetName = $('#streetName').val(),
+        $city = $('#city').val(),
+        $county = $('#county').val(),
+        $postCode = $('#postCode').val(),
+        $phoneNumber = $('#phone').val();
 
-    getCentreData: function ($clickedItem) {
-      _updateTreatmentCentreSettings.$id = $clickedItem.data('id');
-      console.info('I am the new id ' + _updateTreatmentCentreSettings.$id);
+      //Align the data to update centre
+      $('#updateCentreName').val($centreName);
+      $('#updateUnitName').val($unitName);
+      $('#updateStreetName').val($streetName);
+      $('#updateCity').val($city);
+      $('#updateCounty').val($county);
+      $('#updatePostCode').val($postCode);
+      $('#updatePhoneNumber').val($phoneNumber);
 
-      _updateTreatmentCentreSettings.$url = _updateTreatmentCentreSettings.$treatmentCentreEndPoint + _updateTreatmentCentreSettings.$id;
-
-      //Getting the data to update
-      $.ajax({
-        url: _updateTreatmentCentreSettings.$url,
-        type: 'GET',
-        dataType: 'JSON',
-        success: function (data, jqXHR, textStatus) {
-          var centreName = data.CentreName;
-          var unitName = data.UnitName;
-          var streetName = data.StreetName;
-          var city = data.City;
-          var county = data.County;
-          var postCode = data.PostCode;
-          var phoneNumber = data.PhoneNumber;
-
-          //Initial Values of the Fields
-          $('#updateCentreName').val(centreName);
-          $('#updateUnitName').val(unitName);
-          $('#updateStreetName').val(streetName);
-          $('#updateCity').val(city);
-          $('#updateCounty').val(county);
-          $('#updatePostCode').val(postCode);
-          $('#updatePhoneNumber').val(phoneNumber);
-
-
-          //on Success will show the data
-          updateTreatmentCentre.showMe();
-        },
-
-        error: function (data, jqXHR, textStatus) {
-          console.info(jqXHR.statusText);
-        }
-      });
+      //UI Show
+      updateTreatmentCentre.showMe();
+      _updateTreatmentCentreSettings.$putUrl = _updateTreatmentCentreSettings.$treatmentCentreEndPoint + _updateTreatmentCentreSettings.$id;
+      console.info('PUT URL: ', _updateTreatmentCentreSettings.$treatmentCentreEndPoint + _updateTreatmentCentreSettings.$id);
     },
 
     showMe: function () {
@@ -127,45 +95,109 @@ var _updateTreatmentCentreSettings,
 
     },
 
-    updateCentre: function () {
-      var centreName = $('#updateCentreName').val();
-      var unitName = $('#updateUnitName').val();
-      var streetName = $('#updateStreetName').val();
-      var city = $('#updateCity').val();
-      var county = $('#updateCounty').val();
-      var postCode = $('#updatePostCode').val();
-      var phoneNumber = $('#updatePhoneNumber').val();
+    updateTreatmentCentre: function () {
+     console.info('id ', _updateTreatmentCentreSettings.$id );
+      var $data = {
+        "InReview": true,
+        "CentreName": $('#updateCentreName').val(),
+        "UnitName": $('#updateUnitName').val(),
+        "StreetName": $('#updateStreetName').val(),
+        "City": $('#updateCity').val(),
+        "County": $('#updateCounty').val(),
+        "PostCode": $('#updatePostCode').val(),
+        "PhoneNumber": $('#updatePhoneNumber').val()
+      }
 
-      var treatmentCentreData = {
-        "CentreName": centreName,
-        "UnitName": unitName,
-        "StreetName": streetName,
-        "City": city,
-        "County": county,
-        "PostCode": postCode,
-        "PhoneNumber": phoneNumber,
-        "InReview": true
-      };
-
-
-      $.ajax({
-        // url: url, commented as at the moment its not putting it back
-        url: _updateTreatmentCentreSettings.$treatmentCentreEndPoint + _updateTreatmentCentreSettings.$id,
-        type: 'PUT',
-        accessControlAllowOrigin: '*',
+      return $.ajax({
+        url: _updateTreatmentCentreSettings.$putUrl,
+        type: "PUT",
         contentType: 'application/json',
-        data: JSON.stringify(treatmentCentreData),
-        //dataType: 'JSON',
-        crossDomain: true,
-        success: function (data, textStatus, jqXHR) {
-          //console.info('Updated Successfully');
-          $('.update-treatment-centre').addClass('hide-me');
-          $('.tabs').removeClass('active');
-          $('.treatment-centre-review').removeClass('hide-me');
-        },
-        error: function (data, textStatus, error) {
-          console.info('I am failed');
-        }
-      });
+        data: JSON.stringify($data),
+      }).done(updateTreatmentCentre._success).fail(updateTreatmentCentre._failure);
+
+      console.info('Updated Data', $data);
+    },
+
+    _success: function(){
+      $('.update-treatment-centre').addClass('hide-me');
+      $('.tabs').removeClass('active');
+      $('.treatment-centre-review').removeClass('hide-me');
+    },
+
+    _failure: function(xhr){
+      console.info(xhr.status)
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // updateCentre: function () {
+    //   var centreName = $('#updateCentreName').val();
+    //   var unitName = $('#updateUnitName').val();
+    //   var streetName = $('#updateStreetName').val();
+    //   var city = $('#updateCity').val();
+    //   var county = $('#updateCounty').val();
+    //   var postCode = $('#updatePostCode').val();
+    //   var phoneNumber = $('#updatePhoneNumber').val();
+
+    //   var treatmentCentreData = {
+    //     "Id": _updateTreatmentCentreSettings.$id,
+    //     "CentreName": centreName,
+    //     "UnitName": unitName,
+    //     "StreetName": streetName,
+    //     "City": city,
+    //     "County": county,
+    //     "PostCode": postCode,
+    //     "PhoneNumber": phoneNumber,
+    //     "InReview": true
+    //   };
+
+
+    //   $.ajax({
+    //     // url: url, commented as at the moment its not putting it back
+    //     url: _updateTreatmentCentreSettings.$treatmentCentreEndPoint + _updateTreatmentCentreSettings.$id,
+    //     type: 'PUT',
+    //     accessControlAllowOrigin: '*',
+    //     contentType: 'application/json',
+    //     data: JSON.stringify(treatmentCentreData),
+    //     //dataType: 'JSON',
+    //     crossDomain: true,
+    //     success: function (data, textStatus, jqXHR) {
+    //       //console.info('Updated Successfully');
+    //       $('.update-treatment-centre').addClass('hide-me');
+    //       $('.tabs').removeClass('active');
+    //       $('.treatment-centre-review').removeClass('hide-me');
+
+    //     },
+    //     error: function (data, textStatus, error) {
+    //       console.info('I am failed');
+    //     }
+    //   });
+    // }
+
+
   };

@@ -75,10 +75,10 @@ addTreatmentCentre = {
         var city = $('input[id="addCity"]').val();
         var county = $('input[id="addCounty"]').val();
         var postCode = $('input[id="addPostCode"]').val();
-        var phone = $('input[id="addPhone"]').val();
+        var phone = $('#addPhone').val();
 
         /* Align Data to the API or JSON File to post it */
-        var data = {
+        var $data = {
             "CentreName": centreName,
             "UnitName": unitName,
             "StreetName": streetName,
@@ -91,9 +91,11 @@ addTreatmentCentre = {
 
         /* Ajax Posting of the data aligned above */
         $.ajax({
-            url: addTreatmentCentreSettings.treatmentEndPoint,
+            url: addTreatmentCentreSettings.$treatmentEndPoint,
             type: 'POST',
-            data: data,
+            //data: data,
+            contentType: 'application/json',
+            data: JSON.stringify($data),
             //contentType: "application/json",
             crossDomain: true,
             //dataType: 'json',

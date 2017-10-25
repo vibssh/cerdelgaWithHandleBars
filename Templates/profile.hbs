@@ -333,7 +333,7 @@
                   <a href="#" class="reset">Cancel</a>
                 </div>
                 <div class="form-submit">
-                  <input type="submit" value="Submit" class="new-centre-submit" />
+                  <input type="submit" value="Submit" class="add-submit" />
                 </div>
               </div>
             </form>
@@ -394,13 +394,15 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
    
         isLoggedInModule.init();
         _ProfileDetailsUpdate.init();
         updateTreatmentCentre.init();
         _ChooseTreatmentCentre.init();
+        addTreatmentCentre.init($('#add-treatment-centre'));
+
+       
        // nurseViewProfile.init();
        // updateTreatmentCentre.init();
         // addTreatmentCentre.init();
