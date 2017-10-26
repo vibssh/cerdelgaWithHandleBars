@@ -72,7 +72,7 @@ var _Profile = (function (window) {
       e.preventDefault();
       e.stopPropagation();
       //Call Nurse Api to load the data
-      _getNurseData();
+     _getNurseData();
     });
 
 
@@ -86,7 +86,7 @@ var _Profile = (function (window) {
   // 
   return {
     init: bindUIActions,
-    //getNurseData: _getNurseData,
+    getNurseData: _getNurseData,
     settings: _Settings
   }
 

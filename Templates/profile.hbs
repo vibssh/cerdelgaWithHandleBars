@@ -403,8 +403,11 @@
         addTreatmentCentre.init($('#add-treatment-centre'));
 
         $('.back-link').on('click', function(e){
-           history.back();
-        });
+        e.preventDefault();
+        e.stopPropagation();
+        $("html, body").animate({ scrollTop: 0 }, 100);
+        history.back();
+    });
 
        // nurseViewProfile.init();
        // updateTreatmentCentre.init();

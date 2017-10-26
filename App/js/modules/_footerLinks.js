@@ -16,8 +16,8 @@ var _FooterLinks = (function(window){
     });
   };
 
-  var _historyTrackFooterLinks = function(eventState){
-    _HistoryBackModule.init(eventState);          
+  var _historyTrackFooterLinks = function(){
+    _HistoryBackModule.init();          
     $('.back-link').on('click', function(e){
         e.preventDefault();
         e.stopPropagation();

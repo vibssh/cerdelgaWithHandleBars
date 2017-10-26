@@ -4,6 +4,7 @@
         isLoggedInModule.init();
         /* Add a back link event here */
         $('.pam-back-link').on('click', function(e){
+            e.preventDefault();
            history.back();
         });
     }());

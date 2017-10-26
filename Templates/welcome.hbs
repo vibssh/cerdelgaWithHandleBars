@@ -5,15 +5,15 @@
         isLoggedInModule.init();
         welcomeSlide.init();
         $('.back-link').on('click', function(e){
-          history.back();
-          
-         
-        });
+        e.preventDefault();
+        e.stopPropagation();
+        $("html, body").animate({ scrollTop: 0 }, 100);
+        history.back();
+    });
 
     }());
 </script>
-<div class="welcome-screen">
-    <a href="#" class="back-link">back link</a>
+<div class="welcome-screen">    
     <div class="welcome-screen-wrapper">
         <!--Screen 1-->
         <div class="welcome-slide active" data-id="screen-1">
