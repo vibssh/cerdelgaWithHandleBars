@@ -402,7 +402,10 @@
         _ChooseTreatmentCentre.init();
         addTreatmentCentre.init($('#add-treatment-centre'));
 
-       
+        $('.back-link').on('click', function(e){
+           history.back();
+        });
+
        // nurseViewProfile.init();
        // updateTreatmentCentre.init();
         // addTreatmentCentre.init();

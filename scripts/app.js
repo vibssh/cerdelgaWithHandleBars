@@ -522,18 +522,34 @@ var _HandlebarsTemplate = (function (window) {
 }(window));
 var _HistoryBackModule = (function (window) {
   'use strict';
-
-  var _updateContent = function (stateObj) {
-    if (stateObj) {
-      var url = stateObj.Tpl;
-      var templ = Cerdelga.templates[url];
-      $('#content').html(templ);
-    }
-  };
+  
 
   var init = function (eventState) {
-    $(window).on('popstate', function () {
-      _updateContent(eventState);
+    $(window).on('popstate', function (event) {
+      var $hashLink = location.hash.split('#')[1];
+      
+      console.info('History Back Module', $hashLink);
+      var data = function($hashLink){
+          var dataHandler = {
+            "pamQuestionnaire" : function(){
+                return _pamQuestionnaireData.init();
+            },
+
+            "default" : function(){
+              return undefined;
+            }
+          };
+
+          return (dataHandler[$hashLink] || dataHandler['default'])();
+      };
+
+      var $data =  data($hashLink);
+      var Template = Cerdelga.templates[$hashLink]($data);
+      $('#content').html(Template);
+      location.hash = $hashLink;
+      
+      //var Template = Cerdelga.templates[$hashLink]($data);
+      //$('#content').html(Template);
     });
   }
 
@@ -1719,7 +1735,7 @@ var _Profile = (function (window) {
 
   // Nurse Data GET
   var _getNurseData = function () {
-    $('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
+    //$('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
     //Ajax Call Here using Multiple Simultaenous call
     return $.when(
       $.get(_Settings.$nurseEndPoint, function (data) {
@@ -1741,7 +1757,7 @@ var _Profile = (function (window) {
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
     _TemplateLoader.init('profile', $data);
-    $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
+   // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   }
 
   var _getNurseFailure = function (xhr) {
@@ -1768,6 +1784,7 @@ var _Profile = (function (window) {
   // 
   return {
     init: bindUIActions,
+    //getNurseData: _getNurseData,
     settings: _Settings
   }
 
@@ -2331,23 +2348,33 @@ var _TakePAM = (function () {
 
 
 
-var _TemplateLoader = (function(window){
+var _TemplateLoader = (function (window) {
   'use strict';
-  var init = function(tplName, data){
-   var $data = data  || undefined;
-    var Template = Cerdelga.templates[tplName]($data);
-    $('#content').html(Template);
-    var stateObj = {
-      'Tpl': tplName
-    };
-    history.pushState(stateObj, tplName, tplName + '.html');
+  var init = function (tplName, data) {
+   var $tplName = tplName || location.hash.split('#')[1] || undefined;
+   var $data = data || undefined;
+   var Template = Cerdelga.templates[$tplName]($data);
+   $('#content').html(Template);
+   location.hash = tplName;
+   
+    // location.hash = tplName;
+    // var pathName = location.pathname.split('/')[1];
+    // var previousTplName = pathName.substr(0, pathName.indexOf('.')); 
+    // var stateObj = {
+    //   'Tpl': tplName,
+    //   'previous_url': previousTplName
+    // };
+    // history.pushState(stateObj, tplName, tplName + '.html');
+
+    //On hashchange make the template different
+    //console.info('window location ', window.location.hash);
+
   };
 
   return {
     init: init
-  } 
+  }
 }(window));
-
 var treatmentCentreChoice = {
   
   init: function() {

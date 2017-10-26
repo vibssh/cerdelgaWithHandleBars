@@ -37,7 +37,7 @@ var _Profile = (function (window) {
 
   // Nurse Data GET
   var _getNurseData = function () {
-    $('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
+    //$('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
     //Ajax Call Here using Multiple Simultaenous call
     return $.when(
       $.get(_Settings.$nurseEndPoint, function (data) {
@@ -59,7 +59,7 @@ var _Profile = (function (window) {
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
     _TemplateLoader.init('profile', $data);
-    $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
+   // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   }
 
   var _getNurseFailure = function (xhr) {
@@ -86,6 +86,7 @@ var _Profile = (function (window) {
   // 
   return {
     init: bindUIActions,
+    //getNurseData: _getNurseData,
     settings: _Settings
   }
 

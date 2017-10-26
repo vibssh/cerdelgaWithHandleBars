@@ -7961,12 +7961,10 @@ li {
         text-decoration: underline; }
   .welcome-slide a {
     color: #468be6;
-    text-decoration: underline;
     font-size: 15px;
     font-size: 0.9375rem; }
     .welcome-slide a:hover {
-      color: #468be6;
-      text-decoration: underline; }
+      color: #468be6; }
   .welcome-slide img {
     margin: 20px 0; }
   .welcome-slide.active {
