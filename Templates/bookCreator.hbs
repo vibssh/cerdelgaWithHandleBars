@@ -84,7 +84,8 @@
   <div class="container">
     <div class="">
       <!-- Loading Spinner while data is loaded - Not needed any more as data is not ajaxed -->
-      {{!-- <div class="loading-spinner">
+      {{!--
+      <div class="loading-spinner">
         <div class='uil-squares-css' style='transform: scale(0.62);'>
           <div>
             <div></div>
@@ -115,32 +116,32 @@
 
       <!-- This is the book -->
       <ul class="book">
-          {{#each Topic}}
-        <div class="main-book-list" data-filter="true" data-about="false">
-          <li class="main-book-list-item" data-page="6">
-            <input class="book-check" type="checkbox" id="6000" data-prodcode="6000" data-proddesc="Healthy Lifestyle" data-prodtab="Blue"
-              data-pdfindex="30">
+        {{#each Topic}}
+        <div class="main-book-list" data-filter="true" data-about="{{AboutCerdelga}}">
+          <li class="main-book-list-item" data-page="{{@index}}">
+            <input class="book-check" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}" data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}"
+              data-pdfindex="{{Pages.Id}}">
             <label for="6000"></label>
             <div class="main-icon" style="background-image: url(/images/icons/sprite_adherence.png)"></div>
             <div class="main-title">
-              <span class="main-title-counter">06</span>
-              <h4>Healthy Lifestyle</h4>
+              <span class="main-title-counter">{{@index}}</span>
+              <h4>{{TopicTitle}}</h4>
             </div>
             <div class="main-button">
-              <button class="book-btn book-section-btn" data-page="6"></button>
+              <button class="book-btn book-section-btn" data-page="{{@index}}"></button>
             </div>
           </li>
-          <div class="book-section" data-page="6">
+          <div class="book-section" data-page="{{@index}}">
             <ul class="pages">
               <div class="page-list">
-                <li class="page-list-item" data-subpage="0">Your health comes first</li>
+                <li class="page-list-item" data-subpage="0">{{Pages.PagesTitle}}</li>
                 <div class="preview-wrapper">
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  <a href="#" class="preview-link" data-canvasid="32" data-startpage="2" data-fileurl="/assets/pdfs/HealthyLifeStyles-Level-"
-                    data-subcheck="0" data-level="NaN">Preview pages</a>
+                  <a href="#" class="preview-link" data-canvasid="{{Pages.Id}}" data-startpage="{{Pages.StartPageNumber}}" data-fileurl="/assets/pdfs/HealthyLifeStyles-Level-"
+                    data-subcheck="{{@index}}" data-level="{{Pages.Levels}}">Preview pages</a>
                 </div>
                 <div class="level-wrapper">
-                  <div class="page-level" data-level="4">
+                  <div class="page-level" data-level="{{Pages.Levels}}">
                     <span>4</span>
                   </div>
                 </div>
@@ -148,7 +149,7 @@
             </ul>
           </div>
         </div>
-      {{/each}}
+        {{/each}}
       </ul>
     </div>
   </div>

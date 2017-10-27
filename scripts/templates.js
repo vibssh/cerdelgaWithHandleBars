@@ -1,7 +1,43 @@
 this["Cerdelga"] = this["Cerdelga"] || {};
 this["Cerdelga"]["templates"] = this["Cerdelga"]["templates"] || {};
 this["Cerdelga"]["templates"]["bookCreator"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "        <div class=\"main-book-list\" data-filter=\"true\" data-about=\"false\">\r\n          <li class=\"main-book-list-item\" data-page=\"6\">\r\n            <input class=\"book-check\" type=\"checkbox\" id=\"6000\" data-prodcode=\"6000\" data-proddesc=\"Healthy Lifestyle\" data-prodtab=\"Blue\"\r\n              data-pdfindex=\"30\">\r\n            <label for=\"6000\"></label>\r\n            <div class=\"main-icon\" style=\"background-image: url(/images/icons/sprite_adherence.png)\"></div>\r\n            <div class=\"main-title\">\r\n              <span class=\"main-title-counter\">06</span>\r\n              <h4>Healthy Lifestyle</h4>\r\n            </div>\r\n            <div class=\"main-button\">\r\n              <button class=\"book-btn book-section-btn\" data-page=\"6\"></button>\r\n            </div>\r\n          </li>\r\n          <div class=\"book-section\" data-page=\"6\">\r\n            <ul class=\"pages\">\r\n              <div class=\"page-list\">\r\n                <li class=\"page-list-item\" data-subpage=\"0\">Your health comes first</li>\r\n                <div class=\"preview-wrapper\">\r\n                  <i class=\"fa fa-file-text-o\" aria-hidden=\"true\"></i>\r\n                  <a href=\"#\" class=\"preview-link\" data-canvasid=\"32\" data-startpage=\"2\" data-fileurl=\"/assets/pdfs/HealthyLifeStyles-Level-\"\r\n                    data-subcheck=\"0\" data-level=\"NaN\">Preview pages</a>\r\n                </div>\r\n                <div class=\"level-wrapper\">\r\n                  <div class=\"page-level\" data-level=\"4\">\r\n                    <span>4</span>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n";
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
+
+  return "        <div class=\"main-book-list\" data-filter=\"true\" data-about=\""
+    + alias4(((helper = (helper = helpers.AboutCerdelga || (depth0 != null ? depth0.AboutCerdelga : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"AboutCerdelga","hash":{},"data":data}) : helper)))
+    + "\">\r\n          <li class=\"main-book-list-item\" data-page=\""
+    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\">\r\n            <input class=\"book-check\" type=\"checkbox\" id=\""
+    + alias4(((helper = (helper = helpers.OrderProdCode || (depth0 != null ? depth0.OrderProdCode : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderProdCode","hash":{},"data":data}) : helper)))
+    + "\" data-prodcode=\""
+    + alias4(((helper = (helper = helpers.OrderProdCode || (depth0 != null ? depth0.OrderProdCode : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderProdCode","hash":{},"data":data}) : helper)))
+    + "\" data-proddesc=\""
+    + alias4(((helper = (helper = helpers.TopicTitle || (depth0 != null ? depth0.TopicTitle : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"TopicTitle","hash":{},"data":data}) : helper)))
+    + "\" data-prodtab=\""
+    + alias4(((helper = (helper = helpers.OrderTab || (depth0 != null ? depth0.OrderTab : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderTab","hash":{},"data":data}) : helper)))
+    + "\"\r\n              data-pdfindex=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Id : stack1), depth0))
+    + "\">\r\n            <label for=\"6000\"></label>\r\n            <div class=\"main-icon\" style=\"background-image: url(/images/icons/sprite_adherence.png)\"></div>\r\n            <div class=\"main-title\">\r\n              <span class=\"main-title-counter\">"
+    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "</span>\r\n              <h4>"
+    + alias4(((helper = (helper = helpers.TopicTitle || (depth0 != null ? depth0.TopicTitle : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"TopicTitle","hash":{},"data":data}) : helper)))
+    + "</h4>\r\n            </div>\r\n            <div class=\"main-button\">\r\n              <button class=\"book-btn book-section-btn\" data-page=\""
+    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\"></button>\r\n            </div>\r\n          </li>\r\n          <div class=\"book-section\" data-page=\""
+    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\">\r\n            <ul class=\"pages\">\r\n              <div class=\"page-list\">\r\n                <li class=\"page-list-item\" data-subpage=\"0\">"
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.PagesTitle : stack1), depth0))
+    + "</li>\r\n                <div class=\"preview-wrapper\">\r\n                  <i class=\"fa fa-file-text-o\" aria-hidden=\"true\"></i>\r\n                  <a href=\"#\" class=\"preview-link\" data-canvasid=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Id : stack1), depth0))
+    + "\" data-startpage=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.StartPageNumber : stack1), depth0))
+    + "\" data-fileurl=\"/assets/pdfs/HealthyLifeStyles-Level-\"\r\n                    data-subcheck=\""
+    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" data-level=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Levels : stack1), depth0))
+    + "\">Preview pages</a>\r\n                </div>\r\n                <div class=\"level-wrapper\">\r\n                  <div class=\"page-level\" data-level=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Levels : stack1), depth0))
+    + "\">\r\n                    <span>4</span>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
