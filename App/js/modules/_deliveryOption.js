@@ -78,6 +78,11 @@ var s,
             $(document).on('click', '.ghost-btn', function () {
                 deliveryOptions.personalisedBack($(this));
             });
+
+            $(document).on('click', '.skip-pam', function(e){
+                e.preventDefault();
+                console.info('skipping Pam');
+            });
         },
 
 
@@ -120,7 +125,6 @@ var s,
             var Template = Cerdelga.templates[tplName](questionData);
             $('.general-details').html(Template);
             location.hash = tplName;
-
             $('.skip-pam').removeClass('hide-me');
 
             // $.get(url, function (data) {
