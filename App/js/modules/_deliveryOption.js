@@ -81,7 +81,11 @@ var s,
 
             $(document).on('click', '.skip-pam', function(e){
                 e.preventDefault();
-                console.info('skipping Pam');
+                var bookData = _BookData.init(); // Data to pass to the 
+                console.info(bookData);
+                _TemplateLoader.init('bookCreator',bookData);
+                $('section#content').addClass('book-creator');
+
             });
         },
 
