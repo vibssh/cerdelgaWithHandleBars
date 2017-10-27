@@ -11,7 +11,7 @@ loginValidation = {
 
     bindUIActions: function () {
         loginValidation.validateMe($("#login"));
-        loginValidation.forgottenValidate($('#forgotten-password'));
+       
         loginValidation.resetValidate($('#reset-password'));
 
         //Enable login submit button
@@ -23,9 +23,7 @@ loginValidation = {
             loginValidation.enableMe($('#login'));
         }
 
-        $("#forgotten-password input").on('keyup', function () {
-            loginValidation.enableMe($('#forgotten-password'));
-        });
+       
 
         //Disable form submission by enter key 
         $(window).keydown(function (event) {

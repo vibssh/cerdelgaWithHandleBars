@@ -727,7 +727,7 @@ loginValidation = {
 
     bindUIActions: function () {
         loginValidation.validateMe($("#login"));
-        loginValidation.forgottenValidate($('#forgotten-password'));
+       
         loginValidation.resetValidate($('#reset-password'));
 
         //Enable login submit button
@@ -739,9 +739,7 @@ loginValidation = {
             loginValidation.enableMe($('#login'));
         }
 
-        $("#forgotten-password input").on('keyup', function () {
-            loginValidation.enableMe($('#forgotten-password'));
-        });
+       
 
         //Disable form submission by enter key 
         $(window).keydown(function (event) {
@@ -2277,6 +2275,11 @@ registration = {
 
 };
 //Reset password JS
+/**
+ * Currently the valid data to pass in reset page is with old password being P@55w0rd
+ */
+
+
 var resetSettings,
 resetPassword = {
     settings : {
@@ -2345,6 +2348,7 @@ resetPassword = {
         //If Ajax update successful run this method
         $('.loading').remove();
         $('#reset-pwd').hide();
+        $('#login-error-message').hide();
         $('.forgotten-success').addClass('reveal');
     },
 
