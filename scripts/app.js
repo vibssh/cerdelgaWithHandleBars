@@ -2079,6 +2079,14 @@ registration = {
         registrationSettings.$registrationEndPoint = $endPoint;
         registrationSettings.$newUserData = [];
         this.bindUIActions();
+
+        /**
+         * To allow on NHS Email through ... client side validation 
+         */
+        jQuery.validator.addMethod("domain", function (value, element) {
+            return this.optional(element) || 
+                   ['nhs.com'].indexOf(value.split('@').pop()) != -1;
+        },'Enter a valid email address');
     },
     
     /* Bind Events */
@@ -2140,6 +2148,11 @@ registration = {
     registrationValidate: function ($registrationForm) {
        // debugger;
         $registrationForm.validate({
+
+             //Event Triggered as you type in the input boxes
+             onkeyup: function (el, e) {
+                $(el).valid();
+            },
             rules: {
 
                 RegFullName: {
@@ -2148,9 +2161,10 @@ registration = {
                     minlength: 2
                 },
 
-                email: {
+                RegEmail: {
                     required: true,
-                    email: true
+                    email: true,
+                    domain: true
                 },
 
                 password: {
@@ -2167,9 +2181,11 @@ registration = {
                     namecheck: "Your full name must be entered like so : John Doe"
                 },
 
-                email: {
+                RegEmail: {
                     required: "We need your email address to contact you",
-                    email: "Your email address must be in the format of name@domain.com"
+                    email: "Your email address must be in the format of name@domain.com",
+                    domain: "Only NHS email address is allowed to login the system"
+
                 },
 
                 password: {
