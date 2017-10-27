@@ -1,3 +1,14 @@
+<script type="text/javascript">
+    (function () {
+        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
+        registration.init($endpoint);
+        updateTreatmentCentre.init();
+        treatmentCentreChoice.init();
+        newPasswordValidation.init($('#RegPassword'));
+        //showPassword.init();
+        addTreatmentCentre.init($('#add-treatment-centre'));
+    }());
+</script>
 <!-- Registeration Details -->
 <div class="step-counter">
   <div class="step-title-container">
@@ -333,17 +344,3 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    (function () {
-        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
-        registration.init($endpoint);
-        updateTreatmentCentre.init();
-        treatmentCentreChoice.init();
-        newPasswordValidation.init($('#RegPassword'));
-        //showPassword.init();
-        addTreatmentCentre.init($('#add-treatment-centre'));
-
-
-        
-    }());
-</script>

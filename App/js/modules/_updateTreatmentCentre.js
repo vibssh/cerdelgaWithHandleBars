@@ -13,6 +13,24 @@ var _updateTreatmentCentreSettings,
       _updateTreatmentCentreSettings = this.settings;
       _updateTreatmentCentreSettings.$id = $('.incorrect-centre').data('id');
       this.bindUIActions();
+      $.ajax({
+        url: _updateTreatmentCentreSettings.$treatmentCentreEndPoint,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function (data, jqXHR, textStatus) {
+            console.info(data);
+            $.each(data, function (index, treatmentcentre) {
+                //console.info(treatmentcentre);
+                $('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
+                //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
+            });
+        },
+        error: function (data, jqXHR, textStatus) {
+            console.info(textStatus.statusText);
+        }
+
+
+    });
     },
 
     bindUIActions: function () {

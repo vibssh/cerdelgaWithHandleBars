@@ -2355,19 +2355,6 @@ var _TemplateLoader = (function (window) {
    var Template = Cerdelga.templates[$tplName]($data);
    $('#content').html(Template);
    location.hash = tplName;
-   
-    // location.hash = tplName;
-    // var pathName = location.pathname.split('/')[1];
-    // var previousTplName = pathName.substr(0, pathName.indexOf('.')); 
-    // var stateObj = {
-    //   'Tpl': tplName,
-    //   'previous_url': previousTplName
-    // };
-    // history.pushState(stateObj, tplName, tplName + '.html');
-
-    //On hashchange make the template different
-    //console.info('window location ', window.location.hash);
-
   };
 
   return {
@@ -2410,6 +2397,24 @@ var _updateTreatmentCentreSettings,
       _updateTreatmentCentreSettings = this.settings;
       _updateTreatmentCentreSettings.$id = $('.incorrect-centre').data('id');
       this.bindUIActions();
+      $.ajax({
+        url: _updateTreatmentCentreSettings.$treatmentCentreEndPoint,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function (data, jqXHR, textStatus) {
+            console.info(data);
+            $.each(data, function (index, treatmentcentre) {
+                //console.info(treatmentcentre);
+                $('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
+                //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
+            });
+        },
+        error: function (data, jqXHR, textStatus) {
+            console.info(textStatus.statusText);
+        }
+
+
+    });
     },
 
     bindUIActions: function () {

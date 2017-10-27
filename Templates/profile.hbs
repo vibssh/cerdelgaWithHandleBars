@@ -5,7 +5,7 @@
     <i class="fa fa-arrow-left" aria-hidden="true"></i>Back
   </a>
 </div>
- {{#each Nurse}}
+{{#each Nurse}}
 <div class="profile-view-navbar">
   <div class="row">
     <div class="container">
@@ -41,15 +41,15 @@
           <h2> General Account Details </h2>
 
           <form id="nurse-name-form">
-           
+
             <div class="form-field">
               <label for="fullName" class="col-md-3">Full Name</label>
-              <input type="text" value="{{FullName}}" id="fullName" class="col-md-9" disabled="disabled"/>
+              <input type="text" value="{{FullName}}" id="fullName" class="col-md-9" disabled="disabled" />
               <a href="#" class="edit name-edit-btn">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
             </div>
-          
+
             <!-- Name Change Block -->
             <div class="edit-block name-edit-block">
               <div class="edit-block-wrapper">
@@ -80,7 +80,7 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
             </div>
-            
+
           </form>
 
           <form id="nurse-password-form">
@@ -183,63 +183,63 @@
 
               <div class="form-field">
                 {{#each TreatmentCentre}}
-                  <label for="centreName" class="col-md-3"> Centre name</label>
-                  <input type="text" value="{{CentreName}}" id="centreName" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
-                <div class="form-field">
-                  <label for="unitName" class="col-md-3"> Unit name</label>
-                  <input type="text" value="{{UnitName}}" id="unitName" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
+                <label for="centreName" class="col-md-3"> Centre name</label>
+                <input type="text" value="{{CentreName}}" id="centreName" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="form-field">
+                <label for="unitName" class="col-md-3"> Unit name</label>
+                <input type="text" value="{{UnitName}}" id="unitName" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
 
-                <div class="form-field">
-                  <label for="streetName" class="col-md-3"> Street name</label>
-                  <input type="text" value="{{StreetName}}" id="streetName" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
+              <div class="form-field">
+                <label for="streetName" class="col-md-3"> Street name</label>
+                <input type="text" value="{{StreetName}}" id="streetName" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
 
-                <div class="form-field">
-                  <label for="city" class="col-md-3"> City</label>
-                  <input type="text" value="{{City}}" id="city" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
+              <div class="form-field">
+                <label for="city" class="col-md-3"> City</label>
+                <input type="text" value="{{City}}" id="city" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
 
-                <div class="form-field">
-                  <label for="county" class="col-md-3"> County</label>
-                  <input type="text" value="{{County}}" id="county" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
+              <div class="form-field">
+                <label for="county" class="col-md-3"> County</label>
+                <input type="text" value="{{County}}" id="county" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
 
-                <div class="form-field">
-                  <label for="postCode" class="col-md-3"> Post Code</label>
-                  <input type="text" value="{{PostCode}}" id="postCode" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
+              <div class="form-field">
+                <label for="postCode" class="col-md-3"> Post Code</label>
+                <input type="text" value="{{PostCode}}" id="postCode" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
 
-                <div class="form-field">
-                  <label for="phone" class="col-md-3"> Phone number </label>
-                  <input type="tel" value="{{PhoneNumber}}" id="phone" class="col-md-9" disabled="disabled" />
-                  <a href="#" class="lock">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </a>
-                </div>
-                <div class="form-link">
-                  <a href="#" class="incorrect-centre" data-id="{{Id}}">These details are incorrect</a>
-                  <a href="#" class="change-centre" data-id="{{Id}}">Change my treatment centre</a>
-                </div>
+              <div class="form-field">
+                <label for="phone" class="col-md-3"> Phone number </label>
+                <input type="tel" value="{{PhoneNumber}}" id="phone" class="col-md-9" disabled="disabled" />
+                <a href="#" class="lock">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div class="form-link">
+                <a href="#" class="incorrect-centre" data-id="{{Id}}">These details are incorrect</a>
+                <a href="#" class="change-centre" data-id="{{Id}}">Change my treatment centre</a>
+              </div>
               {{/each}}
             </form>
           </div>
@@ -282,7 +282,7 @@
                   <a href="#" class="reset">Cancel</a>
                 </div>
                 <div class="form-submit">
-                  <input type="submit" value="Submit" class="update-submit"  />
+                  <input type="submit" value="Submit" class="update-submit" />
                 </div>
               </div>
 
@@ -395,24 +395,18 @@
 </div>
 
 <script type="text/javascript">
-   
-        isLoggedInModule.init();
-        _ProfileDetailsUpdate.init();
-        updateTreatmentCentre.init();
-        _ChooseTreatmentCentre.init();
-        addTreatmentCentre.init($('#add-treatment-centre'));
+  isLoggedInModule.init();
+  _ProfileDetailsUpdate.init();
+  updateTreatmentCentre.init();
+  _ChooseTreatmentCentre.init();
+  addTreatmentCentre.init($('#add-treatment-centre'));
 
-        $('.back-link').on('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $("html, body").animate({ scrollTop: 0 }, 100);
-        history.back();
-    });
-
-       // nurseViewProfile.init();
-       // updateTreatmentCentre.init();
-        // addTreatmentCentre.init();
-       // treatmentCentreChoice.init();
-       // newPasswordValidation.init($('#newPassword'));
-   
+  $('.back-link').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $("html, body").animate({
+      scrollTop: 0
+    }, 100);
+    _HistoryBackModule.init();
+  });
 </script>
