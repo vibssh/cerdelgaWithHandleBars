@@ -11,6 +11,8 @@ var _TakePAM = (function () {
    
     var questionData = _pamQuestionnaireData.init();
     _TemplateLoader.init('pamQuestionnaire', questionData);    
+    //clearing previous pam level from sessionstorage
+    sessionStorage.removeItem('pam-level');
 }
 
   return {

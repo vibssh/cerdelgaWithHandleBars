@@ -17,12 +17,12 @@ var _FooterLinks = (function(window){
   };
 
   var _historyTrackFooterLinks = function(){
-    _HistoryBackModule.init();          
+     
     $('.back-link').on('click', function(e){
         e.preventDefault();
         e.stopPropagation();
         $("html, body").animate({ scrollTop: 0 }, 100);
-        history.back();
+        _HistoryBackModule.init();        
     });
   };
 
