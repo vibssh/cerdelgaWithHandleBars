@@ -54,6 +54,7 @@ var pamSurveyDisclaimer = {
             console.info('bookcreator link clicked');
             e.preventDefault();
             e.stopPropagation();
+            _TemplateLoader.init('personalisedPack');
             // var welcomeTPL = Cerdelga.templates.welcome;
             // $('#content').html(welcomeTPL);
         });
