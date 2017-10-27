@@ -5,7 +5,9 @@
         /* Add a back link event here */
         $('.pam-back-link').on('click', function(e){
             e.preventDefault();
-           history.back();
+           
+           _HistoryBackModule.init();
+
         });
     }());
 </script>
@@ -13,7 +15,7 @@
     <div class="row">
         <div class="container">
             <div class="col-md-12 back-pam-link">
-                <a href="#" class="pam-back-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back to PAM<sup>&reg;</sup></a>
+                <a href="#" class="pam-back-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</a>
             </div>
         </div>
     </div>

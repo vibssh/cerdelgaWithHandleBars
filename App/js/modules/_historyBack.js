@@ -1,9 +1,9 @@
 var _HistoryBackModule = (function (window) {
   'use strict';
   
-
   var init = function () {
-    $(window).on('popstate', function (event) {
+    history.back();
+    $(window).on('hashchange', function(){
       var $hashLink = location.hash.split('#')[1];
       var data = function($hashLink){
           var dataHandler = {
@@ -12,7 +12,7 @@ var _HistoryBackModule = (function (window) {
             },
 
             "profile" : function(){
-              return _Profile.getNurseData();
+              return _Profile.settings.$profileData;
             },
 
             "default" : function(){
@@ -24,13 +24,10 @@ var _HistoryBackModule = (function (window) {
       };
 
       var $data =  data($hashLink) || undefined;
-      console.info($data);
-      var Template = Cerdelga.templates[$hashLink]($data);
-      $('#content').html(Template);
-      
-      //var Template = Cerdelga.templates[$hashLink]($data);
-      //$('#content').html(Template);
+      console.info('i am triggered again ', $data);
+      _TemplateLoader.init($hashLink, $data);
     });
+    
   }
 
   return {
