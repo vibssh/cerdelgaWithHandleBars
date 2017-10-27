@@ -4,6 +4,9 @@
         isLoggedInModule.init();
        _PAMExplanation.init($('.pam-explanation-link'));
        _PAMResult.init();
+
+       var level = sessionStorage.getItem('pam-level');
+       $('#result').addClass('level-' + level);
     }());
 </script>
 
@@ -14,7 +17,7 @@
                 <h1>Your Patient’s PAM
                     <sup>&reg;</sup> Results</h1>
             </div>
-            <div id="result" class="level-{{Level}}">
+            <div id="result">
             </div>
             <div class="take-pam">
                 <a href="#" class="anchor-btn take-pam">Take another PAM
