@@ -18,8 +18,7 @@ var _DoseBasedProductCode = (function (window) {
     return (color[data] || color['default'])();
   });
 
-  var init = function () {
-
+  var _previewDose = function(){
     var $mainBookList = document.querySelectorAll('.main-book-list');
     _Settings.$dataDose = sessionStorage.getItem('dose');
 
@@ -40,8 +39,9 @@ var _DoseBasedProductCode = (function (window) {
         }
       }
     };
+  };
 
-
+  var _previewLink = function(){
     //Preview Link To get as per data level 
     var $previewLink = document.querySelectorAll('.preview-link');
     
@@ -54,6 +54,11 @@ var _DoseBasedProductCode = (function (window) {
       var dataFileUrl = obj.getAttribute('data-fileurl');
       obj.setAttribute('data-fileurl', dataFileUrl + dataLevelSession);
     });
+  };
+
+  var init = function () {
+    _previewDose();
+    _previewLink();
   };
 
   return {
