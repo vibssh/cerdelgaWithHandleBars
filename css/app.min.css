@@ -6321,7 +6321,7 @@ footer {
       margin-left: 4px; }
     .book li .main-title {
       display: inline-block;
-      width: calc(100% - 140px);
+      width: calc(100% - 120px);
       vertical-align: middle;
       padding-left: 16px;
       padding-top: 0;
@@ -6349,11 +6349,9 @@ footer {
     .book li .main-button {
       display: inline-block;
       width: auto;
-      vertical-align: middle;
-      float: right; }
+      vertical-align: middle; }
       .book li .main-button .book-btn {
         background: transparent;
-        float: right;
         border-left: 1px solid #dedede; }
         .book li .main-button .book-btn:hover {
           background: #5d9cec; }
@@ -6389,7 +6387,7 @@ footer {
       display: block; }
   .book .book-btn {
     position: relative;
-    width: 50px;
+    width: 64px;
     height: 74px;
     -webkit-appearance: none;
     background: #dedede;
@@ -6533,8 +6531,7 @@ footer {
       vertical-align: middle;
       cursor: pointer; }
     .book .pages .page-list-item .page-button {
-      display: inline-block;
-      float: right; }
+      display: inline-block; }
       .book .pages .page-list-item .page-button .book-btn {
         background: transparent;
         border-left: 1px solid #ccd1d9; }
