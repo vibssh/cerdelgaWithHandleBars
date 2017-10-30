@@ -20,7 +20,7 @@ var _DoseBasedProductCode = (function (window) {
 
   var init = function () {
 
-    var $mainBookList = document.querySelectorAll('.main-book-list')
+    var $mainBookList = document.querySelectorAll('.main-book-list');
     _Settings.$dataDose = sessionStorage.getItem('dose');
 
     for (var i = 0, len = $mainBookList.length; i < len; i++) {
@@ -32,23 +32,29 @@ var _DoseBasedProductCode = (function (window) {
         //Dose level given to preview link 
         var previewLink = $mainBookList[i].querySelectorAll('.preview-link');
 
-
         for (var p = 0, len = previewLink.length; p < len; p++) {
           var previewElement = previewLink[p];
           previewElement.setAttribute('data-level', _Settings.$dataDose); // Giving preview link the dose level 
+          var previewFileUrl = previewElement.getAttribute('data-fileurl');
+          previewElement.setAttribute('data-fileurl', previewFileUrl + _Settings.$dataDose);
         }
       }
-    }
+    };
 
+
+    //Preview Link To get as per data level 
+    var $previewLink = document.querySelectorAll('.preview-link');
+    
+    var previewLinkToGetLevel = $('.preview-link:not([data-is="false"])');
+    var dataLevelSession = sessionStorage.getItem('pam-level');
+    
+    $(previewLinkToGetLevel).attr('data-level', dataLevelSession);
+
+    $(previewLinkToGetLevel).each(function(i, obj){
+      var dataFileUrl = obj.getAttribute('data-fileurl');
+      obj.setAttribute('data-fileurl', dataFileUrl + dataLevelSession);
+    });
   };
-
-
-
-
-
-
-
-
 
   return {
     init: init

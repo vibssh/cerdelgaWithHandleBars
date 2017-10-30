@@ -5525,10 +5525,7 @@ header {
   width: 100%;
   background: #2e6fc4;
   padding: 25px 0;
-  border-bottom: 5px solid #ffce54;
-  position: fixed;
-  top: 0;
-  z-index: 100; }
+  border-bottom: 5px solid #ffce54; }
   header .pre-header {
     border-bottom: 2px solid #205dae;
     margin-bottom: 8px; }

@@ -26,7 +26,7 @@ var _BookData = (function (window) {
           "Icon": "/images/icons/sprite_aboutgaucher.png",
           "Filter": true,
           "Dose": false,
-          "IsLevel": false,     
+          "IsLevel": true,     
           "OrderProdCode": "1000",
           "OrderDesc": "",
           "Pages": [{
@@ -270,7 +270,7 @@ var _BookData = (function (window) {
           "Icon": "/images/icons/sprite_introduction.png",
           "Filter": false,
           "Dose": false,
-          "IsLevel": false, 
+          "IsLevel": true, 
           "OrderProdCode": "7000",
           "OrderDesc": "",
           "Pages": [{
