@@ -28,7 +28,9 @@ var _DoseBasedProductCode = (function (window) {
       if ($mainBookList[i].getAttribute("data-dose") === 'true') {
         // This is not required in production. Just for Demo purpose to check which colour to give to list
         var className = _sectionColour(_Settings.$dataDose);
-        $mainBookList[i].classList.add(className);
+        console.info(className);
+        var element = $mainBookList[i];
+        element.classList.add(className);
         var dosedItem = $mainBookList[i].querySelector('.book-check');
         var prodCode = dosedItem.getAttribute('data-prodcode');
         dosedItem.setAttribute('data-prodcode', prodCode + "-" + _sectionColour(_Settings.$dataDose));
