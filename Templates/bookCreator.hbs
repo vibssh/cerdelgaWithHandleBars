@@ -9,7 +9,7 @@
     var $modalAcceptBtn = $('.modal-action-btn__accept');
     var $modalDeclineBtn = $('.modal-action-btn__decline');
     //levelFilter.init($modalBackDrop, $modalContent, $modalAcceptBtn, $modalDeclineBtn);
-    // levelFilter.init($modalBackDrop, $modalContent, $modalDirection, $modalTimeOut, $modalAcceptBtn, $modalDeclineBtn);
+    levelFilter.init($modalBackDrop, $modalContent, $modalDirection, $modalTimeOut, $modalAcceptBtn, $modalDeclineBtn);
 
     /* Preview Modal */
     var $previewTimeOut = 250;
@@ -87,7 +87,7 @@
         {{#each Topic}}
         <div class="main-book-list {{#unless Filter }}locked {{/unless}}" data-dose="{{Dose}}" data-level="{{IsLevel}}">
           <li class="main-book-list-item" data-page="{{@index}}">
-            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}"
+            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" {{#unless Filter}}disabled="disabled" checked="checked"{{/unless}} id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}"
               data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}" data-pdfindex="{{Pages.Id}}">
             <label for="6000"></label>
             <div class="main-icon" style="background-image: url(/images/icons/sprite_adherence.png)"></div>
@@ -101,19 +101,23 @@
           </li>
           <div class="book-section" data-page="{{@index}}">
             <ul class="pages">
+              {{#each Pages}}
               <div class="page-list">
-                <li class="page-list-item" data-subpage="0">{{Pages.PagesTitle}}</li>
+                <li class="page-list-item" data-subpage="{{@index}}">{{PagesTitle}}</li>
                 <div class="preview-wrapper">
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  <a href="#" class="preview-link" data-canvasid="{{Pages.Id}}" data-startpage="{{Pages.StartPageNumber}}" data-fileurl="/assets/pdfs/HealthyLifeStyles-Level-"
-                    data-subcheck="{{@index}}" data-level="{{Pages.Levels}}">Preview pages</a>
+                  <a href="#" class="preview-link" data-canvasid="{{Id}}" data-startpage="{{StartPageNumber}}" data-fileurl="/assets/pdfs/HealthyLifeStyles-Level-"
+                    data-subcheck="{{@index}}" data-level="">Preview pages</a>
                 </div>
                 <div class="level-wrapper">
-                  <div class="page-level" data-level="{{Pages.Levels}}">
-                    <span>4</span>
+                  {{#each Levels}}
+                  <div class="page-level" data-level="{{this}}">
+                    <span>{{this}}</span>
                   </div>
+                  {{/each}}
                 </div>
               </div>
+              {{/each}}
             </ul>
           </div>
         </div>

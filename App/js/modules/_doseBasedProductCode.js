@@ -1,9 +1,7 @@
 var _DoseBasedProductCode = (function (window) {
   var _Settings = {
-    $dataDose: sessionStorage.getItem('dose')
-    
+    $dataDose: ''
   };
-
   var _sectionColour = (function (data) {
     var color = {
       1: function () {
@@ -21,21 +19,32 @@ var _DoseBasedProductCode = (function (window) {
   });
 
   var init = function () {
-   
+
     var $mainBookList = document.querySelectorAll('.main-book-list')
-    
-    for (var i = 0, len= $mainBookList.length; i < len; i++) {
+    _Settings.$dataDose = sessionStorage.getItem('dose');
+
+    for (var i = 0, len = $mainBookList.length; i < len; i++) {
       if ($mainBookList[i].getAttribute("data-dose") === 'true') {
-        // This is not required in production. Just for Demo purpose to check which colour to give to list
-        var className = _sectionColour(_Settings.$dataDose);
-        console.info(className);
-        var element = $mainBookList[i];
-        element.classList.add(className);
         var dosedItem = $mainBookList[i].querySelector('.book-check');
         var prodCode = dosedItem.getAttribute('data-prodcode');
         dosedItem.setAttribute('data-prodcode', prodCode + "-" + _sectionColour(_Settings.$dataDose));
+
+        //Dose level given to
+        
+
+        // for(var p=0, len=previewLink.length; p < len; p++){
+        //   var previewElement = previewLink[p];
+        //  console.info(previewElement);
+
+        // }
+
       }
-    }
+    };
+
+
+
+
+
   };
 
   return {
