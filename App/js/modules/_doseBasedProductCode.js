@@ -29,23 +29,26 @@ var _DoseBasedProductCode = (function (window) {
         var prodCode = dosedItem.getAttribute('data-prodcode');
         dosedItem.setAttribute('data-prodcode', prodCode + "-" + _sectionColour(_Settings.$dataDose));
 
-        //Dose level given to
-        
+        //Dose level given to preview link 
+        var previewLink = $mainBookList[i].querySelectorAll('.preview-link');
 
-        // for(var p=0, len=previewLink.length; p < len; p++){
-        //   var previewElement = previewLink[p];
-        //  console.info(previewElement);
 
-        // }
-
+        for (var p = 0, len = previewLink.length; p < len; p++) {
+          var previewElement = previewLink[p];
+          previewElement.setAttribute('data-level', _Settings.$dataDose); // Giving preview link the dose level 
+        }
       }
-    };
-
-
-
-
+    }
 
   };
+
+
+
+
+
+
+
+
 
   return {
     init: init

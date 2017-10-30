@@ -589,23 +589,26 @@ var _DoseBasedProductCode = (function (window) {
         var prodCode = dosedItem.getAttribute('data-prodcode');
         dosedItem.setAttribute('data-prodcode', prodCode + "-" + _sectionColour(_Settings.$dataDose));
 
-        //Dose level given to
-        
+        //Dose level given to preview link 
+        var previewLink = $mainBookList[i].querySelectorAll('.preview-link');
 
-        // for(var p=0, len=previewLink.length; p < len; p++){
-        //   var previewElement = previewLink[p];
-        //  console.info(previewElement);
 
-        // }
-
+        for (var p = 0, len = previewLink.length; p < len; p++) {
+          var previewElement = previewLink[p];
+          previewElement.setAttribute('data-level', _Settings.$dataDose); // Giving preview link the dose level 
+        }
       }
-    };
-
-
-
-
+    }
 
   };
+
+
+
+
+
+
+
+
 
   return {
     init: init
@@ -853,10 +856,6 @@ levelFilter = {
 
         /*On Load give direction to the Content to come from by adding class */
         levelSettings.$modalContent.addClass(levelSettings.$modalDirection);
-
-        /*On Load check what the dose is chosen from the localstorage and assign the value to a variable */
-        
-
         
 
         //Capturing Body Scroll Position
@@ -873,51 +872,36 @@ levelFilter = {
             $(checkThisInput).prop('checked', 'checked');
 
            //This gets the initial level value of the filters checked - used for the preview pages purpose
-            var checkedLevel = levelChecked[0].dataset.level;
+            //var checkedLevel = levelChecked[0].dataset.level;
             levelSettings.$checkedArray.unshift(checkThisInput);
-
         }
 
-        // $("body").on('DOMNodeInserted', '.main-book-list', function () {
-        //     var elData = $(this).data('filter');
-        //     levelSettings.$lockedPreviewLink = $('.locked').find('.preview-link');
-            
-        //     if (elData === false) {
-        //         $(this).addClass('locked');
+        
+        
+            var grandParent = $('.main-book-list');
+            var parent = $('.page-level').parent().parent();
+            var matchedParent = $('.page-level[data-level="' + levelSettings.$checkedId + '"]').parent().parent();
+            var matchedGrandParent = $(matchedParent).closest('.main-book-list');
+
+            if (sessionStorage.getItem('pam-level') !== null) {
+                $('#content').addClass('unmuted').addClass('book-creator');
+                $('.filter-details').css({
+                    'visibility': 'hidden'
+                });
+                $('body').removeClass('no-scroll');
+                $(parent).hide();
+                $(matchedParent).show();
+                $(grandParent).hide();
+                $(matchedGrandParent).show();
                 
-               
-        //         var pageListItem = document.querySelectorAll("[data-about='true'] .preview-link");
 
-        //         for (var p = 0; p < pageListItem.length; p++) {
-        //             var pLink = pageListItem[p];
-        //             pLink.setAttribute('data-level', levelSettings.$dose);
-        //         }
-        //     };
-        // });
+            } else {
+                $('#content').removeClass('unmuted');
+                $('body').addClass('no-scroll');
+            }
 
-        // $("body").on('DOMNodeInserted', '.book', function () {
-        //     var grandParent = $('.main-book-list');
-        //     var parent = $('.page-level').parent().parent();
-        //     var matchedParent = $('.page-level[data-level="' + levelSettings.$checkedId + '"]').parent().parent();
-        //     var matchedGrandParent = $(matchedParent).closest('.main-book-list');
-
-        //     if (sessionStorage.getItem('pam-level') !== null) {
-        //         $('#content').addClass('unmuted').addClass('book-creator');
-        //         $('.filter-details').css({
-        //             'visibility': 'hidden'
-        //         });
-        //         $('body').removeClass('no-scroll');
-        //         $(parent).hide();
-        //         $(matchedParent).show();
-        //         $(grandParent).hide();
-        //         $(matchedGrandParent).show();
-        //     } else {
-        //         $('#content').removeClass('unmuted');
-        //         $('body').addClass('no-scroll');
-        //     }
-
-        //     $('.locked').show(); //compulsory section
-        // });
+            $('.locked').show(); //compulsory section
+        
 
     },
 
