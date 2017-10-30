@@ -39,6 +39,33 @@
         //counter-increment: section-counter;
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
+
+        // //ToDO remove this in production
+        // &.b{
+        //     background: blue !important;
+        //     filter: none !important;
+
+        //     li {
+        //         background: transparent !important;
+
+        //         h4 {
+        //             color: white !important;
+        //         }
+        //     }
+        // }
+
+        // &.y{
+        //     background: yellow !important;
+        //     filter: none !important;
+
+        //     li {
+        //         background: transparent !important;
+
+        //         h4 {
+        //             color: black !important;
+        //         }
+        //     }
+        // }
     }
 
     li {
@@ -589,3 +616,6 @@ input[type='checkbox'].book-check.locked-checkbox {
         z-index: 100;
     }
 }
+
+
+

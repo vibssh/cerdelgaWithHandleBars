@@ -18,6 +18,42 @@
     var $previewContent = $('.preview-modal__table');
     //previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
 
+    /* Data Dose Level */
+    var dataDose = sessionStorage.getItem('dose');
+
+    var sectionColour = (function (data) {
+      var color = {
+        1: function () {
+          return 'y';
+        },
+
+        2: function () {
+          return 'b';
+        },
+        'default': function () {
+          return '';
+        }
+      };
+      return (color[data] || color['default'])();
+    });
+
+    /*
+     * Loop through the main-book-list and check if data-dose is true if so than add a suffix to the data-prodcode on book-check 
+     */
+
+    var $mainBookList = document.querySelectorAll('.main-book-list');
+
+    for(var i=0, len = $mainBookList.length; i <len; i++){
+        if($mainBookList[i].getAttribute("data-dose")=== 'true'){
+          // This is not required in production. Just for Demo purpose to check which colour to give to list
+          var className = sectionColour(dataDose);
+          $mainBookList[i].classList.add(className);
+          var dosedItem = $mainBookList[i].querySelector('.book-check');
+          var prodCode = dosedItem.getAttribute('data-prodcode');
+          dosedItem.setAttribute('data-prodcode', prodCode + "-" + sectionColour(dataDose));
+        }
+    }
+
 
   }());
   isLoggedInModule.init();
@@ -117,10 +153,10 @@
       <!-- This is the book -->
       <ul class="book">
         {{#each Topic}}
-        <div class="main-book-list {{#unless Filter }}locked {{/unless}}"  data-about="{{AboutCerdelga}}">
+        <div class="main-book-list {{#unless Filter }}locked {{/unless}}" data-dose="{{Dose}}">
           <li class="main-book-list-item" data-page="{{@index}}">
-            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}" data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}"
-              data-pdfindex="{{Pages.Id}}">
+            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}"
+              data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}" data-pdfindex="{{Pages.Id}}">
             <label for="6000"></label>
             <div class="main-icon" style="background-image: url(/images/icons/sprite_adherence.png)"></div>
             <div class="main-title">
