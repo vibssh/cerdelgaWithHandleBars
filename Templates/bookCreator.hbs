@@ -153,7 +153,7 @@
       <!-- This is the book -->
       <ul class="book">
         {{#each Topic}}
-        <div class="main-book-list {{#unless Filter }}locked {{/unless}}" data-dose="{{Dose}}">
+        <div class="main-book-list {{#unless Filter }}locked {{/unless}}" data-dose="{{Dose}}" data-level="{{IsLevel}}">
           <li class="main-book-list-item" data-page="{{@index}}">
             <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}"
               data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}" data-pdfindex="{{Pages.Id}}">

@@ -6,7 +6,8 @@ var _BookData = (function (window) {
           "TopicTitle": "Introduction",
           "Icon": "/images/icons/sprite_introduction.png",
           "Filter": false,
-          "Dose": false,          
+          "Dose": false,
+          "IsLevel": true,          
           "OrderProdCode": "8000",
           "OrderDesc": "",
           "Pages": [{
@@ -24,7 +25,8 @@ var _BookData = (function (window) {
           "TopicTitle": "About Gaucher Disease",
           "Icon": "/images/icons/sprite_aboutgaucher.png",
           "Filter": true,
-          "Dose": false,    
+          "Dose": false,
+          "IsLevel": false,     
           "OrderProdCode": "1000",
           "OrderDesc": "",
           "Pages": [{
@@ -73,7 +75,8 @@ var _BookData = (function (window) {
           "TopicTitle": "About Cerdelga® (eliglustat) - All Compulsory ",
           "Icon": "/images/icons/sprite_aboutcerdelga.png",
           "Filter": false,
-          "Dose": true,    
+          "Dose": true,
+          "IsLevel": false,     
           "OrderProdCode": "2000",
           "OrderDesc": "",
           "Pages": [{
@@ -111,7 +114,8 @@ var _BookData = (function (window) {
           "TopicTitle": "Talking to your Specialist Doctor",
           "Icon": "/images/icons/sprite_hcptalk.png",
           "Filter": true,
-          "Dose": false,    
+          "Dose": false,
+          "IsLevel": true,     
           "OrderProdCode": "3000",
           "OrderDesc": "",
           "Pages": [{
@@ -187,7 +191,8 @@ var _BookData = (function (window) {
           "TopicTitle": "Talking to Family and Friends",
           "Icon": "/images/icons/sprite_familytalk.png",
           "Filter": true,
-          "Dose": false,    
+          "Dose": false,
+          "IsLevel": true,    
           "OrderProdCode": "4000",
           "OrderDesc": "",
           "Pages": [{
@@ -204,7 +209,8 @@ var _BookData = (function (window) {
           "TopicTitle": "Keeping on top of treatment",
           "Icon": "/images/icons/sprite_adherence.png",
           "Filter": true,
-          "Dose": false,    
+          "Dose": false,
+          "IsLevel": true,     
           "OrderProdCode": "5000",
           "OrderDesc": "",
           "Pages": [{
@@ -245,7 +251,8 @@ var _BookData = (function (window) {
           "TopicTitle": "Healthy Lifestyle",
           "Icon": "/images/icons/sprite_adherence.png",
           "Filter": true,
-          "Dose": false,    
+          "Dose": false,
+          "IsLevel": true,     
           "OrderProdCode": "6000",
           "OrderDesc": "",
           "Pages": [{
@@ -263,6 +270,7 @@ var _BookData = (function (window) {
           "Icon": "/images/icons/sprite_introduction.png",
           "Filter": false,
           "Dose": false,
+          "IsLevel": false, 
           "OrderProdCode": "7000",
           "OrderDesc": "",
           "Pages": [{

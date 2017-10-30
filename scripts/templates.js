@@ -7,6 +7,8 @@ this["Cerdelga"]["templates"]["bookCreator"] = Handlebars.template({"1":function
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.Filter : depth0),{"name":"unless","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\" data-dose=\""
     + alias4(((helper = (helper = helpers.Dose || (depth0 != null ? depth0.Dose : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Dose","hash":{},"data":data}) : helper)))
+    + "\" data-level=\""
+    + alias4(((helper = (helper = helpers.IsLevel || (depth0 != null ? depth0.IsLevel : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"IsLevel","hash":{},"data":data}) : helper)))
     + "\">\r\n          <li class=\"main-book-list-item\" data-page=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
     + "\">\r\n            <input class=\"book-check "
