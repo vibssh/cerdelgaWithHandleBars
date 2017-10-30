@@ -117,14 +117,14 @@
       <!-- This is the book -->
       <ul class="book">
         {{#each Topic}}
-        <div class="main-book-list" data-filter="true" data-about="{{AboutCerdelga}}">
+        <div class="main-book-list {{#unless Filter }}locked {{/unless}}"  data-about="{{AboutCerdelga}}">
           <li class="main-book-list-item" data-page="{{@index}}">
-            <input class="book-check" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}" data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}"
+            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}" data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}"
               data-pdfindex="{{Pages.Id}}">
             <label for="6000"></label>
             <div class="main-icon" style="background-image: url(/images/icons/sprite_adherence.png)"></div>
             <div class="main-title">
-              <span class="main-title-counter">{{@index}}</span>
+              <span class="main-title-counter">0{{@index}}</span>
               <h4>{{TopicTitle}}</h4>
             </div>
             <div class="main-button">

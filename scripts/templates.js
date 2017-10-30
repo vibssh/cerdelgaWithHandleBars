@@ -3,11 +3,15 @@ this["Cerdelga"]["templates"] = this["Cerdelga"]["templates"] || {};
 this["Cerdelga"]["templates"]["bookCreator"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "        <div class=\"main-book-list\" data-filter=\"true\" data-about=\""
+  return "        <div class=\"main-book-list "
+    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.Filter : depth0),{"name":"unless","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\"  data-about=\""
     + alias4(((helper = (helper = helpers.AboutCerdelga || (depth0 != null ? depth0.AboutCerdelga : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"AboutCerdelga","hash":{},"data":data}) : helper)))
     + "\">\r\n          <li class=\"main-book-list-item\" data-page=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
-    + "\">\r\n            <input class=\"book-check\" type=\"checkbox\" id=\""
+    + "\">\r\n            <input class=\"book-check "
+    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.Filter : depth0),{"name":"unless","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\" type=\"checkbox\" id=\""
     + alias4(((helper = (helper = helpers.OrderProdCode || (depth0 != null ? depth0.OrderProdCode : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderProdCode","hash":{},"data":data}) : helper)))
     + "\" data-prodcode=\""
     + alias4(((helper = (helper = helpers.OrderProdCode || (depth0 != null ? depth0.OrderProdCode : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderProdCode","hash":{},"data":data}) : helper)))
@@ -17,7 +21,7 @@ this["Cerdelga"]["templates"]["bookCreator"] = Handlebars.template({"1":function
     + alias4(((helper = (helper = helpers.OrderTab || (depth0 != null ? depth0.OrderTab : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"OrderTab","hash":{},"data":data}) : helper)))
     + "\"\r\n              data-pdfindex=\""
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Id : stack1), depth0))
-    + "\">\r\n            <label for=\"6000\"></label>\r\n            <div class=\"main-icon\" style=\"background-image: url(/images/icons/sprite_adherence.png)\"></div>\r\n            <div class=\"main-title\">\r\n              <span class=\"main-title-counter\">"
+    + "\">\r\n            <label for=\"6000\"></label>\r\n            <div class=\"main-icon\" style=\"background-image: url(/images/icons/sprite_adherence.png)\"></div>\r\n            <div class=\"main-title\">\r\n              <span class=\"main-title-counter\">0"
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
     + "</span>\r\n              <h4>"
     + alias4(((helper = (helper = helpers.TopicTitle || (depth0 != null ? depth0.TopicTitle : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"TopicTitle","hash":{},"data":data}) : helper)))
@@ -38,6 +42,10 @@ this["Cerdelga"]["templates"]["bookCreator"] = Handlebars.template({"1":function
     + "\">Preview pages</a>\r\n                </div>\r\n                <div class=\"level-wrapper\">\r\n                  <div class=\"page-level\" data-level=\""
     + alias4(alias5(((stack1 = (depth0 != null ? depth0.Pages : depth0)) != null ? stack1.Levels : stack1), depth0))
     + "\">\r\n                    <span>4</span>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "locked ";
+},"4":function(container,depth0,helpers,partials,data) {
+    return "locked-checkbox ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 

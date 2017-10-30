@@ -1118,7 +1118,7 @@ var _BookData = (function (window) {
           ]
         },
 
-        {
+      {
           "TopicTitle": "About Gaucher Disease",
           "Icon": "/images/icons/sprite_aboutgaucher.png",
           "Filter": true,
