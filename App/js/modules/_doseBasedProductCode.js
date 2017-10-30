@@ -56,12 +56,25 @@ var _DoseBasedProductCode = (function (window) {
     });
   };
 
+  var bindUIActions = function(){
+    var $triggers = $('.main-book-list-item');
+    var $contents = $('.book-section');
+    $triggers.each(function(i, obj){
+      $(obj).on('click',function(){
+        var $trigger = $(this);
+        TEWLibrary.accordian( $trigger, $triggers, $contents );
+      });
+    });
+
+  };
+
   var init = function () {
     _previewDose();
     _previewLink();
   };
 
   return {
-    init: init
+    init: init,
+    eventHandler: bindUIActions
   }
 }(window));
