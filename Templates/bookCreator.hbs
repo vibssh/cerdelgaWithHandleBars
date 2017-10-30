@@ -17,46 +17,9 @@
     var $previewBackDrop = $('.preview-modal');
     var $previewContent = $('.preview-modal__table');
     //previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
-
-    /* Data Dose Level */
-    var dataDose = sessionStorage.getItem('dose');
-
-    var sectionColour = (function (data) {
-      var color = {
-        1: function () {
-          return 'y';
-        },
-
-        2: function () {
-          return 'b';
-        },
-        'default': function () {
-          return '';
-        }
-      };
-      return (color[data] || color['default'])();
-    });
-
-    /*
-     * Loop through the main-book-list and check if data-dose is true if so than add a suffix to the data-prodcode on book-check 
-     */
-
-    var $mainBookList = document.querySelectorAll('.main-book-list');
-
-    for(var i=0, len = $mainBookList.length; i <len; i++){
-        if($mainBookList[i].getAttribute("data-dose")=== 'true'){
-          // This is not required in production. Just for Demo purpose to check which colour to give to list
-          var className = sectionColour(dataDose);
-          $mainBookList[i].classList.add(className);
-          var dosedItem = $mainBookList[i].querySelector('.book-check');
-          var prodCode = dosedItem.getAttribute('data-prodcode');
-          dosedItem.setAttribute('data-prodcode', prodCode + "-" + sectionColour(dataDose));
-        }
-    }
-
-
   }());
   isLoggedInModule.init();
+  _DoseBasedProductCode.init();
 </script>
 
 
@@ -119,37 +82,6 @@
 <div class="row">
   <div class="container">
     <div class="">
-      <!-- Loading Spinner while data is loaded - Not needed any more as data is not ajaxed -->
-      {{!--
-      <div class="loading-spinner">
-        <div class='uil-squares-css' style='transform: scale(0.62);'>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-          <div>
-            <div></div>
-          </div>
-        </div>
-      </div> --}}
-
       <!-- This is the book -->
       <ul class="book">
         {{#each Topic}}
