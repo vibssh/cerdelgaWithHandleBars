@@ -57,6 +57,8 @@ var _DoseBasedProductCode = (function (window) {
   };
 
   var bindUIActions = function(){
+
+    // Accordian for list of Books
     var $triggers = $('.main-book-list-item');
     var $contents = $('.book-section');
     $triggers.each(function(i, obj){
