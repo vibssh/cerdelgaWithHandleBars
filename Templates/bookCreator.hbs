@@ -16,7 +16,7 @@
     var $previewDirection = 'bottom';
     var $previewBackDrop = $('.preview-modal');
     var $previewContent = $('.preview-modal__table');
-    //previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
+    previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
   }());
   isLoggedInModule.init();
   _DoseBasedProductCode.init();
@@ -108,7 +108,7 @@
                 <li class="page-list-item" data-subpage="{{@index}}">{{PagesTitle}}</li>
                 <div class="preview-wrapper">
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  <a href="#" class="preview-link" data-canvasid="{{Id}}" data-startpage="{{StartPageNumber}}" data-fileurl="/assets/pdfs/HealthyLifeStyles-Level-"
+                  <a href="#" class="preview-link" data-canvasid="{{Id}}" data-startpage="{{StartPageNumber}}" data-fileurl="{{FileUrl}}"
                     data-subcheck="{{@index}}" data-is="{{../IsLevel}}" data-level="">Preview pages</a>
                 </div>
                 <div class="level-wrapper">
