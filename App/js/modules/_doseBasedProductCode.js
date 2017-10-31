@@ -62,10 +62,20 @@ var _DoseBasedProductCode = (function (window) {
     var $triggers = $('.main-book-list-item');
     var $contents = $('.book-section');
     $triggers.each(function(i, obj){
-      $(obj).on('click',function(){
+      $(obj).on('click',function(e){
+        console.info('parent click event');
+        e.preventDefault();
+       e.stopPropagation();
         var $trigger = $(this);
         TEWLibrary.accordian( $trigger, $triggers, $contents );
       });
+    });
+
+    $('.book-check').on('click', function (e) {
+      console.info('child click event');
+      //e.preventDefault();
+      e.stopPropagation();
+      console.info('clicked');
     });
 
   };

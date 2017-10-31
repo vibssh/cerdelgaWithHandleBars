@@ -47511,10 +47511,20 @@ var _DoseBasedProductCode = (function (window) {
     var $triggers = $('.main-book-list-item');
     var $contents = $('.book-section');
     $triggers.each(function(i, obj){
-      $(obj).on('click',function(){
+      $(obj).on('click',function(e){
+        console.info('parent click event');
+        e.preventDefault();
+       e.stopPropagation();
         var $trigger = $(this);
         TEWLibrary.accordian( $trigger, $triggers, $contents );
       });
+    });
+
+    $('.book-check').on('click', function (e) {
+      console.info('child click event');
+      //e.preventDefault();
+      e.stopPropagation();
+      console.info('clicked');
     });
 
   };
@@ -48847,10 +48857,6 @@ newPasswordValidation = {
                 Modal.modalPopClose();
               });
 
-
-
-
-
               // window.open('data:text/xml;charset=utf-8,<?xml version="1.0" encoding="UTF-8"?><UserOrder>' + $orderHeadXml.find('UserOrder').html() + '</UserOrder>', "", "_blank");
               // $('<iframe')
             });
@@ -48875,17 +48881,9 @@ newPasswordValidation = {
         //     var content = $(".book-section[data-page=" + id + "]");
         //     TEWLibrary.accordian($(this), triggers, contents);
         // });
-
-        $("body").on('click', '.book-check', function (e) {
-          console.info('clicked');
-          e.stopPropagation();
-        });
-
-
-
-
         //SubMain Section
-        $("body").on('click', '.page-list-item', function (event) {
+        $(".page-list-item").on('click', function (event) {
+         
 
           if ($(event.target).hasClass('pages-checkbox-span'))
             return;
@@ -48897,10 +48895,10 @@ newPasswordValidation = {
             return;
 
           if (parts.li.hasClass('selected')) {
-            //parts.pnl.slideUp();
+            parts.pnl.slideUp();
             parts.li.removeClass('selected');
           } else {
-            //parts.pnl.slideDown();
+            parts.pnl.slideDown();
             pageCheckboxActions(parts.pnl);
             parts.li.addClass('selected');
           }
@@ -48926,7 +48924,7 @@ newPasswordValidation = {
             case 'off':
               parts.li.addClass('selected');
               parts.spn.addClass('selected');
-              //parts.pnl.slideDown();
+              parts.pnl.slideDown();
               $(this).append('<span></span>');
               $(this).find('input').first().prop('checked', true);
               parts.bxs.click();
