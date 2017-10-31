@@ -54,12 +54,12 @@
 
     a {
         color: #468be6;
-        text-decoration: underline;
+        //text-decoration: underline;
         @include remsize(font-size, 15px);
 
         &:hover {
             color: #468be6;
-            text-decoration: underline;
+           // text-decoration: underline;
         }
     }
 

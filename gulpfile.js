@@ -5,6 +5,7 @@
 /* Load Plugins */
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    cleanCss = require('gulp-clean-css'),
     uglify = require('gulp-uglify'),
     precompiler = require('gulp-precompile-handlebars'),
     declare = require('gulp-declare'),
@@ -21,6 +22,7 @@ var gulp = require('gulp'),
 gulp.task('sass', function () {
   return gulp.src('App/scss/**/*.scss')
     .pipe(sass())
+    .pipe(cleanCss({compatibility: 'ie9'}))
     .pipe(gulp.dest('css'))
     .pipe(rename({
       suffix: '.min'
@@ -31,25 +33,7 @@ gulp.task('sass', function () {
     }));
 });
 
-//2. js Task
-gulp.task('scripts', function () {
-  return gulp.src('App/js/**/*.js')
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('scripts'))
-    .on('error', function(err){
-      gutil.log(gutil.colors.red('[Error]'), err.toString());
-    })
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    //.pipe(uglify())
-    .pipe(gulp.dest('scripts'))
-    .pipe(notify({
-      message: 'Scripts task complete'
-    }));
-});
-
-//3. precompile handlebars Task
+//2. precompile handlebars Task
 gulp.task('handlebars', function () {
   return gulp.src('Templates/*.hbs')
     .pipe(precompiler())
@@ -59,19 +43,34 @@ gulp.task('handlebars', function () {
       noRedeclare: true, // Avoid duplicate declarations
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest('scripts'))
+    .pipe(gulp.dest('App/templates'))
     .on('error', function (err) {
       gutil.log(gutil.colors.red('[Error]'), err.toString());
     })
-    // .pipe(rename({
-    //   suffix: '.min'
-    // }))
-    //.pipe(uglify())
-    .pipe(gulp.dest('scripts'))
+    .pipe(gulp.dest('App/templates'))
     .pipe(notify({
       message: 'Handlebars task complete'
     }));
 });
+
+//3. js Task
+gulp.task('scripts', function () {
+  return gulp.src(['App/js/**/*.js', 'App/templates/templates.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('scripts'))
+    .on('error', function(err){
+      gutil.log(gutil.colors.red('[Error]'), err.toString());
+    })
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('scripts'))
+    .pipe(notify({
+      message: 'Scripts task complete'
+    }));
+});
+
 
 //Watch Command
 gulp.task('watch', function () {

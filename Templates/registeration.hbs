@@ -1,3 +1,14 @@
+<script type="text/javascript">
+    (function () {
+        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
+        registration.init($endpoint);
+        updateTreatmentCentre.init();
+        treatmentCentreChoice.init();
+        newPasswordValidation.init($('#RegPassword'));
+        //showPassword.init();
+        addTreatmentCentre.init($('#add-treatment-centre'));
+    }());
+</script>
 <!-- Registeration Details -->
 <div class="step-counter">
   <div class="step-title-container">
@@ -63,7 +74,7 @@
                   </div>
                   <div class="col-md-9">
                     <div class="password-wrapper">
-                      <input type="password" value="" id="RegPassword" name="RegEmail" autocomplete="off" />
+                      <input type="password" value="" id="RegPassword" name="RegPassword" autocomplete="off" />
                       <div class="show-wrapper">
                         <a href="#" class="show-btn">Show</a>
                         <a href="#" class="hide-btn">Hide</a>
@@ -333,17 +344,3 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    (function () {
-        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
-        registration.init($endpoint);
-        updateTreatmentCentre.init();
-        treatmentCentreChoice.init();
-        newPasswordValidation.init($('#RegPassword'));
-        //showPassword.init();
-        addTreatmentCentre.init($('#add-treatment-centre'));
-
-
-        
-    }());
-</script>

@@ -1,0 +1,291 @@
+<!-- Personalised pack Screen -->
+<script type="text/javascript">
+    (function () {
+        isLoggedInModule.init();
+        var $container = $('#pam-questionnaire');
+        deliveryOptions.init($container[0]);
+        pamSurveyDisclaimer.init();
+    }());
+</script>
+
+<div class="step-counter">
+    <div class="step-title-container">
+        <ol>
+            <li class="active">
+                <span class="step-count">Step 1</span>
+                <span class="step-title">Select Delivery</span>
+                <div class="circle-line">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+            </li>
+            <li>
+                <span class="step-count">Step 2</span>
+                <span class="step-title">General Details</span>
+                <div class="circle-line">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+
+            </li>
+            <li>
+                <span class="step-count">Step 3</span>
+                <span class="step-title">PAM<sup>&reg;</sup></span>
+                <div class="circle-line">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!-- Select Delivery Option -->
+<div class="pam-choice personlised-choice select-delivery">
+    <div class="personalised-choice-title">
+        <h1>Where Would You Like Your Patient's Personalised Support Pack Sent?</h1>
+    </div>
+
+    <div class="personalised-choice-container">
+        <div class="choice-warning personalised-choice hide-me">
+            <p>
+                Once you have created the pack for your patient you will be able to download a PDF version to print at the treatment centre
+                whilst the personalised pack is being collated
+            </p>
+
+            <a href="#" class="warning-noshow personalised-warning-button">Don't show me this again</a>
+        </div>
+
+        <div class="pam-choice-container row ">
+            <div class="pam-choice-select col-md-6">
+                <a href="#" class="pam-choice-content personalised-content" data-choice="home-choice-btn">
+                    <div class="choice-icon-container">
+                        <div class="personalised-icon home-address">
+                            <!-- Background Sprite for hover effect -->
+                        </div>
+                    </div>
+                    <div class="choice-title">
+                        <p>
+                            Patient's home address
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="pam-choice-select col-md-6">
+                <a href="#" class="pam-choice-content personalised-content" data-choice="treatment-choice-btn">
+                    <div class="choice-icon-container">
+                        <div class="personalised-icon centre-address">
+                            <!-- Background Sprite for hover effect -->
+                        </div>
+                    </div>
+                    <div class="choice-title">
+                        <p>Treatment centre</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="step-continue-button">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="anchor-btn continue-btn" id="step-2">Continue to Step 2</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- General Details -->
+<div class="pam-choice personlised-choice general-details hide-me">
+    <div class="personalised-choice-title">
+        <h1>General Details</h1>
+    </div>
+
+    <!-- Home General Details -->
+    <div id="home-address">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-3">
+                    <div class="info-panel">
+                        <p class="info-text">
+                            The information you provide below will allow us to send the personalised pack to your patient's home directly. These details
+                            will not be stored anywhere and will be deleted after use.
+                        </p>
+                    </div>
+                    <div class="delivery-information">
+                        <h4>Delivery Information</h4>
+                        <form id="delivery-info-home">
+                            <!-- Fields to Update-->
+                            <div class="form-field">
+                                <label for="fullDeliveryName" class="col-md-3">Full name</label>
+                                <input type="text" id="fullDeliveryName" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="houseDeliveryName" class="col-md-3">House name or number</label>
+                                <input type="text" id="houseDeliveryName" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="streetDeliveryName" class="col-md-3">Street Name</label>
+                                <input type="text" id="streetDeliveryName" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="deliveryCity" class="col-md-3">City</label>
+                                <input type="text" id="deliveryCity" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="deliveryCounty" class="col-md-3">County</label>
+                                <input type="text" id="deliveryCounty" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="deliveryPostCode" class="col-md-3">Post code</label>
+                                <input type="text" id="deliveryPostCode" class="col-md-9">
+                            </div>
+                            <div class="form-field">
+                                <label for="deliveryPhoneNumber" class="col-md-3">Phone number</label>
+                                <input type="text" id="deliveryPhoneNumber" class="col-md-9">
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="dosing-information">
+                        <h4>How often will your patient need to take Cerdelga<sup>&reg;</sup>?<sup>1</sup></h4>
+                        <p>
+                            So we can ensure the right Cerdelga<sup>&reg;</sup> information is sent to your patient, please
+                            indicate the dosing regimen prescribed.
+                        </p>
+                        <p>
+                            Dosing recommendations for Cerdelga<sup>&reg;</sup> are twice daily dosing for intermediate (IMs)
+                            and extensive metabolisers (EMs) and once daily dosing for poor metabolisers (PM)<sup>1</sup>
+                        </p>
+                    </div>
+                    <div class="pam-choice">
+                        <div class="pam-choice-container row">
+                            <div class="pam-choice-select col-md-6">
+                                <a href="#" class="pam-choice-content personalised-content dose-btn" data-dose="1">
+                                    <div class="choice-icon-container">
+                                        <div class="dosing-choice one">
+                                            <!-- Background Sprite for hover effect -->
+                                        </div>
+                                    </div>
+                                    <div class="choice-title">
+                                        <p>Once a day</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="pam-choice-select col-md-6">
+                                <a href="#" class="pam-choice-content personalised-content dose-btn" data-dose="2">
+                                    <div class="choice-icon-container">
+                                        <div class="dosing-choice two">
+                                            <!-- Background Sprite for hover effect -->
+                                        </div>
+                                    </div>
+                                    <div class="choice-title">
+                                        <p>Twice a day</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-continue-button step-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <a href="#" class="anchor-btn continue-btn ghost-btn">Back</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#" class="anchor-btn continue-btn" id="step-home-3">Continue to Step 3</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treatment Centre General Details -->
+    <div id="treatment-address">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-3">
+                    <div class="info-panel">
+                        <p class="info-text">
+                            This pack will be sent to the treatment centre.
+                        </p>
+                    </div>
+
+                    <div class="dosing-information">
+                        <h4>How often will your patient need to take Cerdelga<sup>&reg;</sup>?<sup>1</sup></h4>
+                        <p>
+                            Dosing recommendations for Cerdelga<sup>&reg;</sup> are twice daily dosing for intermediate (IMs)
+                            and extensive metabolisers (EMs) and once daily dosing for poor metabolisers (PM)<sup>1</sup>
+                        </p>
+                    </div>
+                    <div class="pam-choice">
+                        <div class="pam-choice-container row">
+                            <div class="pam-choice-select col-md-6">
+                                <a href="#" class="pam-choice-content personalised-content dose-btn" data-dose="1">
+                                    <div class="choice-icon-container">
+                                        <div class="dosing-choice one">
+                                            <!-- Background Sprite for hover effect -->
+                                        </div>
+                                    </div>
+                                    <div class="choice-title">
+                                        <p>Once a day</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="pam-choice-select col-md-6">
+                                <a href="#" class="pam-choice-content personalised-content dose-btn" data-dose="2">
+                                    <div class="choice-icon-container">
+                                        <div class="dosing-choice two">
+                                            <!-- Background Sprite for hover effect -->
+                                        </div>
+                                    </div>
+                                    <div class="choice-title">
+                                        <p>Twice a day</p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-continue-button step-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <a href="#" class="anchor-btn continue-btn ghost-btn">Back</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#" class="anchor-btn continue-btn" id="step-treatment-3">Continue to Step 3</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="reference">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-3">
+                    <h4>Reference</h4>
+                    <ol>
+                        <li>Cerdelga SmPC September 2017</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- PAM Questionnaire -->
+<div id="pam-questionnaire">
+    <!-- Third Step of Delivery-->
+</div>

@@ -6,12 +6,19 @@ loginValidation = {
     init: function () {
         loginSettings = this.settings;
         this.bindUIActions();
-        loginSettings.isValid = false;
+        loginSettings.isValid = false;   
+        /**
+         * To allow on NHS Email through ... client side validation 
+         */
+        jQuery.validator.addMethod("domain", function (value, element) {
+            return this.optional(element) || 
+                   ['nhs.com'].indexOf(value.split('@').pop()) != -1;
+        },'Enter a valid email address');
     },
 
     bindUIActions: function () {
         loginValidation.validateMe($("#login"));
-        loginValidation.forgottenValidate($('#forgotten-password'));
+       
         loginValidation.resetValidate($('#reset-password'));
 
         //Enable login submit button
@@ -22,10 +29,6 @@ loginValidation = {
         if(loginSettings.isValid){
             loginValidation.enableMe($('#login'));
         }
-
-        $("#forgotten-password input").on('keyup', function () {
-            loginValidation.enableMe($('#forgotten-password'));
-        });
 
         //Disable form submission by enter key 
         $(window).keydown(function (event) {
@@ -44,14 +47,14 @@ loginValidation = {
             },
 
             rules: {
-                email: {
+                authEmail: {
                     required: true,
-                    email: true
+                    email: true,
+                    domain: true
                 },
                 authpassword: {
                     required: true,
                     minlength: 8
-
                 }
             },
             messages: {
@@ -59,7 +62,11 @@ loginValidation = {
                     required: "Please provide a password",
                     minlength: "Your password must be at least 8 characters long"
                 },
-                email: "Please enter a valid email address"
+                authEmail:{
+                    email: "Please enter a valid email address",    
+                    domain: "Only NHS email address is allowed to login the system"
+                } 
+                
             },
 
 

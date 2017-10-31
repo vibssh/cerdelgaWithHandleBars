@@ -10,8 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "latest",
+    "gulp-clean-css": "latest",
     "gulp-concat": "latest",
-    "gulp-declare": "latest",    
+    "gulp-declare": "latest",
     "gulp-notify": "latest",
     "gulp-precompile-handlebars": "latest",
     "gulp-rename": "latest",

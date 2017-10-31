@@ -36,7 +36,7 @@
               var options = options || {};
               var $data = options.$data || null || undefined;
               var $beforeSend = options.$beforeSend || null || undefined;
-              var $dataType = options.$dataType || 'json';
+              var $dataType = options.$dataType || null;
               return $.ajax({
                   url: $endpoint,
                   type: $method,

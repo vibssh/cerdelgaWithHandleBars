@@ -8,6 +8,15 @@ var _PAMResult = (function (window) {
       e.stopPropagation();
       _TakePAM.init();
     });
+
+    $('.create-book').on('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var bookData = _BookData.init(); // Data to pass to the 
+      console.info(bookData);
+      _TemplateLoader.init('bookCreator',bookData);
+      $('section#content').addClass('book-creator');
+    });
   };
 
   return {

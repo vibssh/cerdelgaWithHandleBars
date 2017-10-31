@@ -16,13 +16,13 @@ var _FooterLinks = (function(window){
     });
   };
 
-  var _historyTrackFooterLinks = function(eventState){
-    _HistoryBackModule.init(eventState);          
+  var _historyTrackFooterLinks = function(){
+     
     $('.back-link').on('click', function(e){
         e.preventDefault();
         e.stopPropagation();
         $("html, body").animate({ scrollTop: 0 }, 100);
-        history.back();
+        _HistoryBackModule.init();        
     });
   };
 

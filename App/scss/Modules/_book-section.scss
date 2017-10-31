@@ -39,6 +39,33 @@
         //counter-increment: section-counter;
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
+
+        // //ToDO remove this in production
+        // &.b{
+        //     background: blue !important;
+        //     filter: none !important;
+
+        //     li {
+        //         background: transparent !important;
+
+        //         h4 {
+        //             color: white !important;
+        //         }
+        //     }
+        // }
+
+        // &.y{
+        //     background: yellow !important;
+        //     filter: none !important;
+
+        //     li {
+        //         background: transparent !important;
+
+        //         h4 {
+        //             color: black !important;
+        //         }
+        //     }
+        // }
     }
 
     li {
@@ -62,7 +89,7 @@
 
         .main-title {
             display: inline-block;
-            width: calc(100% - 140px);
+            width: calc(100% - 120px);
             vertical-align: middle;
             padding-left: 16px;
             padding-top: 0;
@@ -94,11 +121,11 @@
             display: inline-block;
             width: auto;
             vertical-align: middle;
-            float: right;
+            
 
             .book-btn {
                 background: transparent;
-                float: right;
+                
                 //margin-right: -9px;
                 border-left: 1px solid #dedede;
 
@@ -168,7 +195,7 @@
 
     .book-btn {
         position: relative;
-        width: 50px;
+        width: 64px;
         height: 74px;
         -webkit-appearance: none;
         background: #dedede;
@@ -357,7 +384,7 @@
 
             .page-button {
                 display: inline-block;
-                float: right;
+                
 
                 .book-btn {
                     //padding-bottom: 10px;
@@ -589,3 +616,6 @@ input[type='checkbox'].book-check.locked-checkbox {
         z-index: 100;
     }
 }
+
+
+

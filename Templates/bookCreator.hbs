@@ -1,0 +1,214 @@
+<!-- Book Creator -->
+
+<script>
+  (function () {
+    var $modalTimeOut = 200;
+    var $modalDirection = 'top';
+    var $modalBackDrop = $('.m-modal--disclaimer');
+    var $modalContent = $('.m-modal__table');
+    var $modalAcceptBtn = $('.modal-action-btn__accept');
+    var $modalDeclineBtn = $('.modal-action-btn__decline');
+    //levelFilter.init($modalBackDrop, $modalContent, $modalAcceptBtn, $modalDeclineBtn);
+    levelFilter.init($modalBackDrop, $modalContent, $modalDirection, $modalTimeOut, $modalAcceptBtn, $modalDeclineBtn);
+
+    /* Preview Modal */
+    var $previewTimeOut = 250;
+    var $previewDirection = 'bottom';
+    var $previewBackDrop = $('.preview-modal');
+    var $previewContent = $('.preview-modal__table');
+    previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
+  }());
+  isLoggedInModule.init();
+  _DoseBasedProductCode.init();
+  _DoseBasedProductCode.eventHandler();
+
+</script>
+
+
+<!-- Patients Details -->
+<div class="programme-control">
+  <div class="row">
+    <div class="container">
+      <div class="col-md-5">
+        <h4>Personalised Patient Support Pack Creator</h4>
+      </div>
+      <div class="col-md-7 programme-buttons">
+        <a href="#" class="anchor-icon-btn discard-btn">
+          <i class="fa fa-trash" aria-hidden="true"></i>Discard</a>
+        <a href="#" id="btn-preview" class="anchor-icon-btn preview-btn">
+          <i class="fa fa-book" aria-hidden="true"></i>Preview pack</a>
+        <a href="#" class="anchor-icon-btn build-btn">
+          <i class="fa fa-file" aria-hidden="true"></i>Build pack</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter by PAM Level Section -->
+<div class="pam-filter">
+  <div class="row">
+    <div class="container">
+      <div class="col-md-5 filter-details">
+        <p>
+          <strong>Please select a Patient Activation Measure (PAM)
+            <sup>&reg;</sup> level</strong>
+          <br /> You can then customise the pack content for your patient
+        </p>
+      </div>
+
+      <div class="col-md-7 pam-filter-panel">
+        <form id="filter-level" name="filter-level" class="form-inline col-md-12">
+          <div class="form-group">
+            <span class="">Filter by PAM
+              <sup>&reg;</sup> level </span>
+            <input type="radio" name="book-selector" value="" id="level-1" data-level="1" class="level-check" />
+            <label for="level-1">Level 1</label>
+
+            <input type="radio" name="book-selector" value="" id="level-2" data-level="2" class="level-check" />
+            <label for="level-2">Level 2</label>
+
+            <input type="radio" name="book-selector" value="" id="level-3" data-level="3" class="level-check" />
+            <label for="level-3">Level 3</label>
+
+            <input type="radio" name="book-selector" value="" id="level-4" data-level="4" class="level-check" />
+            <label for="level-4">Level 4</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Book Section - Top Level -->
+<div class="row">
+  <div class="container">
+    <div class="">
+      <!-- This is the book -->
+      <ul class="book">
+        {{#each Topic}}
+        <div class="main-book-list {{#unless Filter }}locked {{/unless}}" data-dose="{{Dose}}" data-level="{{IsLevel}}">
+          <li class="main-book-list-item" data-page="{{@index}}">
+            <input class="book-check {{#unless Filter }}locked-checkbox {{/unless}}" type="checkbox" {{#unless Filter}}disabled="disabled" checked="checked"{{/unless}} id="{{OrderProdCode}}" data-prodcode="{{OrderProdCode}}"
+              data-proddesc="{{TopicTitle}}" data-prodtab="{{OrderTab}}" data-pdfindex="{{Pages.Id}}">
+            <label for="6000"></label>
+            <div class="main-icon" style="background-image: url(/images/icons/sprite_adherence.png)"></div>
+            <div class="main-title">
+              <span class="main-title-counter">0{{@index}}</span>
+              <h4>{{TopicTitle}}</h4>
+            </div>
+            <div class="main-button">
+              <button class="book-btn book-section-btn" data-page="{{@index}}"></button>
+            </div>
+          </li>
+          <div class="book-section" data-page="{{@index}}">
+            <ul class="pages">
+              {{#each Pages}}
+              <div class="page-list">
+                <li class="page-list-item" data-subpage="{{@index}}">{{PagesTitle}}</li>
+                <div class="preview-wrapper">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  <a href="#" class="preview-link" data-canvasid="{{Id}}" data-startpage="{{StartPageNumber}}" data-fileurl="{{FileUrl}}"
+                    data-subcheck="{{@index}}" data-is="{{../IsLevel}}" data-level="">Preview pages</a>
+                </div>
+                <div class="level-wrapper">
+                  {{#each Levels}}
+                  <div class="page-level" data-level="{{this}}">
+                    <span>{{this}}</span>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Disclaimer -->
+<div class="m-modal m-modal--disclaimer">
+  <div class="m-modal__table">
+    <div class="m-modal__table-cell">
+      <div class="m-modal__block container">
+        <div class="m-modal__text">
+          <h2>Warning!</h2>
+          <p>Changing your Patient Activation Measure&reg; level at this point will mean you lose any progress you have made
+            with the pack content so far</p>
+
+          <div class="modal-action-btn">
+            <button class="modal-action-btn__decline">Cancel</button>
+            <button href="#" class="modal-action-btn__accept">Continue</button>
+          </div>
+        </div>
+        <div class="m-modal-no-show">
+          <a href="#" class="modal-no-show">Don't show me this message again</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Preview Modal -->
+<div class="preview-modal">
+  <div class="preview-modal__table">
+    <div class="preview-modal__table-cell">
+      <div class="preview-modal-close">
+        <!-- This is the close Button for Preview Modal -->
+      </div>
+
+      <div class="preview-modal-title">
+        <!-- This is the Section Title -->
+        <div class="preview-modal-title-index">
+          <!-- This is the section index -->
+        </div>
+      </div>
+
+      <div class="preview-modal__block container">
+        <div id="preview__text" class="preview-modal__text">
+          <canvas id="canvas" style="margin: 0 auto;"></canvas>
+        </div>
+      </div>
+
+      <div id="previous" class="preview-nav">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </div>
+      <div id="next" class="preview-nav">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </div>
+
+      <!-- Page Count-->
+      <div class="preview-page-counter" style="display: inline-block; margin-top: 25px; padding: 10px; background: #656d78; color: #fff; font-size: 14px; ">
+        <div id="page-count" style="margin: 0 auto; text-align: center;">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- XML Modal -->
+<!-- Modal Disclaimer -->
+<div id="xmlModal" class="m-modal">
+  <div class="m-modal__table">
+    <div class="m-modal__table-cell">
+      <div class="m-modal__block container">
+        <div class="m-modal__text">
+          <h2>XML Data !</h2>
+          <p>This is the data that will get sent to the printers</p>
+         <div id="xml-content"></div>
+          <div class="modal-action-btn">
+            <button class="modal-action-btn__decline">Cancel</button>
+            <button href="#" class="modal-action-btn__accept">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

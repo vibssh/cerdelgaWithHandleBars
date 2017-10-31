@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
   <link rel="stylesheet" href="css/app.min.css">
-  <title>Cerdelga - Refactor </title>
+  <title>Cerdelga - Leo </title>
 </head>
 
 <body>
@@ -39,16 +39,17 @@
 
 
   <!-- Application Modules -->
-  <script src='scripts/templates.js'></script>
-  <script src='scripts/app.js'></script>
+  <script src='scripts/app.min.js'></script>
 
   <!-- Expose JSPublic API -->
   <script type='text/javascript'>
   
     /* These API's are needed for the start up */
-    _HandlebarsTemplate.init();
+    _HandlebarsTemplate.init(); 
      
-      
+    // hashlink with back button 
+    //_HistoryBackModule.init();
+    _VerifyEmailUrl.init();      
     //_CustomFontLoader.init(); /* Not used currently as changed to cdn library for fonts */
    
   </script>
