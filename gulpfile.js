@@ -5,6 +5,7 @@
 /* Load Plugins */
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    cleanCss = require('gulp-clean-css'),
     uglify = require('gulp-uglify'),
     precompiler = require('gulp-precompile-handlebars'),
     declare = require('gulp-declare'),
@@ -21,6 +22,7 @@ var gulp = require('gulp'),
 gulp.task('sass', function () {
   return gulp.src('App/scss/**/*.scss')
     .pipe(sass())
+    .pipe(cleanCss({compatibility: 'ie9'}))
     .pipe(gulp.dest('css'))
     .pipe(rename({
       suffix: '.min'
@@ -42,7 +44,7 @@ gulp.task('scripts', function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('scripts'))
     .pipe(notify({
       message: 'Scripts task complete'
