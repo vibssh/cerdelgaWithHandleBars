@@ -8500,7 +8500,7 @@ form#choose-treatment-centre {
   vertical-align: middle; }
 
 .m-modal__block, .preview-modal__block {
-  padding: 1em;
+  padding: 1em !important;
   background: #fff; }
   @media (min-width: 48rem) {
     .m-modal__block.container, .container.preview-modal__block {

@@ -4,7 +4,7 @@
   (function () {
     var $modalTimeOut = 200;
     var $modalDirection = 'top';
-    var $modalBackDrop = $('.m-modal');
+    var $modalBackDrop = $('.m-modal--disclaimer');
     var $modalContent = $('.m-modal__table');
     var $modalAcceptBtn = $('.modal-action-btn__accept');
     var $modalDeclineBtn = $('.modal-action-btn__decline');
@@ -189,6 +189,28 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- XML Modal -->
+<!-- Modal Disclaimer -->
+<div id="xmlModal" class="m-modal">
+  <div class="m-modal__table">
+    <div class="m-modal__table-cell">
+      <div class="m-modal__block container">
+        <div class="m-modal__text">
+          <h2>XML Data !</h2>
+          <p>This is the data that will get sent to the printers</p>
+         <div id="xml-content"></div>
+          <div class="modal-action-btn">
+            <button class="modal-action-btn__decline">Cancel</button>
+            <button href="#" class="modal-action-btn__accept">Continue</button>
+          </div>
+        </div>
+        
+
+      </div>
     </div>
   </div>
 </div>
