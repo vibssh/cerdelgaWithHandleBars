@@ -33,9 +33,29 @@ gulp.task('sass', function () {
     }));
 });
 
-//2. js Task
+//2. precompile handlebars Task
+gulp.task('handlebars', function () {
+  return gulp.src('Templates/*.hbs')
+    .pipe(precompiler())
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'Cerdelga.templates', // Namespace it to the project so that it doesn't create confilct
+      noRedeclare: true, // Avoid duplicate declarations
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('App/templates'))
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red('[Error]'), err.toString());
+    })
+    .pipe(gulp.dest('App/templates'))
+    .pipe(notify({
+      message: 'Handlebars task complete'
+    }));
+});
+
+//3. js Task
 gulp.task('scripts', function () {
-  return gulp.src('App/js/**/*.js')
+  return gulp.src(['App/js/**/*.js', 'App/templates/templates.js'])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('scripts'))
     .on('error', function(err){
@@ -51,29 +71,6 @@ gulp.task('scripts', function () {
     }));
 });
 
-//3. precompile handlebars Task
-gulp.task('handlebars', function () {
-  return gulp.src('Templates/*.hbs')
-    .pipe(precompiler())
-    .pipe(wrap('Handlebars.template(<%= contents %>)'))
-    .pipe(declare({
-      namespace: 'Cerdelga.templates', // Namespace it to the project so that it doesn't create confilct
-      noRedeclare: true, // Avoid duplicate declarations
-    }))
-    .pipe(concat('templates.js'))
-    .pipe(gulp.dest('scripts'))
-    .on('error', function (err) {
-      gutil.log(gutil.colors.red('[Error]'), err.toString());
-    })
-    // .pipe(rename({
-    //   suffix: '.min'
-    // }))
-    //.pipe(uglify())
-    .pipe(gulp.dest('scripts'))
-    .pipe(notify({
-      message: 'Handlebars task complete'
-    }));
-});
 
 //Watch Command
 gulp.task('watch', function () {
