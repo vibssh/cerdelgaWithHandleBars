@@ -1033,8 +1033,10 @@ var _LoginModule = (function (window) {
 var _nurseSuccess = function(data){
   var fullName = data.FullName;
   var firstName = fullName.substring(0, fullName.indexOf(' '));  
-  $('.link-profile').html(firstName);  
+  $('.link-profile').html(firstName); 
+  _Profile.getNurseData(); 
 };
+
 
 var _nurseFailure = function(xhr){
   console.info(xhr.status);
@@ -3021,7 +3023,7 @@ var _Profile = (function (window) {
 
   // Nurse Data GET
   var _getNurseData = function () {
-    //$('.link-profile').unbind('click'); // To avoid multiple clicks if the data is taking longer to come through from the server
+    // This is called on Login
     //Ajax Call Here using Multiple Simultaenous call
     return $.when(
       $.get(_Settings.$nurseEndPoint, function (data) {
@@ -3042,9 +3044,15 @@ var _Profile = (function (window) {
     /* This will render the Template */
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
-    _TemplateLoader.init('profile', $data);
    // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
-  }
+  };
+
+  // This methods pulls in the Template for Nurse Details View Page
+  var _viewProfile = function(){
+    var $data = _Settings.$profileData;
+    _TemplateLoader.init('profile', $data);
+  };
+
 
   var _getNurseFailure = function (xhr) {
     console.info(xhr.status);
@@ -3055,8 +3063,8 @@ var _Profile = (function (window) {
     $('.link-profile').on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      //Call Nurse Api to load the data
-     _getNurseData();
+      //Call Nurse Template
+      _viewProfile();
     });
 
 

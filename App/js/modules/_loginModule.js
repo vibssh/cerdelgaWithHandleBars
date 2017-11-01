@@ -44,8 +44,10 @@ var _LoginModule = (function (window) {
 var _nurseSuccess = function(data){
   var fullName = data.FullName;
   var firstName = fullName.substring(0, fullName.indexOf(' '));  
-  $('.link-profile').html(firstName);  
+  $('.link-profile').html(firstName); 
+  _Profile.getNurseData(); 
 };
+
 
 var _nurseFailure = function(xhr){
   console.info(xhr.status);
