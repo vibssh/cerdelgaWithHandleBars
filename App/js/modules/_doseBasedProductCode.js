@@ -71,11 +71,11 @@ var _DoseBasedProductCode = (function (window) {
       });
     });
 
-    $('.book-check').on('click', function (e) {
-      console.info('child click event');
-      //e.preventDefault();
+    $('.book-check + label').on('click', function (e) {
       e.stopPropagation();
-      console.info('clicked');
+      var checkBox = $(this).prev();
+      checkBox.prop("checked", !checkBox.prop("checked"));      
+      console.info('child click event');
     });
 
   };

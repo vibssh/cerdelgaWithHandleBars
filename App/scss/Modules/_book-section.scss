@@ -513,8 +513,8 @@ input[type='checkbox'].book-check {
     line-height: 1;
     visibility: hidden;
 
-    &:before {
-        content: '';
+    + label {
+        //content: '';
         display: inline-block;
         width: 25px;
         height: 25px;
@@ -522,7 +522,7 @@ input[type='checkbox'].book-check {
         background: transparent;
         vertical-align: middle;
         margin-right: 10px;
-        position: relative;
+        position: absolute;
         top: 25px;
         left: 10px;
         visibility: visible;
@@ -530,20 +530,27 @@ input[type='checkbox'].book-check {
 }
 
 input[type="checkbox"].book-check:checked {
-    &:before {
-        content: "";
-        display: inline-block;
-        text-align: left;
-        color: #468be7;
-        background: #ffffff;
-        border: 1px solid #ccd1d9;
-        font-family: FontAwesome;
-        @include remsize(font-size, 14px);
-        font-weight: normal;
-        font-style: normal;
-        padding-top: 4px;
-        padding-left: 5px;
-        visibility: visible;
+    + label {
+        
+        //border: 1px solid #aa0505;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            text-align: left;
+            color: #468be7;
+           // background: #ffffff;
+            //border: 1px solid #aa0505;
+            font-family: FontAwesome;
+            @include remsize(font-size, 14px);
+            font-weight: normal;
+            font-style: normal;
+            padding-top: 4px;
+            padding-left: 5px;
+            visibility: visible;
+            position: absolute;
+            top: -3px;
+        }
     }
 }
 
@@ -555,8 +562,8 @@ input[type='checkbox'].book-check.locked-checkbox {
     //position: relative;
     pointer-events: none;
 
-    &:before {
-        content: "";
+    + label {
+        //content: "";
         text-align: right;
         display: inline-block;
         color: #fff;
@@ -568,6 +575,10 @@ input[type='checkbox'].book-check.locked-checkbox {
         background: url('/images/icons/locked-checkbox.png');
         top: 25px;
         left: 10px;
+
+        &:before {
+            display: none;
+        }
     }
 }
 

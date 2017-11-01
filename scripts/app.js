@@ -47521,11 +47521,11 @@ var _DoseBasedProductCode = (function (window) {
       });
     });
 
-    $('.book-check').on('click', function (e) {
-      console.info('child click event');
-      //e.preventDefault();
+    $('.book-check + label').on('click', function (e) {
       e.stopPropagation();
-      console.info('clicked');
+      var checkBox = $(this).prev();
+      checkBox.prop("checked", !checkBox.prop("checked"));      
+      console.info('child click event');
     });
 
   };
@@ -49092,8 +49092,9 @@ var pamSettings,
             });
 
             
-            $('.answer').on('click', function (event) {
-                pamLevels.answerToggle();
+            $('.answer').on('click', function (e) {
+                e.preventDefault();
+                pamLevels.answerToggle($(this));
             });
 
             $('.pam-results').on('click', function (event) {
@@ -49114,12 +49115,12 @@ var pamSettings,
             });
         },
 
-        answerToggle: function () {
-            var subSection = $(event.target).closest('div.book-subsection');
+        answerToggle: function ($clicked) {
+            var subSection = $clicked.closest('div.book-subsection');
             var questionLi = subSection.prev();
             var checkbox = questionLi.find('span.pam-checkbox-span').first();
             var allAnswers = subSection.find('div.answer');
-            var evtAnswer = ($(event.target).hasClass('answer')) ? $(event.target) : $(event.target).parent();
+            var evtAnswer = ($clicked.hasClass('answer')) ? $clicked : $clicked.parent();
             var selected = evtAnswer.hasClass('selected');
             allAnswers.removeClass('selected');
 
