@@ -130,6 +130,7 @@ var s,
             $('.general-details').html(Template);
             location.hash = tplName;
             $('.skip-pam').removeClass('hide-me');
+            sessionStorage.setItem('skipPam', 'show');
 
             // $.get(url, function (data) {
             //     $(element).html(data);

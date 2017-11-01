@@ -61,7 +61,7 @@ var _Profile = (function (window) {
    // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   };
 
-  // This methods pulls in the Template for Nurse Details View Page
+  // This methods pulls in the Template for Nurse Details View Pageb
   var _viewProfile = function(){
     var $data = _Settings.$profileData;
     _TemplateLoader.init('profile', $data);

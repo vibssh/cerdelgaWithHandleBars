@@ -42,6 +42,12 @@ var pamSettings,
 
             /* PAM Modal */
             Modal.init(pamSettings.$modalBackDrop, pamSettings.$modalContent, pamSettings.$modalDirection, pamSettings.$modalTimeOut);
+
+            /* SKIP PAM Link show if it was showing already  */
+            var isPamLink = sessionStorage.getItem('skipPam');
+            if(isPamLink){
+                $('.skip-pam').removeClass('hide-me');
+            }
         },
 
         bindUIActions: function () {

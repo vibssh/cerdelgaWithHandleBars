@@ -417,6 +417,7 @@ var s,
             $('.general-details').html(Template);
             location.hash = tplName;
             $('.skip-pam').removeClass('hide-me');
+            sessionStorage.setItem('skipPam', 'show');
 
             // $.get(url, function (data) {
             //     $(element).html(data);
@@ -2076,6 +2077,12 @@ var pamSettings,
 
             /* PAM Modal */
             Modal.init(pamSettings.$modalBackDrop, pamSettings.$modalContent, pamSettings.$modalDirection, pamSettings.$modalTimeOut);
+
+            /* SKIP PAM Link show if it was showing already  */
+            var isPamLink = sessionStorage.getItem('skipPam');
+            if(isPamLink){
+                $('.skip-pam').removeClass('hide-me');
+            }
         },
 
         bindUIActions: function () {
@@ -3047,7 +3054,7 @@ var _Profile = (function (window) {
    // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   };
 
-  // This methods pulls in the Template for Nurse Details View Page
+  // This methods pulls in the Template for Nurse Details View Pageb
   var _viewProfile = function(){
     var $data = _Settings.$profileData;
     _TemplateLoader.init('profile', $data);
