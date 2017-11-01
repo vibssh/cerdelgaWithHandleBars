@@ -15,6 +15,10 @@ var _HistoryBackModule = (function (window) {
               return _Profile.settings.$profileData;
             },
 
+            "bookCreator": function(){
+              return _BookData.init();
+            },
+
             "default" : function(){
               return undefined;
             }
