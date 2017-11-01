@@ -1,11 +1,11 @@
 <script type="text/javascript">
     (function () {
+      showPassword.init();
         var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
         registration.init($endpoint);
         updateTreatmentCentre.init();
         treatmentCentreChoice.init();
         newPasswordValidation.init($('#RegPassword'));
-        //showPassword.init();
         addTreatmentCentre.init($('#add-treatment-centre'));
     }());
 </script>

@@ -139,10 +139,8 @@ var registrationSettings,
 
                     },
 
-                    RegPassword: {
-                        required: "Please enter a Password",
-                        minlength: "Password does not meet requirments",
-                        pwcheck: ""
+                    password: {
+                        
                     }
                 }
             });
