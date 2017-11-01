@@ -154,6 +154,10 @@ var levelSettings,
             //Preview Link Data-level changes when the levels are changed 
             var checkedLevel = levelSettings.$inputClicked[0].dataset.level;
 
+            console.info('Checked Level ', checkedLevel);
+
+            sessionStorage.setItem('pam-level', checkedLevel);
+
             //Preview Link get data-level value same as checkedlevel
             var previewLink = document.querySelectorAll('.preview-link');
             for (var i = 0; i < previewLink.length; i++) {
