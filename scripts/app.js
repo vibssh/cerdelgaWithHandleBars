@@ -3707,8 +3707,7 @@ showPassword = {
         });
     },
 
-    showPasswordField: function ($clicked) {
-        console.info($clicked);
+    showPasswordField: function ($clicked) {        
         //var passwordField = $($clicked).parent().prev()[0];
         var passwordField = $('.password-wrapper').find('input');
         var nextBtn = $($clicked).next()[0];
@@ -3721,8 +3720,7 @@ showPassword = {
     hidePasswordField: function ($clicked) {
         var prevBtn = $($clicked).prev()[0];
         //var passwordField = $($clicked).parent().prev()[0];
-        var passwordField = $('.password-wrapper').find('input');
-        console.info('hidebutton click ', passwordField);
+        var passwordField = $('.password-wrapper').find('input');        
        
         $(passwordField).attr('type', 'password');
         $(prevBtn).css('display', 'block');
@@ -4132,8 +4130,16 @@ var welcomeSettings,
             });
 
             //Clicking Don't Show me these welcome screens
-            $('.no-show-slide').on('click', function () {
+            $('.no-show-slide').on('click', function (e) {
+                e.preventDefault();
                 welcomeSlide.dontShow();
+            });
+
+            //Clicking PAM Explanation Link
+            $('.pam-explanation-link').on('click', function(e){
+                e.preventDefault();
+                 /* Template Loading and History State */
+                 _TemplateLoader.init('pamExplanation');
             });
         },
         

@@ -42,8 +42,16 @@ var welcomeSettings,
             });
 
             //Clicking Don't Show me these welcome screens
-            $('.no-show-slide').on('click', function () {
+            $('.no-show-slide').on('click', function (e) {
+                e.preventDefault();
                 welcomeSlide.dontShow();
+            });
+
+            //Clicking PAM Explanation Link
+            $('.pam-explanation-link').on('click', function(e){
+                e.preventDefault();
+                 /* Template Loading and History State */
+                 _TemplateLoader.init('pamExplanation');
             });
         },
         
