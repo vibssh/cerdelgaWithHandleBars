@@ -47911,7 +47911,6 @@ var levelSettings,
             var checkedLevel = levelSettings.$inputClicked[0].dataset.level;
 
             console.info('Checked Level ', checkedLevel);
-
             sessionStorage.setItem('pam-level', checkedLevel);
 
             //Preview Link get data-level value same as checkedlevel
@@ -48325,7 +48324,7 @@ var _BookData = (function (window) {
         {
           "TopicTitle": "About Gaucher Disease",
           "Icon": "/images/icons/sprite_aboutgaucher.png",
-          "Filter": true,
+          "Filter": false,
           "Dose": false,
           "IsLevel": true,     
           "OrderProdCode": "1000",

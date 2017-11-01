@@ -24,7 +24,7 @@ var _BookData = (function (window) {
         {
           "TopicTitle": "About Gaucher Disease",
           "Icon": "/images/icons/sprite_aboutgaucher.png",
-          "Filter": true,
+          "Filter": false,
           "Dose": false,
           "IsLevel": true,     
           "OrderProdCode": "1000",
