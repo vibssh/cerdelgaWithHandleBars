@@ -50475,13 +50475,6 @@ var registrationSettings,
                         required: true,
                         email: true,
                         domain: true
-                    },
-
-                    RegPassword: {
-                        required: true,
-                        minlength: 8,
-                        pwcheck: true
-
                     }
                 },
 
@@ -50496,10 +50489,6 @@ var registrationSettings,
                         email: "Your email address must be in the format of name@domain.com",
                         domain: "Only NHS email address is allowed to login the system"
 
-                    },
-
-                    password: {
-                        
                     }
                 }
             });
