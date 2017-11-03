@@ -114,6 +114,12 @@ gulp.task('pdf', function(){
           .pipe(gulp.dest('dist/viewer/'))
 });
 
+//11. Email Templates
+gulp.task('email', function(){
+  return gulp.src('src/EmailTemplates/**/*')
+        .pipe(gulp.dest('dist/EmailTemplates'))
+});
+
 //Watch Command
 gulp.task('watch', function () {
 
@@ -147,7 +153,10 @@ gulp.task('watch', function () {
   //PDF Watcher Task
   gulp.watch('src/App/js/modules/pdf.worker.js', ['pdf']);
 
+  //Email Template Task
+  gulp.watch('src/EmailTemplates/**/*', ['email']);
+
 });
 
 //Default Command 
-gulp.task('default', ['sass', 'scripts', 'handlebars', 'fonts', 'html', 'viewer', 'favicon', 'assets', 'images', 'pdf', 'watch']);
+gulp.task('default', ['sass', 'scripts', 'handlebars', 'fonts', 'html', 'viewer', 'favicon', 'assets', 'images', 'pdf', 'email',  'watch']);
