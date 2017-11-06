@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="utf-8">
+    <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width">
+    <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">
+    <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title>Cerdelga - Verify Email Template </title>
+    <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            background: #2e6fc4 !important;
+        }
+        /* What it does: Stops email clients resizing small text. */
+
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        /* What it does: Centers email on Android 4.4 */
+
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        table table table {
+            table-layout: auto;
+        }
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        /* What it does: A work-around for email clients meddling in triggered links. */
+
+        *[x-apple-data-detectors],
+        /* iOS */
+
+        .x-gmail-data-detectors,
+        /* Gmail */
+
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+
+        img.g-img+div {
+            display: none !important;
+        }
+        /* What it does: Prevents underlining the button text in Windows 10 */
+
+        .button-link {
+            text-decoration: none !important;
+        }
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+        /* Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting */
+
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            /* iPhone 6 and 6+ */
+            .email-container {
+                min-width: 375px !important;
+            }
+        }
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+        /* What it does: Hover styles for buttons */
+
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+
+        .button-td:hover,
+        .button-a:hover {
+            background: #589df7 !important;
+            border-color: #589df7 !important;
+        }
+        /* Media Queries */
+
+        @media screen and (max-width: 600px) {
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 17px !important;
+                line-height: 22px !important;
+            }
+        }
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+</head>
+
+<body width="100%" bgcolor="#222222" style="background :#2e6fc4;margin: 0; mso-line-height-rule: exactly;">
+    <center style="width: 100%; background: #2e6fc4; text-align: left;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject
+            line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX
+            for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this
+            text is not included, email clients will automatically populate it using the text (including image alt text)
+            at the start of the email's body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: auto;" class="email-container">
+            <!--[if mso]>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Header : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+                <tr>
+                    <td style="padding: 20px 0; text-align: center">
+                        <!-- <img src="/images/logo.png" width="200" height="50" alt="alt_text" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"> -->
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAA0CAYAAAADvY9SAAAOTklEQVR4Xu2cB5SdVRWF984kIQqGFkAFBRFEQIq0KD2AdAjSVIpYUBDpxQSSUAQREQHpINJEQhEp6YFIR6QXwUY3hIBACD1hkuP63jr/rH9e3sy8SSaEN3DXyiLD/OXefc89Z599zh9rLo2IWFHSDba/NJde0dCPdVfOPiI2l9TH9o0RsaakCbYX4h0RcbCkUbb/05XvbNRndTXwP5Z0gO1VysBHxBKS/itpddtPNCpYXTnvOQY+ItaStL7t0yPiU5ImSlpH0lRJu9g+MyLYkN1tbxQR80k6QdJJtl/tysU00rO6AvhVJd0q6RTbJ+ZG7MVmSFpY0guSxkq6TNJkSX+WtKSkjW2/3khgdeVc5xj49N9Y/U6SAPIXkppqTPI1Sd+TtL2kwR9laweb2QY+IjaVtIek823fExEHSDqjA6t4T9IGkh6VtKOkb0v6ru03utKaGuFZcwL8FyUdleDtIOl6SZ+sY9EPSLpa0v6SLpR0sm025CM1Zhv4AqWI6Ctpb0m/6QRy/SXdb3tm+Z6IwEXxvGm236n3eRHRUxKB/T3b79Z737y8bhbgI2LZDIxQwBmSXpEE936kACPdyvKSJkn6q6R90/LrXQss531JJFdLcQJsj4wINuQeSRfZ/mG9D4uIjSXdIulM2wfWe9+8vK4F+IhYQdJZkjbLCUVVDGATvmb7/ojYRhIgfU7SY5JWwVdL6lHHYrBk4sF6kqYnvx9t++EPI/ARgfuEHt9b6xRGxGHPPPPsYVPfeKNfHWvXUksu+WS/fovuUwE+IgpKCP27AMuR9M8Ekg3ZUNJ2kobZvq/WCyKiT27EopI+IYnjz/NxJwD8VtLJF22zqbOMDynwGAlre59cpXrSEbESxnfWOef3ePFF2HLbY7NNB7w7YOMNodcrOiKw0r/zA8HS9i/r2bm5cc2HFPj9EpunagGfhjv8pgm3rH/EoCG4zZqjqalJt9w06tW+ffseZvtSgIeRXCfpH5K+Uh3w2npQROBm8NVsGBno5bbvKAXd1SRtKelmSU9J+qkkTtahtl+IiAUyNpADcBpIrHjOLD4+IjiJxJGvSsJVXWf7htK7avr4iFhc0j6sSxJ5BEkcGTWn93bbxCdOPAndwLyOezDdy2zfmxa9HGuw/XgbJ3WlmTNnPrT19jv1njz5pZqQ7Thwu3eGDR082fYKtpsB/vwE8Gjbx9djyRFBVjo6XciDkjhuTP4Hti/OxcB0fifpGEnfkYTLgnGsnSDcLokF/Q02ImndDNQblYNrRBCACZywHa5dOu87wfawfNcswEcEG8+mL5LPbSZG5cbyjiGZaffO97MhD6V7ZX2MjWzfVScmw8eOu2mTwUOOYeNaDax9wriRUxZaaEGM7hJ+CfA8mEVvB7Po6CVpqf9Oy+tPBhoR80u6W9IybIDttyKiAJ4FjZME23g5/f6fJH0ztRz+Xljd7yVtUQAfEcQIeD9Maw3bTyflvDFPE9bzZDWrSXqJdcK8trLN+3nH5yVdlRtQAA+FJevmFMG0uG7PPB11sytk8JkzZz5cy+p3GLjt9GFHDZrU1NS0PNZeAI9aiLtYzzbgtTtKgB5s+7el434Yeo2kHXADpeuw7AGFC8vFP5ssAQtsGdU+PiIGSPoLbMs2Qa4yIgK3QMKGvzy1BvDbShohaaRt3Er5HbtJ+mNh8bUWGxGcKuY4xvbWHWFSmtfwkaPGbDn0mOMrUjijR48eunnciNcXWXjhQwprL4DneK0uaRPbHOmOgMeVoLn8QdKTpYvx31jOEbZPKQF/kO0WKSEikAmGSzrd9iEdAD9UEu5vFBtVupYg9qOUK/atATx6EVn14bZbJXYR0Sbw6dY4tcQvsuqxtrfqCJMS8CvOmDHjkW0G7tyr8PUDt992xtAjB03s1atpucLaC+Dx1Tx8b9sc9Y6AJ6ghdBFFKkezapxq+7R2gAfsU5OaIg+XrbFVAhURXMf1BN1aGem1tg+uAfw5kn4iaU/bl1e9YxbgU7Zmk0ka/yXp7XRHnQKe9zQ3N181esy4bYYde8L8WPv40Te82a/fogeWrb0AnuB3bPo4hKuOgL80k6V2T0g7wB+EtaNi2max7QF/tKTjsG7bWGDNUQP4kyQNgknZZhPK72gFfERAF8+WRNDjtL6SLIe6QqeBx9dj9dsO3KXXWmutEcOO+tnE3r17L1u29gJ4mAW7TFKDn4c5tDkiAnp2HlZrG7/eFhhFcK12NZwWTs2NtvHVZVDwp7iVSlCLCLLom2pdW3VfK1YTEbukEEfAbDGmDLoIdAT2IrjiaolxfW2T6BWBfraA5/7m5uarR48dv33/ddZqXnyxxfavtvYK8PkifDDBC/exUzWFyqoRi4FhUMLDt0PvsHp4dxm8XrCDdiye+9B4oHHrIkHkHGAzWN2nq1gNdBVquKvtCgMqRkQU76oGnkwT5oWvJkaw0fhuTsGCqREdafukiMDooKwwjkrMighiGLHsLtsFtWzPHlv9DquPiMenTZs2qU+fPstUW3sZeEBg0fBtLB+KyYLx4ci/LIxIDa+9PXk81BMdA2rH5NEqoKWXthdcc2EUvk/LPICN4154Pj4f19dC4zLgTcg8YXzOC/Aopj9oe79aIllEkC/AbPDbxRgj6doMnHBqYhHvHJJUl+evnEon2hQ0FncIEaichnrH++83X92zZxOsqJLXVI9W6mREcNRRBb8uabHUWbBwaCZMBJ9X0VmSch2em4IkS7aH9V5g+9EslJBtXmybAF5tFYhq/P4zaZ1IFegYJ0IhbZ9bsmz0H9wap4JN+p+kh2FWtm/L7JJYgNjWstCsAXMP9z9u+84MpCSNe9m+LPOCI1Jd7ZVZ/K9yY4kPZMpb4vvrBT3x4YRNrGXtLRbfmQc2+rURwcmmJkxChn+fJ2OOCyHzZNZ1vDR7fFBCka0rIzk8es0Ttsk75tnozsDj38lgp6QLQ0PhDxnpNvO6vwetZnPbBJW6x+zcU+/Du+rZEfFZyEDqNaibKKC4FmSETgXKeufemesA/mzbSLZ1j9m5p96Hz81n1zuHD+K6CvCS4MdL2L4y1cedUypFycMXQq0YcPAvUJGyTSJV+E6SIvR1khOuQbN5OcUyNHQqUiiFV0qik4ycgAoXbIm2vociAr0If3wGhhARXE8Lyd3JkngOFPF626icDT0AniLIz7OGCp1bIwUwyn0cSQAhsYISUvj4NdmkbfguAYssEIpHpkfyAx8nIUNapUxIMkKRY1oCB/WktgsVRU8/NvUWlE1+5r9QR5RPODQ/s8lQwMEkQVzf0KinHk9D0j5ZOECkggfTdESBF7GI7A+1j9/NZ3tE2R1EBHoKMuszac1gwv2bZKYLB650DEQEegvJGTkCeg31WFr/ELrKwHMK2TCSHU4P+hBJDqehVabcqBvQ4uOz4I0+jsXjYshaOd4AT3LCCehhe1RE0EZR0ccjgt9daJtEi59RA7FoEiMK3pvaJlHid+fx98x8sVo60WherQaeDeJ3RWGGk8N8uIfemZY6QHcCHv+9R0Tsmq4D7Rtw2YCts/BwG52/CSZi2NOSnk9L38z27hFBxYlsFleENg5wdI81o0pGBG6E03Wc7b0j4ppUPbF8sle09EMi4sjUWnjuGRFxrm0k34YeWPxutq+ICABGm0B/IYgBJjo4QRMlcXqCSXDEBeGiZmTZ79B0M+jn38jnIIQhVCENUEgnDtA2gvZDZel1ZIGI+H5uMKk5KTqt3cyH7JJK0AvUCbKJirnd2pGC2gg7MtcTqI8KPezsZn8QwG9RFJs7O7nufP1cB747gzcna2sT+Pyyg6QKFgOle7eWvFtKoqCQPespmM/JhLvLve0BTwJE3woMhPLZO7b5pKbmyODXu7qqXw9QEUHT0RttadelzV28O2StrKcu4OsED14/u8DD04kFtNm1OSLiadswr4YfRc2VHkfqmqT91yR1LFs88sB0vlGlzpkUkfLbFVSrbF9XtvjUwu/gI4EsMJO90v9O1xanB/DIBfiEh6o/vJ0/D9h+ICLIEaiC0YWG/oPcQGGcxIkuBT5qoNzYsAMeT4KCIEVPDWIXLXgkUGXg0Ujg3edFBIIai6bDC+2GRteVq4BHFqA4TXMq7X332V4pImgjwa2gD5EowdUR4VqATwMAZBqRKDSzUdR8mRsaEIkZG9TwwPO1Bwrh29mr+FxaZKXRNH18Bfi0cJKhpai9RgR6DnLBqnUCT9vdidmFS5fyVIJxRKCTIy28lq0ZfATAPJAZSMSWzs6F52yTVDX8AD3SehhJMVASySzpLqsGnmo/QBdyAQUGXEa9wONWUB7pKn6kFDRbgE+w6QwgeybbpfD8edvTIqJbAc+njhdVmRCKI8e9FvBoJZXPdbJvvW7g8x7uPTlbrun0mlll8SiZ9EWieBJzENzoxOp2wE+yTZmsMvLjMwSvWq6GHhq6s5CIixaPEZ2wePKCl0qt1pfYvqYKeGqi6xS0MSJoMlq5OwKPGEbdlT5zGpvQ1WEdqJOtLD6DK9evnX3xWCb/aES1q6END9WRLyqIAwBMcCWerMZHXBFBL8tbKZTRoUYBenJEYOVcQ989vSkAvwDfwkYEghkfQDT8wMejHgICGjy+neoSrW1tsRpOAq1w6O98YkMbXzXwZLqFnMtnMLSx9Y8I7kPzv1PSt5CMk/ngTqCsuDyApbGKfx+B6teXKcLYnhIRVMFo7D+nvWSuEXal4PGU7JBrny8VNJBg6U2cmh1ZkV96LJj/j3uhhuNtr5m1Wtt+M90QzbB0cNFdtmjJdXCaaLN4DCZVcnEA/jb/sETWW2kZpI2QAPtKStB8KMd1U5hLIwDc1hw7LZJFBBr7Bumr4df72uZjg49HJxCYHeCpKFGUpgBOTICZ0DHw8egEAv8HwlhY2XyJhMoAAAAASUVORK5CYII="
+                            height="52" alt="Cerdelga Live" title="Back to Home">
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Header : END -->
+
+            <!-- Email Body : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+
+                <!-- BEGIN -The yellow bar -->
+                <tr>
+                    <td bgcolor="#ffce54" align="center" height="7px">
+                        <!-- <img src="http://placehold.it/1200x600" width="600" height="" alt="alt_text" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img"> -->
+                    </td>
+                </tr>
+                <!-- END - The Yellow bar -->
+
+                <!-- Spacer -->
+                <tr>
+                    <td bgcolor="#ffffff" height="50px">
+                        <!-- Spacer Image -->
+                        &nbsp;
+                    </td>
+                </tr>
+
+                <!-- Verify Icon Image  -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center">
+                        <img src="data:image/png;base64,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7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9loe39b6vwVQBwqe/qXZzs/2mk7v+jx/f/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/udb6/7nW+v+51vr/o8f3/2mk7v9dnOz/cKjv6ABkoe3+XZzs/6TJ9//Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//6TJ9/9dnOz/ZKHt/gBdnOz/XZzs/7nW+v/Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//+bwfL/cKbs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/b6bs/57E8v/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9rpOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/2uk7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/7jQ6//W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f/W4en/1uHp/9bh6f+30Ov/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///jm//7z2f/+8dX//vPa//7x1P//9+L///no///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en//OGo//nRfP/5zXT/+dKA//jNdP/51ov//evD///45v//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///45v/85rX/98FS//a7Q//2u0P/9rxE//a7Q//2vEX/+MVe//3hpv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/504L/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r1H//nSe///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/504L/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r1H//rOdv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/504L/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r1I//rPeP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/504H/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r1I//rPev//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/50oD/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r1J//rQe///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///35P/70n//9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r5J//rRfv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///34v/70n7/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r5J//rRf///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///24f/60n3/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r5K//rSgP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///23//70Xz/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r5K//rSgf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///13v/70Xr/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9r5L//vTg///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///13f/70Hn/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979M//vThf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///02//70Hj/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979M//vUhv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///z2f/6z3f/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979M//vUh///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///z2P/6z3b/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979N//vVif//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///z1v/6z3X/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979N//vWi///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///y1v/6znT/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979O//vWjP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///y1P/5znL/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979O//vXjf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///x0v/5zXL/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BO//vXj///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///x0f/5zHD/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BO//vXj///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//7wz//6zHD/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BP//vYkf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//7vzf/6zG//9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BP//vYkf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//7vzP/6y23/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BP//vYkv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//7tyf/6ymr/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BO//vYkP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//7uyv/5yWX/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/979M//vZlP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//713f/62pP/9r1I//a7Qv/2u0L/9rtC//W7Qv/2u0L/+Mpr//3qv///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/+9d3//NuY//rWif/6z3n/+tOD//rQev/61Yb//ezF///56P//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//3tyP/60X3/+tB+//3nuf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en//u3H//jKaP/2vUf/9rxE//nIY//857r///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/+7MX/+MZf//a7Qv/2u0L/9rtC//a7Qv/3w1j//ea3///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//3ms//5x2P/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98Rb//zfpP//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//jIZ//2u0L/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9rtC//fDV///+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//jFXf/2u0L/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/9rtC//fCVf//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np//veoP/3w1b/9rtC//a7Qv/2u0L/9rtC//a7Qv/2u0L/98BQ//rYkv//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///45v/85LL/98FS//a7Qv/2u0L/9rtC//a7Qv/2v03//eCj///35P//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en//OSy//fCVP/2u0L/9rtC//bAUP/936H///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///jn//veof/4x2L/98Vc//zbl///+Ob///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/9bh6f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f//+en///np///56f/U4Or/XZzs/16d7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//9dnOz/XZzs/3qt6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/+Fs+v/hbPr/4Wz6/96rev/XZzs/2Ge7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq//93rO3/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/3ut7P/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7nW+v/Z6v//2er//9nq///O4v7/lL7x/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/g7Pu/4Oz7v+Ds+7/lL7x/9Lm/v/Z6v//2er//7nW+v9dnOz/XZzs/wBdnOz/XZzs/7TT+v/Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//7TT+v9dnOz/XZzs/wBqo+74XZzs/4m48//Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//9nq///Z6v//2er//4i38v9dnOz/aqPu+AByqe/AXZzs/12c7P9no+3/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/fK/w/3yv8P98r/D/ZaHt/12c7P9dnOz/carvvwBJkv8Hb6fv3F2c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/1yc7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9vp+/aVar/BgAAAAAAAP//AXWs8Y5yqu/Ob6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/2mj7uZvp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/eb6fv3m+n795vp+/ecqrvznWr8Y4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/1yb60AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/1yb60AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABdnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/1yb60AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADq6vQY4ejvs+Ln7+vi6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/8DV7v/i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ejv3uHp7ogAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODr9Rni5+7j4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/8DV7v/i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O+yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHo76Ti6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/8DV7v/i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//5OrwVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHo7+ji6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/+PuO3/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9vpuz/2OLv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujumAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/9jn+z/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/XZzs/12c7P9dnOz/vNLu/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ejutAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHo7+ji6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7/+iw+7/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P9+r+z/fq/s/36v7P+HtO3/2+Tu/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujumAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHo76Ti6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//5OrwVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLr9Rri5+7j4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//h6O60AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg6/UZ4ujvsuLn7+vi6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ujv/+Lo7//i6O//4ejv3uHn7ooAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAP//Sm2aoAjvgGsAAAAASUVORK5CYII="
+                            width="128px" height="99px" alt="Reset Icon">
+                    </td>
+                </tr>
+                <!-- End of Sun Image -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 40px; font-family: sans-serif; font-size: 32px; line-height: 20px; color: #434a54; text-align: center;">
+                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 30px; line-height: 27px; color: #434a54; font-weight: bold; text-align: center;">Reset Your Password</h1>
+                                </td>
+                            </tr>
+                            <!-- Intro Text -->
+                            <tr>
+                                <td style="padding: 40px; padding-top: 0; padding-bottom: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #434a54; text-align: center;">
+                                    <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 16px; line-height: 18px; color: #818994; font-weight: bold; text-align: center;">Hi {profile name}</h3>
+                                    <p style="margin: 0; color: #818994; line-height: 1.6;">We've received a request to reset your password for Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life.
+                                        <br/> You can use the below link to reset your password.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <!-- Button : BEGIN -->
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
+                                        <tr>
+                                            <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
+                                                <a href="http://www.google.com" style="background: #468be6; border: 15px solid #468be6; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: normal;"
+                                                    class="button-a">
+                                                    <span style="color:#ffffff;" class="button-link">
+                                                        <span style="color: #ffffff; display: inline-block; vertical-align: middle;">
+                                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANCAMAAACuAq9NAAAAAXNSR0IB2cksfwAAAJNQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////0TslXgAAADF0Uk5TAAR2xvLHNhXI/9id8ekOsvcSX0NFgzeFJZrsCJh+TSsBz27f775Ia3vWwkv5LDWoHmrJuQQAAAB0SURBVHicTc1rG0JQEATgKV2MKFFJlJMuiC7//9fZzpHst3dnnl0Ao7E1mc7Qzdyms3C9ZccV/TUChkYbOlsId4aRZPvYPSSGqa7yCOjF6XuI9DJ1TpU4v1xv90JcMla/d+LqwRp/N89Xn+o8A4Z+D4nwgxaqYweXBiR8tgAAAABJRU5ErkJggg=="
+                                                                alt="Reset Password Icon">
+                                                        </span>&nbsp;&nbsp;&nbsp;Reset your password&nbsp;&nbsp;&nbsp;</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- Button : END -->
+                                </td>
+                            </tr>
+                            <!-- End of Intro Text -->
+
+                            <!-- Space before next section -->
+                            <tr>
+                                <td height="10">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+
+                <!-- Kind Regards -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td align="center" style="padding: 30px; font-family: sans-serif; font-size: 15px;  color: #7f8893;">
+                                    <p style="margin: 0;">Kind regards,</p>
+                                    <h3 style="font-size: 16px; color: #484f59;">Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life Team</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" style="padding-left:40px; padding-right: 40px;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#ffedef">
+                            <tr>
+                                <td bgcolor="#ffedef" align="center" style="padding: 40px; padding-top: 20px; padding-bottom: 20px;font-family: sans-serif; font-size: 12px;  color: #cd011f;">
+                                    <p style="font-size: 12px; line-height: 1.6; margin: 0; text-align: center;">
+                                        <span style="font-weight: bold;">The link will expire in 24 hours.</span> If you require a new link, please go the <br/> 
+                                        Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life website and select Forgotten Password.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Spacer -->
+                <tr>
+                    <td height="40" bgcolor="#ffffff" style="background: #ffffff;">&nbsp;</td>
+                </tr>
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- This is an automated email message  -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="border-top: 1px solid #ccd1d9; max-width: 680px; font-family: sans-serif; color: #888888; line-height:18px; background: #f9fbfc;">
+                <tr>
+                    <td style="padding: 40px; padding-bottom: 20px; width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: left; color: #4c525c;">
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">This is an automated email message. Please do not reply to this email address.</h5>
+                        <p style="margin: 0; color: #979fa8;">For information about how we process data and monitor communications please see our Privacy Policy
+                            here and for terms of use please see our Terms and Conditions here.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 40px; padding-top: 0px; padding-bottom: 20px; width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: left; color: #4c525c;">
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">Reporting of side effects.</h5>
+                        <p style="margin: 0; margin-bottom: 20px; color: #979fa8;">
+                            <span style="color:#000000;">&#9660;</span>Cerdelga
+                            <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> (eliglustat) is subject to additional monitoring. This will allow quick identification
+                            of new safety information. Reporting any suspected adverse reactions is important for the continued
+                            monitoring of the benefit/risk balance of all medicinal products. You are asked to report any
+                            suspected adverse reactions via the appropriate national reporting system and contact Sanofi
+                            Genzyme.
+                        </p>
+                        <p style="margin: 0; margin-bottom: 20px; color: #979fa8;">
+                            In the UK: Yellow Card Scheme. www.mhra.gov.uk/yellowcard. Suspected adverse reactions should also be reported to Sanofi
+                            Genzyme: Tel: +44 (0) 800 090 2314. Alternatively, send via E-mail to (UK-drugsafety@sanofi.com)
+                        </p>
+
+                        <p style="margin: 0; color: #979fa8; margin-bottom: 20px;">
+                            This email is intended solely for the addressee and may contain confidential information. If you received this email in error,
+                            please immediately and permanently delete it. Do not use, copy or disclose the information contained
+                            in this email or in any attachment.</p>
+                        <p style="margin: 0; color: #979fa8; margin-bottom: 20px;">This material has been developed by Genzyme for patients who have been prescribed Cerdelga® by their
+                            doctor.
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">Prescribing Information</h5>
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">&#9660;Cerdelga 84mg (eliglustat) hard capsules</span>
+                            <br/> Please refer to the Summary of Product Characteristics (SmPC) before prescribing.
+                        </p>
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Product Composition:</span> Each capsule contains 84.4 mg of eliglustat (as tartrate).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Indication:</span>
+                            Cerdelga is indicated for the long-term treatment of adult patients with Gaucher disease type 1 (GD1), who are CYP2D6 poor
+                            metabolisers (PMs), intermediate metabolisers (IMs) or extensive metabolisers (EMs).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Dosage and administration:</span>
+                            Therapy with Cerdelga should be initiated and supervised by a physician knowledgeable in the management of Gaucher disease.
+                            The recommended dose is 84 mg eliglustat twice daily in CYP2D6 intermediate metabolisers (IMs)
+                            and extensive metabolisers (EMs) and 84 mg once daily in CYP2D6 poor metabolisers (PMs). If a
+                            dose is missed, the prescribed dose should be taken at the next scheduled time; the next dose
+                            should not be doubled. Cerdelga is to be taken orally, swallowed whole, preferably with water,
+                            and should not be crushed, dissolved, or opened. The capsules may be taken with or without food.
+                            Consumption of grapefruit or its juice should be avoided.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Special populations:
+                                <span style="font-style: italic;">CYP2D6 ultra-rapid metabolisers (URMs) and indeterminate metabolisers:</span>
+                            </span>
+                            Cerdelga should not be used.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Patients with hepatic impairment:</span>
+                            Not studied in this group. Therefore, no dose recommendations can be made.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Patients with renal impairment:</span>
+                            Not studied in this group. Therefore, no dose recommendations can be made.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Elderly patients (≥65 years):</span>
+                            No significant differences were found in the efficacy and safety profiles of elderly patients and younger patients.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Paediatric population:</span>
+                            No data are available.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; ">Contra-indications:</span>
+                            Hypersensitivity to the active substance or to any of the excipients. This product contains lactose. Patients with rare hereditary
+                            problems of galactose intolerance, Lapp lactase deficiency or glucose-galactose malabsorption
+                            should not take this medicine. Patients who are CYP2D6 intermediate metabolisers (IMs) or extensive
+                            metabolisers (EMs) taking a strong or moderate CYP2D6 inhibitor concomitantly with a strong or
+                            moderate CYP3A inhibitor, and patients who are CYP2D6 poor metabolisers PMs) taking a strong
+                            CYP3A inhibitor. Use of Cerdelga under these conditions results in substantially elevated eliglustat
+                            plasma concentrations.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; ">EDUCATIONAL GUIDANCE:</span>
+                            Prior to prescribing Cerdelga, physicians must familiarise themselves with educational materials which consist of a Guide
+                            to the Prescriber and they should provide their patients with a
+                            <span
+                                style="font-style:italic" ;> Patient Alert Card</span>.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Warnings and Precautions:
+                                <span style="font-style: italic" ;>Initiation of therapy: CYP2D6 genotyping</span>: </span>
+                            Before initiation of treatment, patients should be genotyped for CYP2D6 to determine the CYP2D6 metaboliser status.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style:italic;">Concomitant use and Drug Interaction:</span>
+                            Eliglustat is metabolised primarily by CYP2D6 and to a lesser extent by CYP3A4. Concomitant administration of substances
+                            affecting CYP2D6 or CYP3A4 activity may alter eliglustat plasma concentrations. Eliglustat is
+                            an inhibitor of P-gp and CYP2D6 in vitro; concomitant administration of eliglustat with P-gp
+                            or CYP2D6 substrate substances may increase the plasma concentration of those substances. Cerdelga
+                            is contraindicated in patients who are CYP2D6 intermediate metabolisers (IMs) or extensive metabolisers
+                            (EMs) taking a strong (e.g. paroxetine, fluoxetine, quinidine) or moderate (e.g. duloxetine,
+                            terbinafine) CYP2D6 inhibitor concomitantly with a strong (e.g. clarithromycin, itraconazole)
+                            or moderate (e.g. erythromycin, fluconazole) CYP3A inhibitor. Cerdelga is contraindicated in
+                            patients who are CYP2D6 poor metabolisers (PMs) taking a strong CYP3A inhibitor. Use of Cerdelga
+                            with strong CYP3A inducers substantially decreases the exposure to eliglustat, which may reduce
+                            the therapeutic effectiveness of eliglustat; therefore concomitant administration is not recommended.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Agents that may increase eliglustat exposure:
+                                <span style="font-style:italic" ;>CYP2D6 inhibitors (In intermediate (IMs) and extensive metabolisers (EMs))</span>:</span>
+                            When a strong CYP2D6 inhibitor (e.g. paroxetine, fluoxetine, quinidine, bupropion) is used concomitantly, a dose of eliglustat
+                            84 mg once daily should be considered. Caution should be used with moderate CYP2D6 inhibitors
+                            (e.g. duloxetine, terbinafine, moclobemide).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP3A inhibitors (In intermediate (IMs) and extensive metabolisers (EMs)):</span>
+                            Caution should be used with strong CYP3A inhibitors (e.g. clarithromycin, ketoconazole, itraconazole). Caution should be
+                            used with moderate CYP3A inhibitors (e.g. erythromycin, ciprofloxacin, fluconazole, diltiazem,
+                            verapamil, cimetidine).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP3A inhibitors (In poor metabolisers (PMs)):</span>
+                            The use of strong CYP3A inhibitors is contraindicated. Use of a moderate CYP3A inhibitor with eliglustat is not recommended.
+                            Caution should be used with weak CYP3A inhibitors (e.g. amlopidine, cilostazol, fluvoxamine,
+                            goldenseal, isoniazid, ranitidine, ranolazine).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP2D6 inhibitors used simultaneously with CYP3A inhibitors (In intermediate (IMs) and extensive
+                                metabolisers (EMs)):</span>
+                            The use of a strong or moderate CYP2D6 inhibitor concomitantly with a strong or moderate CYP3A inhibitor is contraindicated.
+                            Grapefruit products contain one or more components that inhibit CYP3A and can increase plasma
+                            concentrations of eliglustat. Consumption of grapefruit or its juice should be avoided.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Agents that may decrease eliglustat exposure: Strong CYP3A inducers (In intermediate (IMs), extensive
+                                metabolisers (EMs) and poor metabolisers (PMs)):</span>
+                            Use of a strong CYP3A inducer (e.g. rifampicin, carbamazepine, phenobarbital, phenytoin, rifabutin and St. John’s wort) with
+                            eliglustat is not recommended.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Agents whose exposure may be increased by eliglustat:
+                                <span style="font-style: italic" ;>P-gp substrates:</span>
+                            </span>
+                            Lower doses of substances which are P-gp substrates (e.g. digoxin, colchicine, dabigatran, phenytoin, pravastatin) may be
+                            required.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP2D6 substrates:</span>
+                            Lower doses of medicinal products that are CYP2D6 substrates e.g. metoprolol may be required. These include certain antidepressants
+                            (tricyclic antidepressants, e.g. nortriptyline, amitriptyline, imipramine, and desipramine),
+                            phenothiazines, dextromethorphan and atomoxetine. The list of substances mentioned above is not
+                            an inclusive list and the prescriber is advised to consult the SmPC of all other prescribed medicinal
+                            products for potential drug-drug interactions with eliglustat.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Patients with pre-existing cardiac conditions:</span>
+                            Because eliglustat is predicted to cause mild increases in ECG intervals at substantially elevated plasma concentrations,
+                            use of Cerdelga should be avoided in patients with cardiac disease (congestive heart failure,
+                            recent acute myocardial infarction, bradycardia, heart block, ventricular arrhythmia), long QT
+                            syndrome, and in combination with Class IA (e.g. quinidine) and Class III (e.g. amiodarone, sotalol)
+                            antiarrhythmic medicinal products.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Monitoring of clinical response:</span>
+                            Some treatment-naïve patients showed less than 20% spleen volume reduction (sub-optimal results) after 9 months of treatment.
+                            For these patients, monitoring for further improvement or an alternative treatment modality should
+                            be considered. For patients with stable disease who switch from enzyme replacement therapy to
+                            eliglustat, monitoring for disease progression (e.g. after 6 months with regular monitoring thereafter)
+                            should be performed for all disease domains to evaluate disease stability. Reinstitution of enzyme
+                            replacement therapy or an alternative treatment modality should be considered in individual patients
+                            who have a sub-optimal response.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Fertility, Pregnancy and lactation:
+                                <span style="font-style: italic;">Pregnancy</span>:</span>
+                            There are no or limited amount of data from the use of eliglustat in pregnant women. Animal studies do not indicate direct
+                            or indirect harmful effects with respect to reproductive toxicity. As a precautionary measure,
+                            it is recommended to avoid the use of Cerdelga during pregnancy.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Breast-feeding:</span>
+                            It is unknown whether eliglustat or its metabolites are excreted in human milk. Available pharmacodynamics / toxicological
+                            data in animals have shown excretion of eliglustat in milk. A risk to the newborns/ infants cannot
+                            be excluded. A decision must be made whether to discontinue breast-feeding or to discontinue/abstain
+                            from Cerdelga therapy taking into account the benefit of breast-feeding for the child and the
+                            benefit of therapy for the woman.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Fertility:</span>
+                            Effects on testes and reversible inhibition of spermatogenesis were observed in rats. The relevance of these findings for
+                            humans is not known.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Undesirable effects:</span>
+                            The majority of adverse reactions are mild and transient. The most commonly reported adverse reaction with Cerdelga is dyspepsia,
+                            in approximately 6% of the patients. The most frequently reported serious adverse reaction in
+                            clinical studies was syncope (0.8%). The following overall adverse reaction profile of is based
+                            on pooled results from two pivotal phase 3 studies, one 8-year, long term phase 2 study and one
+                            supporting phase 3b study Headache, dizziness, palpitations, dyspepsia, abdominal pain upper,
+                            diarrhoea, nausea, constipation, abdominal pain, gastroesophageal reflux disease, abdominal distension,
+                            gastritis, arthralgia and fatigue. For further information on adverse reactions, please refer
+                            to the SmPC.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Legal classification:</span>
+                            POM (Prescription only medicine).
+                            <br/>
+                            <span style="color:#000000; font-weight: bold;">List Price:</span>
+                            £19,165 per 56 capsule pack.
+                            <br/>
+                            <span style="color:#000000; font-weight: bold;">Marketing Authorisation Number:</span>
+                            EU/1/14/974/001 (56 capsules), EU/1/14/974/002 (196 capsules), EU/1/14/974/003 (14 capsules).
+                            <br/>
+                            <span style="color:#000000; font-weight: bold;">Marketing Authorisation Holder:</span>
+                            Genzyme Europe B.V., Gooimeer 10, NL-1411 DD Naarden, The Netherlands.
+                            <br/>
+                            <span style="color:#000000; font-weight: bold;">Further information is available from Genzyme Therapeutics Ltd, 4620 Kingsgate, Cascade Way,
+                                Oxford Business Park South, Oxford OX4 2SU.</span>
+                            <br/>
+                            <span style="color:#000000; font-weight: bold;">Date of preparation:</span>
+                            03 November 2017.
+                            <br/>
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- Adverse Event Paragraph -->
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8; text-align: center;">
+                            <span style="color:#000000;">&#9660;</span>Adverse events should be reported. Reporting forms and information can be found
+                            at www.mhra.gov.uk/yellowcard Adverse events should also be reported to
+                            <br/>Sanofi Tel: 0800 0902314. Alternatively, send via E-mail to UK-drugsafety@sanofi.com
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">
+                            GZUK.CERD.17.03.0181m. November 2017
+                        </p>
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">
+                            Copyright &copy; 2017 Genzyme Corporation. All rights reserved.
+                        </p>
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">
+                            Questions about the Cerdelga
+                            <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life website?
+                        </p>
+                    </td>
+
+
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+            <table>
+                <tr>
+                    <td height="100">&nbsp;</td>
+                </tr>
+            </table>
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+    </center>
+</body>
+
+</html>

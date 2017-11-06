@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="utf-8">
+    <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width">
+    <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">
+    <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title>Cerdelga - Welcome Email Template </title>
+    <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            background: #2e6fc4 !important;
+        }
+        /* What it does: Stops email clients resizing small text. */
+
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        /* What it does: Centers email on Android 4.4 */
+
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        table table table {
+            table-layout: auto;
+        }
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        /* What it does: A work-around for email clients meddling in triggered links. */
+
+        *[x-apple-data-detectors],
+        /* iOS */
+
+        .x-gmail-data-detectors,
+        /* Gmail */
+
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+
+        img.g-img+div {
+            display: none !important;
+        }
+        /* What it does: Prevents underlining the button text in Windows 10 */
+
+        .button-link {
+            text-decoration: none !important;
+        }
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+        /* Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting */
+
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            /* iPhone 6 and 6+ */
+            .email-container {
+                min-width: 375px !important;
+            }
+        }
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+        /* What it does: Hover styles for buttons */
+
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+        /* Media Queries */
+
+        @media screen and (max-width: 600px) {
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 17px !important;
+                line-height: 22px !important;
+            }
+        }
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+</head>
+
+<body width="100%" bgcolor="#222222" style="background :#2e6fc4;margin: 0; mso-line-height-rule: exactly;">
+    <center style="width: 100%; background: #2e6fc4; text-align: left;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject
+            line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX
+            for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this
+            text is not included, email clients will automatically populate it using the text (including image alt text)
+            at the start of the email's body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: auto;" class="email-container">
+            <!--[if mso]>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Header : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+                <tr>
+                    <td style="padding: 20px 0; text-align: center">
+                        <!-- <img src="/images/logo.png" width="200" height="50" alt="alt_text" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"> -->
+                        <img src="data:image/png;base64,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"
+                            height="52" alt="Cerdelga Live" title="Back to Home">
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Header : END -->
+
+            <!-- Email Body : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+
+                <!-- BEGIN -The yellow bar -->
+                <tr>
+                    <td bgcolor="#ffce54" align="center" height="7px">
+                        <!-- <img src="http://placehold.it/1200x600" width="600" height="" alt="alt_text" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img"> -->
+                    </td>
+                </tr>
+                <!-- END - The Yellow bar -->
+
+                <!-- Spacer -->
+                <tr>
+                    <td bgcolor="#ffffff" height="50px">
+                        <!-- Spacer Image -->
+                        &nbsp;
+                    </td>
+                </tr>
+
+                <!-- Sun Image  -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center">
+                        <img src="data:image/png;base64,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"
+                            width="117px" height="117px" alt="Sun Image">
+                    </td>
+                </tr>
+                <!-- End of Sun Image -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 40px; font-family: sans-serif; font-size: 32px; line-height: 20px; color: #434a54; text-align: center;">
+                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 30px; line-height: 27px; color: #434a54; font-weight: bold; text-align: center;">Welcome to Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life</h1>
+                                </td>
+                            </tr>
+                            <!-- Intro Text -->
+                            <tr>
+                                <td style="padding: 40px; padding-top: 0; padding-bottom: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #434a54; text-align: left;">
+                                    <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 16px; line-height: 18px; color: #818994; font-weight: bold; text-align: left;">Hi {profile name}</h3>
+                                    <p style="margin: 0; color: #818994; line-height: 1.6;">Thank you for taking the time to create your profile for Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 40px; padding-top: 0; padding-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.6; color: #434a54; text-align: left;">
+                                    <p style="margin: 0; color: #818994;">Now that you are registered, we wanted to give you a short summary of how you can start
+                                        creating a Personalised Patient Pack for your Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> patients.</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 40px; padding-top: 0; padding-bottom: 30px; font-family: sans-serif; font-size: 15px; line-height: 1.6;color: #434a54; text-align: left;">
+                                    <p style="margin: 0; color: #818994;">The process of creating a Personalised Patient Pack will follow three steps &ndash; A
+                                        Patient Activation Measure
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> survey to understand the treatment engagement level of your patient,
+                                        the creation of a Personalised Patient Pack based on their engagement level and,
+                                        finally delivering the Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life Pack to a preferred location.</p>
+                                </td>
+                            </tr>
+                            <!-- End of Intro Text -->
+
+                            <!-- Space before next section -->
+                            <tr>
+                                <td height="50">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#f0f3f6" align="left" height="100%" valign="top" width="100%" style="padding-top: 50px; padding-bottom: 40px">
+                        <!-- Table One PAM-->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:560px;">
+                            <tr>
+                                <td align="center" valign="top" width="25%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABfCAMAAABfuyCDAAAAAXNSR0IB2cksfwAAAftQTFRFAAAAeazsdKrrZKHsXZzsaKLsdqrrcazwea7qbaXsXZvsd6vrkrrr5erp//np2uPqgLDreazqZqLs5OrpyNrqcafr4+npbaTs9fPpmr/rcajsZ6Lsj7nr4OfqpMTq1uHpe63rmb/ro8TqcKjsZqHsj7jruNDr6u3p/em++Mpp9sBQ9r5J+Mhk+92d/em/+Mpq9rtC+Mxv/evE9r1J+9yb98JV+Mpr/u3J/vHT+tWK9sFR/u7K+Mxu9r9M/OSw/Oa098NX+96f+taL/evD98dj+c51+Mts+9uX+c10//no+92c/ezF+tmU/erA/ezG+tiQ+teO+tiR+9+l/u3I/tvS+56n+o2Z+omW+5qk/cPB/tvT+oSR+6Kq/t7V+oiV/cHB+pGb/t7W+56o/tnd/+Dj/LG6+o6Z/uPZ/+3v+6Gp+oqW/dDL/svR+pGc+omV/cPC/LK6+5mj/cLB+6et+5+o/cTD/b2++o6a+6as/uDW/L29/tzT/uHX/Lm6/Li5/Lq7/cjF/uLY+PXp3OXpbaXsb6bqydrqrcrqc6jreavrYp/slr3riLXrYJ3sd6rrSZL/danrYZ7se6zrgID/fLDtd6vrdansg7LshLLsjLfseq7r4ujv4efv4ejv4ujw4+nu4efv4eju7+/v5Ofv4ufv4ujv4+rx4ujz4+fvLGS62AAAAKl0Uk5TAF/w/v/95zRh+Snq///////T/v//8//6////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+vj//+vA/////40H3P+/Ao7P3///9HX/zruFLvnmEEHs2iQsQClTlhoAAAJfSURBVHic7djncxJBGMfxVTd2166YiKiQaI4Q1xATRFGS2HvjCFljNEFUlBh7N/bE3nvv/plycOHu3jx5nFmMg/t9wcxvZufDzQ03NwMhw4aPoNIrGzmKkNFl8mGjMWPJODp+ApPexEl0MplCp8qXGZtGpxNKiyGzGXSmohX9z9CuWeUVs922hX2wy+e4YNpVkTvncSxkc10gPc+8BMfCNh+kveap/AWg74Z52SDtM0+5HQuZF6Qr84d8joWtEqTd+UNVjoXM5wZp5snebV+VfWHzehhMZy/V41zIFjiVknnQFa3oIaPVW0a9ZUBavWVK40FXtKKHjF5YrflrAgOrdpHGkWmL62C6Npg7V+9YyJbUgXQ1b2gMLeXhZYWFvQONDXw5SGvcsCJ8hW0hW8mjIB3koexnlDfZFrIQ10C6hjcb3+9vsRa2Zr4KpOs5j0Q5X22tNcgiPNgE0mxtmHP/uvW2hS28gcE02xjYtNlaWwJbt6HavmMnG4yWlKIV/Z/Qu2J6vDUxsNpiukCm726H6bY9uXMdjoVs7z6QjonOruR+kTpQWAeRdXWKQyCtC8NKi8O2heyIyIB0t0hmT2XEUdtClhQ6SLeKHuP74+3WwtYjjoH0cSHSGSFOWOsksrToPgXS7PQZIeJnCyuF/4GkOhhMs3OJ8xesdTFx6TKq3itX2WC0pBSt6NKlrxWDvk5vkJv0VjHoPtpPbtM7d/ukd4/ef0AePvqjf4GwPX5CCHn67PmLl5J79foNMXsru3fkL9DvZdMfCvTHT3Llz18KNPn6Tab8/Qex9/OXtEz4N68N+i5NgMU/AAAAAElFTkSuQmCC"
+                                                    width="90" height="" alt="PAM Icon" border="0" align="center" style="width: 100%; max-width: 70px; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                <td align="left" valign="top" width="75%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 16px; line-height: 18px; color: #434a54; font-weight: bold; text-align: left;">Patient Activation Measure
+                                                    <sup style="font-size: 12px; line-height: 0; vertical-align: 7px">&reg;</sup> (PAM
+                                                    <sup style="font-size: 12px; line-height: 0; vertical-align: 7px">&reg;</sup>)</h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;font-family: sans-serif; font-size: 15px; line-height: 1.6; color: #555555; padding: 10px 10px 0;"
+                                                class="stack-column-center">
+                                                <p style="margin: 0; color: #818994;">The PAM
+                                                    <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> uses 10 questions to determine a patient's engagement and
+                                                    participation level with their healthcare team, disease and treatment.
+                                                    The answers they provide will determine which level, from Disengaged
+                                                    (level 1) to Activated (level 4), they currently reside. Using this result
+                                                    you can then tailor treatment information to your patient's needs.</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="30">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="30">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- Table Two - Personalised Pack -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:560px;">
+                            <tr>
+                                <td align="center" valign="top" width="25%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <img src="data:image/png;base64,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"
+                                                    width="90" height="" alt="Personalised Pack Icon" border="0" align="center"
+                                                    style="width: 100%; max-width: 70px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                <td align="left" valign="top" width="75%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 16px; line-height: 18px; color: #434a54; font-weight: bold; text-align: left;">Personalised Patient Pack</h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;font-family: sans-serif; font-size: 15px; line-height: 1.6; color: #555555; padding: 10px 10px 0;"
+                                                class="stack-column-center">
+                                                <p style="margin: 0; color: #818994;">The content to create a Personalised Patient Programme is categorised into
+                                                    5 main sections, each with sub sections. The information is filtered
+                                                    based on the patient’s engagement level, and you can select content relevant
+                                                    to their needs, giving your patients a truly personalised experience
+                                                    that will aid their understanding of their disease and treatment with
+                                                    Cerdelga
+                                                    <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="30">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="30">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- Table 3 - Personalised Delivery -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:560px;">
+                            <tr>
+                                <td align="center" valign="top" width="25%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABPCAMAAABcbSIYAAAAAXNSR0IB2cksfwAAAZJQTFRFAAAA98de98VZ9r5K9rtC9sBO98Rd+sRY98hc9rpB98BO+bs+98Rd+c95/u3I+Mxt/ei8//np/u/O98JW9rtB+MRd9r9L/u/N+dSE+9+l/ei99r5L9r1I98JW/vHU98di+tWG//jl+96f9rtE98NX/ea298FT//fi+c51+Mlo//Tc+o2Z+oSR+o2W+MNy/u7L//no+9uX/u3J/tnP/Oa29r1J/OOu/93h/tnR/vDP+teO+Mxu//bg//jn98Rc9rxG9sBP/evD98JT/vLY+dF9/sfN+96g/tnS+5yl+pOe//Hj+9uYa6TuXZzsm8Hug7Lu2er/msP1wd3/qc//tdb/1uj/zOP/u9n/rND/0OX/r9L/fLDxbKbuY6Dsxdnsn8Ptnr7gnbG8nK+2nLC6n8HpnbPDnbjPosTt5+zq+teP//nn+9yb/OSv98Rb9rtD+MVe98dg9rpC98FT+L5B98RZ98Vb+sNa4ujv4ujv4ejv4ufv4ejv4ujv4uv14ufu4ujv4Ov14ujv4ufv4eju4ujv6+v/MxkCUwAAAIZ0Uk5TAF/w/v/95zRh//op6v//////////1P7////////z///////////6////////////////////////////////////////////////////////////////////////////////////////////////02D/+Cfw6DP/2+jApHwa49AZsuvmnQ3r2XseAAACrklEQVR4nO3Z6XPSQBgG8K2+VfHeiq2ApSAoEKNCpShtBdLWWq3VWqDeUvGu933f+n+7AUzTZDPZ3WxmPHi+dKYfftPJy8P0fYNQz5q1ID2969YjtKFXPgwQgI2b0GbYsnXbdiw3fTsguBP1w8AugJBUORyB3cFBBICjQwCxuDx5TwKSe2GfTuNUGiCjeAT3q0YOHFQOdWiczQEkh73RqimHsUFjnI/ASMEjfaQTVT1qpnExCTCa9YXGyhhAetwXGh8bBShFfaExLpShEvaHxtoEJETb40LjSeH2hNxonJoSak88Bqp6vBMHGuPpBH97lAyAuTIn6LT+5cLZHtKJcmjmpJGZUw40Lpb42kOaXNEsv3Og8Xiapz2zAEO2OjjRp+f4c4aNFpDnzrLS85w516X/R3qhypBaXYRmkavVRRH6PIt8Qeivnr+46J763zfGBVGa4UmL0u5jrInS7mMUftY+jtFHult067P+t4pe80y7jM4L7TjGS3WvtOMYbfKfNMYuvUJf5swVVvqqf/9fX2s0lq43byw13HPzVrN5m/y8c5eNbq3U9v2EGrIx0vYeJzp7D2AqxSSThMqUq4EDrS9gOVaYRKvYrwZ0OlqCSJ5DxvpdzHo1oNLhCiSLXHJ7s199NaDRoQSMCRzPcpargZ3W5x1b5pdb27T5amCjlQzZ40Vg3LoBmK4GVno4ad/j2aPfxYyrgYXOj7D2hB79Lva7Pavo7CxPT+gpGO0x0ynOntCjTXTaY6LJp56zJ/RMZtrtWaE1gZ7QE2+3x6DJN4xIT+iZTpD26HQ/DCwL94SeMGnPfRjU3xU8kH3Q73sIjwKP0RM/3nAEngafPUeo54Uf72VevkJGXsvKG2TNW1n0Oxv9Xhb9wUZ//CRH/myTEfry9Zt3+PuPnxRaen4BEtJReDPIC1sAAAAASUVORK5CYII="
+                                                    width="90" height="" alt="Personalised Delivery Icon" border="0" align="center"
+                                                    style="width: 100%; max-width: 70px;  font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                <td align="left" valign="top" width="75%">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                        <tr>
+                                            <td style="text-align: center; padding: 0 10px;">
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 16px; line-height: 18px; color: #434a54; font-weight: bold; text-align: left;">Personalised Delivery</h3>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;font-family: sans-serif; font-size: 15px; line-height: 1.6; color: #555555; padding: 10px 10px 0;"
+                                                class="stack-column-center">
+                                                <p style="margin: 0; color: #818994;">Patients have busy lives, so we are giving your patient the option to either
+                                                    get their Cerdelga
+                                                    <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life Pack delivered to their home address, or to the treatment
+                                                    centre.
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- Two Even Columns : END -->
+
+                <!-- Kind Regards -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td align="center" style="padding: 30px; font-family: sans-serif; font-size: 15px;  color: #7f8893;">
+                                    <p style="margin: 0;">Kind regards,</p>
+                                    <h3 style="font-size: 16px; color: #484f59;">Cerdelga
+                                        <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life Team</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- This is an automated email message  -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="border-top: 1px solid #ccd1d9; max-width: 680px; font-family: sans-serif; color: #888888; line-height:18px; background: #f9fbfc;">
+                <tr>
+                    <td style="padding: 40px; padding-bottom: 20px; width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: left; color: #4c525c;">
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">This is an automated email message. Please do not reply to this email address.</h5>
+                        <p style="margin: 0; color: #979fa8;">For information about how we process data and monitor communications please see our Privacy Policy
+                            here and for terms of use please see our Terms and Conditions here.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 40px; padding-top: 0px; padding-bottom: 20px; width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: left; color: #4c525c;">
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">Reporting of side effects.</h5>
+                        <p style="margin: 0; margin-bottom: 20px; color: #979fa8;">
+                            <span style="color:#000000;">&#9660;</span>Cerdelga
+                            <sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> (eliglustat) is subject to additional monitoring. This will allow quick identification
+                            of new safety information. Reporting any suspected adverse reactions is important for the continued
+                            monitoring of the benefit/risk balance of all medicinal products. You are asked to report any
+                            suspected adverse reactions via the appropriate national reporting system and contact Sanofi
+                            Genzyme.
+                        </p>
+                        <p style="margin: 0; margin-bottom: 20px; color: #979fa8;">
+                            In the UK: Yellow Card Scheme. www.mhra.gov.uk/yellowcard. Suspected adverse reactions should also be reported to Sanofi
+                            Genzyme: Tel: +44 (0) 800 090 2314. Alternatively, send via E-mail to (UK-drugsafety@sanofi.com)
+                        </p>
+
+                        <p style="margin: 0; color: #979fa8; margin-bottom: 20px;">
+                            This email is intended solely for the addressee and may contain confidential information. If you received this email in error,
+                            please immediately and permanently delete it. Do not use, copy or disclose the information contained
+                            in this email or in any attachment.</p>
+                        <p style="margin: 0; color: #979fa8; margin-bottom: 20px;">This material has been developed by Genzyme for patients who have been prescribed Cerdelga® by their
+                            doctor.
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <h5 style="color: #4c525c; font-size: 12px; line-height: 1.4; margin: 0; margin-bottom: 12px; font-weight: bold;">Prescribing Information</h5>
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">&#9660;Cerdelga 84mg (eliglustat) hard capsules</span>
+                            <br/> Please refer to the Summary of Product Characteristics (SmPC) before prescribing.
+                        </p>
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Product Composition:</span> Each capsule contains 84.4 mg of eliglustat (as tartrate).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Indication:</span>
+                            Cerdelga is indicated for the long-term treatment of adult patients with Gaucher disease type 1 (GD1), who are CYP2D6 poor
+                            metabolisers (PMs), intermediate metabolisers (IMs) or extensive metabolisers (EMs).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Dosage and administration:</span>
+                            Therapy with Cerdelga should be initiated and supervised by a physician knowledgeable in the management of Gaucher disease.
+                            The recommended dose is 84 mg eliglustat twice daily in CYP2D6 intermediate metabolisers (IMs)
+                            and extensive metabolisers (EMs) and 84 mg once daily in CYP2D6 poor metabolisers (PMs). If a
+                            dose is missed, the prescribed dose should be taken at the next scheduled time; the next dose
+                            should not be doubled. Cerdelga is to be taken orally, swallowed whole, preferably with water,
+                            and should not be crushed, dissolved, or opened. The capsules may be taken with or without food.
+                            Consumption of grapefruit or its juice should be avoided.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Special populations:
+                                <span style="font-style: italic;">CYP2D6 ultra-rapid metabolisers (URMs) and indeterminate metabolisers:</span>
+                            </span>
+                            Cerdelga should not be used.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Patients with hepatic impairment:</span>
+                            Not studied in this group. Therefore, no dose recommendations can be made.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Patients with renal impairment:</span>
+                            Not studied in this group. Therefore, no dose recommendations can be made. 
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Elderly patients (≥65 years):</span>
+                            No significant differences were found in the efficacy and safety profiles of elderly patients and younger patients.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Paediatric population:</span>
+                            No data are available.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; ">Contra-indications:</span>
+                            Hypersensitivity to the active substance or to any of the excipients. This product contains lactose. Patients with rare hereditary problems of galactose intolerance, Lapp lactase deficiency or glucose-galactose malabsorption should not take this medicine. Patients who are CYP2D6 intermediate metabolisers (IMs) or extensive metabolisers (EMs) taking a strong or moderate CYP2D6 inhibitor concomitantly with a strong or moderate CYP3A inhibitor, and patients who are CYP2D6 poor metabolisers PMs) taking a strong CYP3A inhibitor. Use of Cerdelga under these conditions results in substantially elevated eliglustat plasma concentrations.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; ">EDUCATIONAL GUIDANCE:</span>
+                            Prior to prescribing Cerdelga, physicians must familiarise themselves with educational materials which consist of a Guide to the Prescriber and they should provide their patients with a<span style="font-style:italic";> Patient Alert Card</span>.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Warnings and Precautions: <span style="font-style: italic";>Initiation of therapy: CYP2D6 genotyping</span>: </span>
+                            Before initiation of treatment, patients should be genotyped for CYP2D6 to determine the CYP2D6 metaboliser status.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style:italic;">Concomitant use and Drug Interaction:</span>
+                            Eliglustat is metabolised primarily by CYP2D6 and to a lesser extent by CYP3A4. Concomitant administration of substances affecting CYP2D6 or CYP3A4 activity may alter eliglustat plasma concentrations. Eliglustat is an inhibitor of P-gp and CYP2D6 in vitro; concomitant administration of eliglustat with P-gp or CYP2D6 substrate substances may increase the plasma concentration of those substances. Cerdelga is contraindicated in patients who are CYP2D6 intermediate metabolisers (IMs) or extensive metabolisers (EMs) taking a strong (e.g. paroxetine, fluoxetine, quinidine) or moderate (e.g. duloxetine, terbinafine) CYP2D6 inhibitor concomitantly with a strong (e.g. clarithromycin, itraconazole) or moderate (e.g. erythromycin, fluconazole) CYP3A inhibitor. Cerdelga is contraindicated in patients who are CYP2D6 poor metabolisers (PMs) taking a strong CYP3A inhibitor. Use of Cerdelga with strong CYP3A inducers substantially decreases the exposure to eliglustat, which may reduce the therapeutic effectiveness of eliglustat; therefore concomitant administration is not recommended. 
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Agents that may increase eliglustat exposure:<span style="font-style:italic";>CYP2D6 inhibitors (In intermediate (IMs) and extensive metabolisers (EMs))</span>:</span>
+                            When a strong CYP2D6 inhibitor (e.g. paroxetine, fluoxetine, quinidine, bupropion) is used concomitantly, a dose of eliglustat 84 mg once daily should be considered. Caution should be used with moderate CYP2D6 inhibitors (e.g. duloxetine, terbinafine, moclobemide).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP3A inhibitors (In intermediate (IMs) and extensive metabolisers (EMs)):</span>
+                            Caution should be used with strong CYP3A inhibitors (e.g. clarithromycin, ketoconazole, itraconazole). Caution should be used with moderate CYP3A inhibitors (e.g. erythromycin, ciprofloxacin, fluconazole, diltiazem, verapamil, cimetidine).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP3A inhibitors (In poor metabolisers (PMs)):</span>
+                            The use of strong CYP3A inhibitors is contraindicated. Use of a moderate CYP3A inhibitor with eliglustat is not recommended. Caution should be used with weak CYP3A inhibitors (e.g. amlopidine, cilostazol, fluvoxamine, goldenseal, isoniazid, ranitidine, ranolazine).
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP2D6 inhibitors used simultaneously with CYP3A inhibitors (In intermediate (IMs) and extensive metabolisers (EMs)):</span>
+                            The use of a strong or moderate CYP2D6 inhibitor concomitantly with a strong or moderate CYP3A inhibitor is contraindicated. Grapefruit products contain one or more components that inhibit CYP3A and can increase plasma concentrations of eliglustat. Consumption of grapefruit or its juice should be avoided.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Agents that may decrease eliglustat exposure: Strong CYP3A inducers (In intermediate (IMs), extensive metabolisers (EMs) and poor metabolisers (PMs)):</span>
+                            Use of a strong CYP3A inducer (e.g. rifampicin, carbamazepine, phenobarbital, phenytoin, rifabutin and St. John’s wort) with eliglustat is not recommended. 
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Agents whose exposure may be increased by eliglustat: <span style="font-style: italic";>P-gp substrates:</span></span>
+                            Lower doses of substances which are P-gp substrates (e.g. digoxin, colchicine, dabigatran, phenytoin, pravastatin) may be required.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">CYP2D6 substrates:</span> 
+                            Lower doses of medicinal products that are CYP2D6 substrates e.g. metoprolol may be required. These include certain antidepressants (tricyclic antidepressants, e.g. nortriptyline, amitriptyline, imipramine, and desipramine), phenothiazines, dextromethorphan and atomoxetine. The list of substances mentioned above is not an inclusive list and the prescriber is advised to consult the SmPC of all other prescribed medicinal products for potential drug-drug interactions with eliglustat.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Patients with pre-existing cardiac conditions:</span> 
+                            Because eliglustat is predicted to cause mild increases in ECG intervals at substantially elevated plasma concentrations, use of Cerdelga should be avoided in patients with cardiac disease (congestive heart failure, recent acute myocardial infarction, bradycardia, heart block, ventricular arrhythmia), long QT syndrome, and in combination with Class IA (e.g. quinidine) and Class III (e.g. amiodarone, sotalol) antiarrhythmic medicinal products.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Monitoring of clinical response:</span> 
+                            Some treatment-naïve patients showed less than 20% spleen volume reduction (sub-optimal results) after 9 months of treatment. For these patients, monitoring for further improvement or an alternative treatment modality should be considered. For patients with stable disease who switch from enzyme replacement therapy to eliglustat, monitoring for disease progression (e.g. after 6 months with regular monitoring thereafter) should be performed for all disease domains to evaluate disease stability. Reinstitution of enzyme replacement therapy or an alternative treatment modality should be considered in individual patients who have a sub-optimal response. 
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Fertility, Pregnancy and lactation: <span style="font-style: italic;">Pregnancy</span>:</span> 
+                            There are no or limited amount of data from the use of eliglustat in pregnant women. Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity. As a precautionary measure, it is recommended to avoid the use of Cerdelga during pregnancy.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Breast-feeding:</span> 
+                            It is unknown whether eliglustat or its metabolites are excreted in human milk. Available pharmacodynamics / toxicological data in animals have shown excretion of eliglustat in milk. A risk to the newborns/ infants cannot be excluded. A decision must be made whether to discontinue breast-feeding or to discontinue/abstain from Cerdelga therapy taking into account the benefit of breast-feeding for the child and the benefit of therapy for the woman.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold; font-style: italic;">Fertility:</span> 
+                            Effects on testes and reversible inhibition of spermatogenesis were observed in rats. The relevance of these findings for humans is not known. 
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Undesirable effects:</span> 
+                            The majority of adverse reactions are mild and transient. The most commonly reported adverse reaction with Cerdelga is dyspepsia, in approximately 6% of the patients. The most frequently reported serious adverse reaction in clinical studies was syncope (0.8%). The following overall adverse reaction profile of is based on pooled results from two pivotal phase 3 studies, one 8-year, long term phase 2 study and one supporting phase 3b study Headache, dizziness, palpitations, dyspepsia, abdominal pain upper, diarrhoea, nausea, constipation, abdominal pain, gastroesophageal reflux disease, abdominal distension, gastritis, arthralgia and fatigue. For further information on adverse reactions, please refer to the SmPC.
+                        </p>
+
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8;">
+                            <span style="color:#000000; font-weight: bold;">Legal classification:</span> 
+                            POM (Prescription only medicine).<br/>
+                            <span style="color:#000000; font-weight: bold;">List Price:</span> 
+                            £19,165 per 56 capsule pack.<br/>
+                            <span style="color:#000000; font-weight: bold;">Marketing Authorisation Number:</span> 
+                            EU/1/14/974/001 (56 capsules), EU/1/14/974/002 (196 capsules), EU/1/14/974/003 (14 capsules).<br/>
+                            <span style="color:#000000; font-weight: bold;">Marketing Authorisation Holder:</span> 
+                            Genzyme Europe B.V., Gooimeer 10, NL-1411 DD Naarden, The Netherlands.<br/>
+                            <span style="color:#000000; font-weight: bold;">Further information is available from Genzyme Therapeutics Ltd, 4620 Kingsgate, Cascade Way, Oxford Business Park South, Oxford OX4 2SU.</span><br/>
+                            <span style="color:#000000; font-weight: bold;">Date of preparation:</span> 
+                            03 November 2017.<br/>
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- Adverse Event Paragraph -->
+                        <p style="margin: 0; margin-bottom: 15px; color: #979fa8; text-align: center;">                            
+                            <span style="color:#000000;">&#9660;</span>Adverse events should be reported. Reporting forms and information can be found at www.mhra.gov.uk/yellowcard Adverse events should also be reported to <br/>Sanofi Tel: 0800 0902314.
+                            Alternatively, send via E-mail to UK-drugsafety@sanofi.com
+                        </p>
+
+                        <!-- Dividers -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:530px;">
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" valign="top" width="100%" style="border-top: 1px #d8dfea solid" ;>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td height="20">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">                                                        
+                            GZUK.CERD.17.03.0181m. November 2017                            
+                        </p>
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">                                                        
+                            Copyright &copy; 2017 Genzyme Corporation. All rights reserved.                         
+                        </p>
+                        <p style="margin: 0; margin-bottom: 10px; color: #979fa8; text-align: center;">                                                        
+                            Questions about the Cerdelga<sup style="font-size: 11px; line-height: 0; vertical-align: 4px">&reg;</sup> Life website?                           
+                        </p>
+                    </td>
+
+                    
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+            <table>
+                <tr>
+                    <td height="100">&nbsp;</td>
+                </tr>
+            </table>
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+    </center>
+</body>
+
+</html>

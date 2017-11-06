@@ -238,6 +238,8 @@ var pamSettings,
 
                 if (data.Success) {
                     $('#pam-result-beforeSend').empty();
+                    /* Publish this data with the associated Topic */                    
+                    //PubSub.publish(_EventManagement.Topic[0], level);
                     sessionStorage.setItem("pam-level", level);
 
                     /* Template Loader and History setter */
