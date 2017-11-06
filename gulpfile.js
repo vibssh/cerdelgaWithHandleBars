@@ -59,6 +59,7 @@ gulp.task('scripts', function () {
   return streamqueue({objectMode: true},
         /* External Libraries  */
         gulp.src('src/App/js/vendor/jquery.min.js'),
+        gulp.src('src/App/js/vendor/pubsub.js'),
         gulp.src('src/App/js/vendor/jquery.validate.min.js'),
         gulp.src('src/App/js/vendor/jquery.cookie.js'),
         gulp.src('src/App/js/vendor/modernizr.js'),
