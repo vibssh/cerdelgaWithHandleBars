@@ -9,7 +9,7 @@ var _ChooseTreatmentCentre = (function(window){
 'use strict';
 
   var _Settings = {
-    $chooseTreatmentCentreEndPoint : 'http://soa.cerdelga.dev.com/api/TreatmentCentre/',
+    $chooseTreatmentCentreEndPoint : 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/',
     $selectedItem: null
   }
 

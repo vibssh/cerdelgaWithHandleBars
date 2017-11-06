@@ -394,17 +394,25 @@ form#choose-treatment-centre {
         padding-top: 7px;
     }
 
+    
+
     select {
         width: 100%;
         border: 1px solid #ccd1d9;
         padding: 8px 15px;
+        padding-right: 48px;
         font-size: 14px;
         font-weight: 700;
         color: #434a54;
         -webkit-appearance: none;
         -moz-appearance: none;
+        appearance: none;
         background: transparent;
         z-index: 90;
+    }
+
+    option {
+        line-height: 1.6;
     }
 
     .form-field {
