@@ -19,6 +19,7 @@
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
     "gulp-util": "latest",
-    "gulp-wrap": "latest"
+    "gulp-wrap": "latest",
+    "streamqueue": "latest"
   }
 }

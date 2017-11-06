@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     wrap = require('gulp-wrap'),
     notify = require('gulp-notify'),
-    gutil = require('gulp-util')
+    gutil = require('gulp-util'),
+    streamqueue = require('streamqueue'),
     rename = require('gulp-rename');
 
 
@@ -55,7 +56,19 @@ gulp.task('handlebars', function () {
 
 //3. js Task
 gulp.task('scripts', function () {
-  return gulp.src(['src/App/js/**/*.js', 'src/App/templates/templates.js'])
+  return streamqueue({objectMode: true},
+        /* External Libraries  */
+        gulp.src('src/App/js/vendor/jquery.min.js'),
+        gulp.src('src/App/js/vendor/pubsub.js'),
+        gulp.src('src/App/js/vendor/jquery.validate.min.js'),
+        gulp.src('src/App/js/vendor/jquery.cookie.js'),
+        gulp.src('src/App/js/vendor/modernizr.js'),
+        gulp.src('src/App/js/vendor/handlebars.runtime.js'),
+        /* App Specific Modules */
+        gulp.src('src/App/js/modules/**/*.js'),
+        /* App Templates */
+        gulp.src('src/App/templates/templates.js')
+      )
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/scripts'))
     .on('error', function(err){
