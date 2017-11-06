@@ -2,7 +2,7 @@ var addTreatmentCentreSettings,
 addTreatmentCentre = {
     settings: {
         $formId: '',
-        $treatmentEndPoint: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/'
+        $treatmentEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/'
     },
 
     init: function (formId) {

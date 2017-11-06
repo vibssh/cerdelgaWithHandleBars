@@ -9,7 +9,7 @@ var _ChooseTreatmentCentre = (function(window){
 'use strict';
 
   var _Settings = {
-    $chooseTreatmentCentreEndPoint : 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/',
+    $chooseTreatmentCentreEndPoint : 'http://soa.cerdelga.dev.com/api/TreatmentCentre/',
     $selectedItem: null
   }
 
@@ -62,21 +62,21 @@ var _ChooseTreatmentCentre = (function(window){
 
  /* Events */
   var _bindUIActions = function(){
-    $.ajax({
-      url: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/',
-      type: 'GET',
-      success: function (data, jqXHR, textStatus) {
-        console.info(data);
-        $.each(data, function (index, treatmentcentre) {
-          //console.info(treatmentcentre);
-          $('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
-          //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
-        });
-      },
-      error: function (data, xhr, textStatus) {
-        console.info(xhr);
-      }
-    });
+    // $.ajax({
+    //   url: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/',
+    //   type: 'GET',
+    //   success: function (data, jqXHR, textStatus) {
+    //     console.info(data);
+    //     $.each(data, function (index, treatmentcentre) {
+    //       //console.info(treatmentcentre);
+    //       //$('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
+    //       //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
+    //     });
+    //   },
+    //   error: function (data, xhr, textStatus) {
+    //     console.info(xhr);
+    //   }
+    // });
 
     //Display the Treatment Choice Screen on click of change-centre link
     $('.change-centre').on('click', function(e){

@@ -7,8 +7,8 @@ var _Profile = (function (window) {
     $tabs: $('.tabs'),
 
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa.cerdelga.tew-staging.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/0',
+    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0',
+    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/0',
     /* 0 is hard coded this should be tied up with the nurse data api  */
 
     $profileId: $('.link-profile').data('id'),

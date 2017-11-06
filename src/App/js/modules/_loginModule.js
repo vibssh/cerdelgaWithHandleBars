@@ -1,7 +1,7 @@
 var _LoginModule = (function (window) {
   var _privateSettings = {
     $loginEndPoint: 'http://soa.tew-dev.com/api/emsmock/login',
-    $nurseEndPoint: 'http://soa.cerdelga.tew-staging.com/api/Nurse/0'
+    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0'
   };
 
   var _loginBeforeSend = function () {

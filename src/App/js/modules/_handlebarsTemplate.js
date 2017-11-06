@@ -1,6 +1,6 @@
 /* Global Variables to be used throughout the applications */
-var _NurseEndPoint = 'http://soa.cerdelga.tew-staging.com/api/Nurse/';
-var _TreatmentEndPoint = 'http://soa.cerdelga.tew-staging.com/api/TreatmentCentre/';
+var _NurseEndPoint = 'http://soa.cerdelga.tew-dev.com/api/Nurse/';
+var _TreatmentEndPoint = 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/';
 var _IsLoggedInEndPoint = 'http://soa.tew-dev.com/api/emsmock/isLoggedin/';
 
 var _HandlebarsTemplate = (function (window) {
