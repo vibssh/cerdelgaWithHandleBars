@@ -87,7 +87,8 @@
 
 
         // Build Pack
-        $('body').on('click', '.build-btn', function () {
+        $(document).on('click','.build-btn', function (e) {
+          e.preventDefault();
 
           var $orderHeadTpl;
           var $orderLineTpl;
@@ -174,40 +175,20 @@
 
 
               /* Data to go inside the xml Modal */
-              var dialogBox = $('<div id="xml-box" style="padding: 1em;"></div>');
-              var diaglogContents = $('<?xml version="1.0" encoding="UTF-8"?><UserOrder>' + $orderHeadXml.find('UserOrder').html() + '</UserOrder>');
               var xml = '<?xml version="1.0"?>';
               xml += "<UserOrder>";
               xml += $orderHeadXml.find('UserOrder').html();
               xml += "</UserOrder>";
-              console.info(xml);
-              dialogBox.text(xml);
-              $('#xml-content').html(dialogBox);
 
-              /* Modal Construct */
-              var $modalTimeOut = 200;
-              var $modalDirection = 'top';
-              var $modalBackDrop = $('#xmlModal');
-              var $modalContent = $('.m-modal__table');
+              /* Publish the xml output for sharing */
+              PubSub.publish(_EventManagement.Topic[0], xml);
 
-              /* PAM Modal */
-              Modal.init($modalBackDrop, $modalContent, $modalDirection, $modalTimeOut);
-
-              Modal.modalPopOpen();
-
-              $modalBackDrop.on('click', function(e){
-                Modal.modalPopClose();
-              });
-
-              // window.open('data:text/xml;charset=utf-8,<?xml version="1.0" encoding="UTF-8"?><UserOrder>' + $orderHeadXml.find('UserOrder').html() + '</UserOrder>', "", "_blank");
-              // $('<iframe')
+              /* Show the collation Template  */
+              $('#content').removeClass(); // Get the Book creator styles off the page
+              _TemplateLoader.init('buildPack');
             });
-
-
-
           }
         });
-
 
         //Discard Selected Section
         $(document).on('click', '.discard-btn', function (e) {
@@ -215,17 +196,9 @@
           bookSectionAccordian.discard();
         });
 
-        //Main Section
-        // $("body").on('click', '.main-book-list-item', function () {
-        //     var contents = $(".book-section");
-        //     var triggers = $('.main-book-list-item');
-        //     var id = $(this).attr("data-page");
-        //     var content = $(".book-section[data-page=" + id + "]");
-        //     TEWLibrary.accordian($(this), triggers, contents);
-        // });
         //SubMain Section
         $(".page-list-item").on('click', function (event) {
-         
+
 
           if ($(event.target).hasClass('pages-checkbox-span'))
             return;

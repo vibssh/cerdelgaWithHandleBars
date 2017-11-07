@@ -8,6 +8,9 @@
     _LoginModule.init();
     //Clearing the Session Storage on this page
     sessionStorage.clear();
+
+    /*Remove the localstorage for bookscreator checkboxes sent for collation*/
+    localStorage.removeItem("checkedBook");
   }());
 </script>
 
