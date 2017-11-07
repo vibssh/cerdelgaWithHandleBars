@@ -44,11 +44,7 @@ gulp.task('handlebars', function () {
       noRedeclare: true, // Avoid duplicate declarations
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest('src/App/templates'))
-    .on('error', function (err) {
-      gutil.log(gutil.colors.red('[Error]'), err.toString());
-    })
-    .pipe(gulp.dest('src/App/templates'))
+    .pipe(gulp.dest('src/App/js/templates'))
     .pipe(notify({
       message: 'Handlebars task complete'
     }));
@@ -66,8 +62,7 @@ gulp.task('scripts', function () {
         gulp.src('src/App/js/vendor/handlebars.runtime.js'),
         /* App Specific Modules */
         gulp.src('src/App/js/modules/**/*.js'),
-        /* App Templates */
-        gulp.src('src/App/templates/templates.js')
+        gulp.src('src/App/js/Templates/*.js')
       )
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/scripts'))
@@ -144,6 +139,7 @@ gulp.task('watch', function () {
 
   //Watch handlebar templates
   gulp.watch('src/Templates/*.hbs', ['handlebars']);
+  
 
   //Watch Fonts Task
   gulp.watch('src/App/fonts/**/*', ['fonts']);
