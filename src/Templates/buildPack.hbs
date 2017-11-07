@@ -27,16 +27,69 @@
 <div class="row">
   <div class="collation-table">
     <div class="container">
-      <div class="collation-table-cell" >
+      <!-- Download The Pack -->
 
+      <div class="collation-table-cell">
+        <div class="collation-icon">
+          <img src="data:image/png;base64,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" width="71px" height="88px" alt="Download PDF Book Icon">
+        </div>
+
+        <div class="collation-details">
+          <h2>Download The Pack</h2>
+          <p>
+            Downloading this pack will give you a PDF that you can look through with your patient to ensure that everything you feel
+            they will need is there in the pack.
+          </p>
+        </div>
+
+        <div class="collation-info">
+          <p>
+            This option allows you to go back to editing the pack if anything has been missed
+          </p>
+        </div>
+
+        <div class="collation-btnWrapper">
+          <button class="icon-button ghost-btn download-pack">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            <span>Download</span>
+          </button>
+        </div>
       </div>
 
-       <div class="collation-table-cell" >
-        
+      <!-- Send for collation and despatch -->
+      <div class="collation-table-cell">
+        <div class="collation-icon">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAABHCAMAAABFwCvFAAAAAXNSR0IB2cksfwAAARdQTFRFAAAA98de98VZ9r5K9rtC98RZ+MVX98hc9sBO9rtB9rpB9rtD+MFL98Rd98Vb98BQ/u3J//np+96f9rxD9rxG6ur04ejv4ufv9r9M+Mdj9r1J/OOu//jn+teO9r5J4Ov14ufu4ujv//jl+tWG//no//bg+Mxu4ejv+9+l9rtE+c51+o2Z+oSR+o2W9rxG4ejv/ei99sBP98Rc/vHU/evD98di/93h//fi+96g+9uX+dF9/Oa2+Mlo/vLY98NX98JT//Tc/vDP9r5La6TuXZzs2er/msP1aqTu//nn/OWy98Vc9bpB9r9L9shp98Zh/u/O98JV98Vd6tu4971J+cRa6du59sZi98NZ98he4ufv4uv14fDw4ujvF+RhIQAAAF10Uk5TAF/w/v/waWH9////j+r////////7GLPr/////////hnj////////pP/////////o//////////////////////////////////////7/////6P/9Uv//8VygGhGyp7X+SAAAAjlJREFUeJzt2GtT2kAUBuC0vL3E3ji1ilKoRAVFKQUFUVEQpNh767Xa9v//ji5uKOkmMbvrZoZxeD/q+Myas++Hs5Y1yL37CRhL4sFDi+fRY9jmXEw9ecrdZ3j+Ikmm8nIarxg6M5uawzzSr82omSxgv7GshZzjAItLQHbZAJsvAEs2LGvFGbhEq0Ws5bW59dIwb8urBOa+c12qVLGxqeuWRqnRtesMXdqso1rRdrd4SiUSXWqsobgdg0vLO8DuonmXqJnG3n4MLiVbaGtUJNKlgz2NimSiXdKoSL4g4bKKlNUq0tmA5/6Gu1RTqkili+qob+s3uEoV2S6iLhwi1JWvSGOXXfmG8MNw97CnlENZV43t9eTd9wqZuOPl9iPvQV/LlbhgY3XeOza3vq4rNbQxOu8dm5v2/Y1kJ32LY27927o3DmsMzxvX95248blqkXWP1NgjWZc6LZRl1iK2ixR8u0i42+yiXZNg+S7SkXQH+6z02sl2ka6wi4S4bLlQWZPZiiHsIsEuO4DiWr8j7C6BLvtg4v8VGTaOuue7BblswL45RIddH8+c/e4Hthz7741EDgqee+lz2W+RzWiw/ETDPxXdZOs2z2ijighuM631pvEvtbY7mv9cpTIEZ9+tiNdVLENw3Ip4XPUyBOe6IkN3Dh81yhAcVpFPn79w9yu+6ZQhON9/wD7m7kkV9pTBh+XTM/7u6ZxfdM2piZ+XFn+nNZor/gb+K2eWzf12H+0X/qTMqanZGa7+BZo49Me4oqBJAAAAAElFTkSuQmCC" width="86px" height="71px" alt="Send for Collation Icon">
+        </div>
+
+        <div class="collation-details">
+          <h2>Send Pack For Collation And Despatch </h2>
+          <p>
+            If you feel you have finished the pack and you and your patient are happy you can now send the pack to be collated. Using
+            these options will lockdown the pack options and prevent further editing.
+          </p>
+          <p>
+            Pack includes pill packet labels, medication interaction card and the information personalised for your patient.
+          </p>
+        </div>
+
+        <div class="collation-btnWrapper">
+          <button class="icon-button download-pack">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            <span>Download and send for collation</span>
+          </button>
+        </div>
+
+        <div class="collation-btnWrapper">
+          <button class="icon-button download-pack">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            <span>Send for collation</span>
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
-
 </div>
 
 
