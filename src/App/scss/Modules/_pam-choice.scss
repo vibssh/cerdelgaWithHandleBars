@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 80px 0;
+    padding: 80px 0 20px;
 
     .info-panel {
         margin-top: 20px;
@@ -107,4 +107,8 @@
     @include remsize(font-size, 12px);
     line-height: 1.5;
     padding-top: 10px;
+}
+
+.step-continue-button {
+    padding-bottom: 80px;
 }
