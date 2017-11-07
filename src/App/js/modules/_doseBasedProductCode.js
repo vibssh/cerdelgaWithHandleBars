@@ -1,6 +1,7 @@
 var _DoseBasedProductCode = (function (window) {
   var _Settings = {
-    $dataDose: ''
+    $dataDose: '',
+    $checkedId: []
   };
   var _sectionColour = (function (data) {
     var color = {
@@ -63,7 +64,6 @@ var _DoseBasedProductCode = (function (window) {
     var $contents = $('.book-section');
     $triggers.each(function(i, obj){
       $(obj).on('click',function(e){
-        console.info('parent click event');
         e.preventDefault();
        e.stopPropagation();
         var $trigger = $(this);
@@ -75,12 +75,29 @@ var _DoseBasedProductCode = (function (window) {
       e.stopPropagation();
       var checkBox = $(this).prev();
       checkBox.prop("checked", !checkBox.prop("checked"));      
-      console.info('child click event');
+      
+      /* To persist the data on history back from the collation screen */
+      if(checkBox.prop("checked")){
+        var checkedId = checkBox.prop('id');
+        
+        _Settings.$checkedId = _Settings.$checkedId.filter(function(item){
+          return item !== checkedId;
+        });
+
+       _Settings.$checkedId.push(checkedId);
+      } else if(!checkBox.prop("checked")){
+          var uncheckedId = checkBox.prop('id');
+          console.info(_Settings.$checkedId.indexOf(uncheckedId));
+
+        _Settings.$checkedId.splice(_Settings.$checkedId.indexOf(uncheckedId), 1);
+      }
+      localStorage.setItem('checkedBook', JSON.stringify(_Settings.$checkedId));
     });
 
   };
 
   var init = function () {
+    _Settings.$checkedId = [];
     _previewDose();
     _previewLink();
   };

@@ -17,6 +17,24 @@
     var $previewBackDrop = $('.preview-modal');
     var $previewContent = $('.preview-modal__table');
     previewModal.init($previewBackDrop, $previewContent, $previewDirection, $previewTimeOut);
+    
+    /*Checking if session storage exist with the values if so than gets the of the array loops and find item with the id and checks them */
+    var checkBoxes = document.querySelectorAll('.book-check');
+    
+    if(localStorage.getItem("checkedBook") !== null ){
+      var checkedItemArray = JSON.parse(localStorage.getItem("checkedBook"));
+      console.info(checkedItemArray);
+        $(checkBoxes).filter(function(){
+          var checkedId =  $(this)[0].id;
+          console.info('index of checkedItem Array ', checkedItemArray.indexOf(checkedId)); 
+          if(checkedItemArray.indexOf(checkedId) !== -1){
+            $(this).prop('checked', true);
+          }
+        });
+
+    }
+
+
   }());
   isLoggedInModule.init();
   _DoseBasedProductCode.init();
@@ -193,22 +211,3 @@
   </div>
 </div>
 
-<!-- XML Modal -->
-<!-- Modal Disclaimer -->
-<div id="xmlModal" class="m-modal">
-  <div class="m-modal__table">
-    <div class="m-modal__table-cell">
-      <div class="m-modal__block container">
-        <div class="m-modal__text">
-          <h2>XML Data !</h2>
-          <p>This is the data that will get sent to the printers</p>
-         <div id="xml-content"></div>
-          <div class="modal-action-btn">
-            <button class="modal-action-btn__decline">Cancel</button>
-            <button href="#" class="modal-action-btn__accept">OK</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

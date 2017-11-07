@@ -134,6 +134,11 @@ var levelSettings,
 
 
         acceptModal: function () {
+            //Clear the Localstorage holding the bookcreator checked 
+            if(localStorage.getItem("checkedBook")!== null){
+                localStorage.removeItem("checkedBook");
+            }    
+
             //Remove the visibility of the filter-details text on the level filter panel
             $('.filter-details').css({
                 'visibility': 'hidden'
