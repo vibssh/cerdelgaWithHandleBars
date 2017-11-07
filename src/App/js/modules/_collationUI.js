@@ -8,7 +8,6 @@
 var _CollationModule = (function (window) {
   'use strict';
 
-
   var init = function ($data) {
     var dialogBox = $('<div id="xml-box" style="padding: 1em;"></div>');
     dialogBox.text($data);
