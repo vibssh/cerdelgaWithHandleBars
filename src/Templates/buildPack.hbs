@@ -5,12 +5,10 @@
     isLoggedInModule.init();
 
     /* Add a back link event here */
-        $('.collation-back-link').on('click', function(e){
-            e.preventDefault();
-           
-           _HistoryBackModule.init();
-
-        });
+    $('.collation-back-link').on('click', function (e) {
+      e.preventDefault();
+      _HistoryBackModule.init();
+    });
   }());
 </script>
 
@@ -20,16 +18,25 @@
 <div class="row">
   <div class="container">
     <div class="col-md-12 back-link">
-      <a href="#" class="collation-back-link" >
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>Back to collation </a>
+      <a href="#" class="collation-back-link">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>Back to pack creator</a>
     </div>
-  </div>  
+  </div>
 </div>
 
 <div class="row">
-  <div class="container">
-    <button id="send-collation" class="btn btn-primary">Send for collation</button>
+  <div class="collation-table">
+    <div class="container">
+      <div class="collation-table-cell" >
+
+      </div>
+
+       <div class="collation-table-cell" >
+        
+      </div>
+    </div>
   </div>
+
 </div>
 
 
