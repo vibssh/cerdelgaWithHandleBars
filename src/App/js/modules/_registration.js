@@ -36,8 +36,6 @@ var registrationSettings,
             $.validator.addMethod("namecheck", function (value, element) {
                 return value.indexOf(' ') === -1 ? false : true;
             });
-
-
         },
 
         /* Bind Events */
@@ -49,7 +47,7 @@ var registrationSettings,
                 /* Capturing the data to post */
                 var registrationNurseData = {
                     "Email": $('#RegEmail').val(),
-                    "Full Name": $('#RegFullName').val(),
+                    "FullName": $('#RegFullName').val(),
                     "Password": $('#RegPassword').val()
                 };
 
@@ -94,16 +92,15 @@ var registrationSettings,
             $(document).on('click', '.finish-btn > a', function (e) {
                 e.preventDefault();
                 var treatmentCentreSelected = $('#chooseTreatmentCentre option:selected').attr('value');
-                console.info('The data to be sent ', registrationSettings.$newUserData);
-                console.info('Treatment Centre Selected ID', treatmentCentreSelected);
+                // console.info('The data to be sent ', registrationSettings.$newUserData);
+                // console.info('Treatment Centre Selected ID', treatmentCentreSelected);
                 //Adding treatment Centre choosen 
                 if (treatmentCentreSelected !== 0 || treatmentCentreSelected === null || treatmentCentreSelected === undefined){
                     registrationSettings.$newUserData[0]["TreatmentCentreChosen"] = parseInt(treatmentCentreSelected);
-                    console.info('The data to be sent with TC Chosen ', registrationSettings.$newUserData);
                  } else {
                     registrationSettings.$newUserData[0]["TreatmentCentreChosen"] = 0;
-                    console.info('The data to be sent with No TC Chosen ', registrationSettings.$newUserData);
                  }
+                
                 
 
 
@@ -111,10 +108,10 @@ var registrationSettings,
                 //registrationSettings.$newUserData[0]['treatmentCentreChosen'] = treatmentCentreSelected; // To add key value to exisiting User Object
 
                 //Ajax POSTING
-                // TEWLibrary.fetchData(registrationSettings.$registrationEndPoint, 'POST', {
-                //     $data: registrationSettings.$newUserData[0],
-                //     $beforeSend: registration.beforeSend
-                // }).done(registration.registrationSuccess).fail(registration.registrationFailure);
+                TEWLibrary.fetchData(registrationSettings.$registrationEndPoint, 'POST', {
+                    $data: registrationSettings.$newUserData[0],
+                    $beforeSend: registration.beforeSend
+                }).done(registration.registrationSuccess).fail(registration.registrationFailure);
             });
 
             //Finish Btn click while waiting for review screen
