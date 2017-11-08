@@ -7,12 +7,29 @@
 var resetSettings,
 resetPassword = {
     settings : {
-        $resetEndPoint: 'http://soa.tew-dev.com/api/emsmock/passwordreset'
+        $resetEndPoint: 'http://soa.tew-dev.com/api/emsmock/passwordreset',
+        $resetVerifyEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordResetLoad'
     },
 
     init: function() {
         resetSettings = this.settings;
         this.bindUIActions();
+
+        /* on Load checking if the token and email are valid  */
+        //capture the email and token to post to reset verify endpoint and on success show the reset password form else on error show error screen
+        var email = _VerifyEmailUrl.getUrlParameter('email');
+        var token = _VerifyEmailUrl.getUrlParameter('token');
+       
+        // Data to post to verify endpoint
+      var resetPostData = {
+        'Email': email,
+        'Token': token
+      };
+
+         //Ajax Call Here
+      TEWLibrary.fetchData(resetSettings.$resetVerifyEndPoint, 'POST', {
+        $data: resetPostData
+      }).done(resetPassword._resetVerifySuccess).fail(resetPassword._resetVerifyFailure);
     },
 
     bindUIActions: function() {
@@ -21,6 +38,16 @@ resetPassword = {
             resetPassword.resetPass();
         });
     },
+
+
+    _resetVerifySuccess: function(){
+        $('#reset-pwd-form').fadeIn();
+    },
+
+    _resetVerifyFailure: function(){
+        $('#invalid-resetData').fadeIn();
+    },
+
 
     updatePassword: function() {
         //Capture the data to be updated

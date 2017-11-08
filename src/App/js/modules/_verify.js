@@ -73,6 +73,7 @@ var _VerifyEmailUrl = (function (window) {
   };
 
   return {
-    init: init
+    init: init,
+    getUrlParameter: _getUrlParameter // Expose this to use for Reset password bit
   }
 }(window));

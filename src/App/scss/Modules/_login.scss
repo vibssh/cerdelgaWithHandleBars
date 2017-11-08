@@ -205,3 +205,12 @@ button[type="submit"] {
     margin: 0 auto;
     text-align: center;
 }
+
+//reset password screen
+#reset-pwd-form {
+    display: none;
+}
+
+#invalid-resetData {
+    display: none;
+}

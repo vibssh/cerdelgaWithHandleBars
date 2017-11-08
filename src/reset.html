@@ -77,7 +77,7 @@
                 </div>
               </div>
 
-              <div class="login-form">
+              <div class="login-form" id="reset-pwd-form">
                 <form id="reset-pwd" action="" autocomplete="off">
                   <!-- Remove the Action from here - its just a static navigation to next page -->
                   <div class="row">
@@ -169,6 +169,24 @@
                     </div>
                   </div>
                 </form>
+              </div>
+
+              <!-- Reset Password invalid token or email -->
+              <div class="row">
+                <div class="container">
+                  <div class="col-md-7 col-lg-6 col-md-offset-3">
+                    <div id="invalid-resetData">
+                      <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          Invalid Data
+                        </div>
+                        <div class="panel-body">
+                          Invalid Email or Authentication Token
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="row">
