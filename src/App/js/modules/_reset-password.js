@@ -7,8 +7,9 @@
 var resetSettings,
 resetPassword = {
     settings : {
-        $resetEndPoint: 'http://soa.tew-dev.com/api/emsmock/passwordreset',
-        $resetVerifyEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordResetLoad'
+        $resetEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordReset',
+        $resetVerifyEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordResetLoad',
+        $resetValidToken: ''
     },
 
     init: function() {
@@ -18,12 +19,12 @@ resetPassword = {
         /* on Load checking if the token and email are valid  */
         //capture the email and token to post to reset verify endpoint and on success show the reset password form else on error show error screen
         var email = _VerifyEmailUrl.getUrlParameter('email');
-        var token = _VerifyEmailUrl.getUrlParameter('token');
+        resetSettings.$resetValidToken = _VerifyEmailUrl.getUrlParameter('token');
        
         // Data to post to verify endpoint
       var resetPostData = {
         'Email': email,
-        'Token': token
+        'Token': resetSettings.$resetValidToken
       };
 
          //Ajax Call Here
@@ -81,7 +82,8 @@ resetPassword = {
 
             "Email": email,
             "Password": oldPass,
-            "NewPassword": newPass
+            "NewPassword": newPass,
+            "Token": resetSettings.$resetValidToken
         };
         
         //Do Ajax posting here
