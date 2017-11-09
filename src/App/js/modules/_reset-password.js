@@ -74,14 +74,14 @@ resetPassword = {
     resetPass: function () {
         //Capture the data to be updated
         var email = $('#emailResetPassword').val();
-        var oldPass = $('#oldResetPassword').val();
+        var pass = $('#Password').val();
         var newPass = $('#resetPassword').val();
 
         /* The data below is hardcoded needs to be dynamic when we get the api sorted by 3rd party */
         var postData = {
 
             "Email": email,
-            "Password": oldPass,
+            "Password": pass,
             "NewPassword": newPass,
             "Token": resetSettings.$resetValidToken
         };

@@ -44,23 +44,23 @@ var _LoginModule = (function (window) {
       _TemplateLoader.init('welcome');
     }
   };
-  
+
   var _loginFailure = function (xhr) {
+    
     $('.loading').remove();
     var xhrStatus = xhr.status;
     var status = TEWLibrary.ajaxErrorHandler(xhrStatus);
+    var errorBody = "<div>" + "<img src='/images/icons/" + status + ".png'/ style='width: 50%; margin: 0 auto; display: block;'>" + "</div>";
+    $('#login-error-message').find('.panel-heading').html('Server returned ' + status);
+    $('#login-error-message').find('.panel-body').html(errorBody);
+    $('#login-error-message').fadeIn();
+    $('#verify-email').addClass('hide-me');
+    if ((xhr.responseJSON) && (xhr.responseJSON.Message)) {
+      var serverResponseMessage = xhr.responseJSON.Message;
+      $('.panel-body').append('<p style="text-align:center; color:#a94442;">' + serverResponseMessage + '</p>');
+    }
 
-    if (xhr.statusText !== 'Conflict' || xhr.status === '409') {
-      var errorBody = "<div>" + "<img src='/images/icons/" + status + ".png'/ style='width: 50%; margin: 0 auto; display: block;'>" + "</div>";
-      $('#login-error-message').find('.panel-heading').html('Server returned ' + status);
-      $('#login-error-message').find('.panel-body').html(errorBody);
-      if ((xhr.responseJSON) && (xhr.responseJSON.Message)) {
-        var serverResponseMessage = xhr.responseJSON.Message;
-        $('.panel-body').append('<p style="text-align:center; color:#a94442;">' + serverResponseMessage + '</p>');
-        $('#login-error-message').fadeIn();
-        $('#verify-email').addClass('hide-me');
-      }
-    } else {
+    if (xhr.statusText === 'Conflict' || xhr.status === '409') {
       $('#verify-email').removeClass('hide-me');
       if ($('#login-error-message')) {
         $('#login-error-message').fadeOut();
