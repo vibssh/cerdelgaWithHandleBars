@@ -11,7 +11,6 @@
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="nurse-title">{{FullName}}</h1>
-
         <!-- Tab Navigation -->
         <nav class="nurse-tab-nav">
           <ul class="nurse-tab">
@@ -80,7 +79,6 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
             </div>
-
           </form>
 
           <form id="nurse-password-form">
@@ -88,7 +86,7 @@
               <h2> Password </h2>
               <div class="form-field">
                 <label for="password" class="col-md-3">Password</label>
-                <input type="password" value="{{Password}}" id="password" class="col-md-9" disabled="disabled" />
+                <input type="password" value="itsnotapassword" id="password"  class="col-md-9" disabled="disabled" />
                 <a href="#" class="edit password-edit-btn">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
@@ -396,10 +394,10 @@
 
 <script type="text/javascript">
   //isLoggedInModule.init();
-  _ProfileDetailsUpdate.init();
-  updateTreatmentCentre.init();
-  _ChooseTreatmentCentre.init();
-  addTreatmentCentre.init($('#add-treatment-centre'));
+  //_ProfileDetailsUpdate.init();
+  //updateTreatmentCentre.init();
+  //_ChooseTreatmentCentre.init();
+  //addTreatmentCentre.init($('#add-treatment-centre'));
 
   $('.back-link').on('click', function (e) {
     e.preventDefault();

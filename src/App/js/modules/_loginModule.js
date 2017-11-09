@@ -32,6 +32,7 @@ var _LoginModule = (function (window) {
     var fullName = data.fullName;
     var firstName = fullName.substring(0, fullName.indexOf(' '));
     $('.link-profile').html(firstName);
+    $('.link-profile').attr('data-id', data.userId);
 
 
     $('#content').attr('class', '');

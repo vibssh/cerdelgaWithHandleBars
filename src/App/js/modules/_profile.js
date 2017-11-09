@@ -7,20 +7,22 @@ var _Profile = (function (window) {
     $tabs: $('.tabs'),
 
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/0',
+    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/getUser/',
+    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre',
     /* 0 is hard coded this should be tied up with the nurse data api  */
 
-    $profileId: $('.link-profile').data('id'),
+    $profileId: null,
 
     $profileData: {
       'Nurse': [],
       'TreatmentCentre': []
-    }
+    },
+
+    $bearerToken : ''
 
   };
 
-
+  
   // Tabs
   var _nurseViewTabs = function ($clickedItem) {
     var tabId = $clickedItem.data('tab');
@@ -35,29 +37,37 @@ var _Profile = (function (window) {
     tab.addClass('active');
   };
 
-  // Nurse Data GET
-  var _getNurseData = function () {
-    // This is called on Login
-    //Ajax Call Here using Multiple Simultaenous call
-    return $.when(
-      $.get(_Settings.$nurseEndPoint, function (data) {
-        _Settings.$profileData.Nurse.push(data);
-      }),
+  //Nurse Data GET
+  var _getNurseData = function ($clicked) {
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    _Settings.$bearerToken = userData.Token;
+    console.info('Bearer Token ', _Settings.$bearerToken);
 
-      $.get(_Settings.$treatmentCentreEndPoint, function (data) {
-        _Settings.$profileData.TreatmentCentre.push(data);
-
-
-      })
-    ).then(_getNurseSuccess);
-
-    //TEWLibrary.fetchData(_Settings.$nurseEndPoint, 'GET', {}).done(_getNurseSuccess).fail(_getNurseFailure);
+    //Ajax Call to Get User Data
+    _Settings.$profileId = $($clicked).data('id');
+    TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
   };
 
-  var _getNurseSuccess = function () {
+  var _getUserBeforeSend = function(xhr){
+    xhr.setRequestHeader('Authorization', 'bearer '+ _Settings.$bearerToken);
+  };
+
+
+
+  var _getNurseSuccess = function (data) {
     /* This will render the Template */
+    var nurseData = {
+      'Id': data.Id,
+      'FullName': data.FullName,
+      'Email': data.Email,
+      'TreatmentCentreId': data.TreatmentCentreId
+    };
+
+    _Settings.$profileData.Nurse.push(nurseData);
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
+    _TemplateLoader.init('profile', $data);
+
    // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   };
 
@@ -75,10 +85,11 @@ var _Profile = (function (window) {
   var bindUIActions = function () {
     /* Nurse / Patient Name click Event on the top  */
     $('.link-profile').on('click', function (e) {
+     
       e.preventDefault();
       e.stopPropagation();
       //Call Nurse Template
-      _viewProfile();
+      _getNurseData($(this));
     });
 
 
