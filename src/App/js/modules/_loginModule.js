@@ -23,7 +23,8 @@ var _LoginModule = (function (window) {
       "UserName": data.userName,
       "Password": $('#authPassword').val(),
       "UserId": data.userId,
-      "Token": data.access_token
+      "Token": data.access_token,
+      "Expiry": data[".expires"]
     };
 
     sessionStorage.setItem('userData', JSON.stringify(userDataToStore));

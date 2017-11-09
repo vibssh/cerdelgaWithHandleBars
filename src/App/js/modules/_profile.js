@@ -17,7 +17,6 @@ var _Profile = (function (window) {
       'Nurse': [],
       'TreatmentCentre': []
     },
-
     $bearerToken : ''
 
   };
@@ -41,10 +40,26 @@ var _Profile = (function (window) {
   var _getNurseData = function ($clicked) {
     var userData = JSON.parse(sessionStorage.getItem("userData"));
     _Settings.$bearerToken = userData.Token;
-    console.info('Bearer Token ', _Settings.$bearerToken);
+    
 
     //Ajax Call to Get User Data
-    _Settings.$profileId = $($clicked).data('id');
+    var clickedId = $($clicked).data('id');
+    var storedId = userData.UserId;
+    _Settings.$profileId = (clickedId) ? clickedId : storedId;
+    //_Settings.$profileId = $($clicked).data('id');
+
+    //If currentTime is greater or equal to future time fire the _TokenHandler function to receive new Token
+    var currentTime = new Date().getTime();
+    var futureTime = new Date(userData.Expiry).getTime();
+    console.info('Current Time ', currentTime);
+    console.info('Future Time',  futureTime);
+
+    if(currentTime >= futureTime) {
+       console.info("currentTime is greater than future time i am firing getuser api")
+       _TokenHandler.init();  
+       _Settings.$bearerToken =  userData.Token;    
+    }
+
     TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
   };
 
@@ -63,6 +78,7 @@ var _Profile = (function (window) {
       'TreatmentCentreId': data.TreatmentCentreId
     };
 
+    _Settings.$profileData["Nurse"] = [];
     _Settings.$profileData.Nurse.push(nurseData);
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
@@ -71,12 +87,7 @@ var _Profile = (function (window) {
    // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   };
 
-  // This methods pulls in the Template for Nurse Details View Pageb
-  var _viewProfile = function(){
-    var $data = _Settings.$profileData;
-    _TemplateLoader.init('profile', $data);
-  };
-
+  
 
   var _getNurseFailure = function (xhr) {
     console.info(xhr.status);
