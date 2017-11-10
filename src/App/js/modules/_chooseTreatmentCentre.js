@@ -36,6 +36,7 @@ var _ChooseTreatmentCentre = (function(window){
      "TreatmentCentreId": parseInt(_Settings.$selectedItem)
     };
 
+    //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
     var userData = JSON.parse(sessionStorage.getItem("userData"));
         
     userData["TreatmentCentreId"] = $data.TreatmentCentreId;
