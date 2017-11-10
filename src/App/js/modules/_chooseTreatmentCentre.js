@@ -9,7 +9,8 @@ var _ChooseTreatmentCentre = (function(window){
 'use strict';
 
   var _Settings = {
-    $chooseTreatmentCentreEndPoint : 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/',
+    $chooseTreatmentCentreEndPoint : 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre',
+    $updateTreatmentCentreEndPoint : 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser',
     $selectedItem: null
   }
 
@@ -20,26 +21,34 @@ var _ChooseTreatmentCentre = (function(window){
   };
 
   var _optionSelected = function(){
-    _Settings.$selectedItem = null;
     _Settings.$selectedItem = $('#chooseTreatmentCentre').find(':selected').val();
-    
-    //Incorrect link gets the data id 
-    $('.incorrect-centre').prop('data-id',_Settings.$selectedItem );
-    
-    //Update URL ID 
-    _updateTreatmentCentreSettings.$id = _Settings.$selectedItem;
+    console.info('OptionSelected', _Settings.$selectedItem);
   };
 
-  var _fetchData = function(){
-    return $.ajax({
-      url: _Settings.$chooseTreatmentCentreEndPoint + _Settings.$selectedItem,
-      type: 'GET'
-    }).done(_success).fail(_failure);
+  var _updateData = function(){
+    //Construct the Data to post to the updateUser Endpoint
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    
+    var $data = {
+     "Id": userData.UserId,
+     "FullName": userData.FullName,
+     "Password": userData.Password,
+     "TreatmentCentreId": parseInt(_Settings.$selectedItem)
+    };
+
+    console.info('Update Data ', $data);
+
+    _APIHandler.init(_Settings.$updateTreatmentCentreEndPoint, 'POST', true, _success, _failure, $data);
+  };
+  
+
+  var _success = function(){
+    //Getting newly Selected Treatment Centre Data
+    TEWLibrary.fetchData(_Settings.$chooseTreatmentCentreEndPoint + "/" + parseInt(_Settings.$selectedItem), 'GET').done(_fetchSuccess).fail(_failure);
+
   };
 
-  var _success = function(data){
-    
-    //For UI only Remove Existing item from the TreatmentCentre 
+  var _fetchSuccess = function(data){
     $('#centreName').val(data.CentreName);
     $('#unitName').val(data.UnitName);
     $('#streetName').val(data.StreetName);
@@ -47,13 +56,8 @@ var _ChooseTreatmentCentre = (function(window){
     $('#county').val(data.County);
     $('#postCode').val(data.PostCode);
     $('#phone').val(data.PhoneNumber);
-    $('form').parent().addClass('hide-me');
-    $('.view-treatment-centre').removeClass('hide-me');
-
-    // To give the .incorrect-centre link a data id
-    $('.incorrect-centre').attr('data-id', data.Id);
-    $('.link-profile').attr('data-id', data.Id);
-
+   $('form').parent().addClass('hide-me');
+   $('.view-treatment-centre').removeClass('hide-me');
   };
 
   var _failure = function(xhr){
@@ -61,23 +65,7 @@ var _ChooseTreatmentCentre = (function(window){
   };
 
  /* Events */
-  var _bindUIActions = function(){
-    // $.ajax({
-    //   url: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/',
-    //   type: 'GET',
-    //   success: function (data, jqXHR, textStatus) {
-    //     console.info(data);
-    //     $.each(data, function (index, treatmentcentre) {
-    //       //console.info(treatmentcentre);
-    //       //$('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
-    //       //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
-    //     });
-    //   },
-    //   error: function (data, xhr, textStatus) {
-    //     console.info(xhr);
-    //   }
-    // });
-
+  var _bindUIActions = function(){ 
     //Display the Treatment Choice Screen on click of change-centre link
     $(document).on('click', '.change-centre', function(e){
       e.preventDefault();
@@ -93,7 +81,7 @@ var _ChooseTreatmentCentre = (function(window){
     //Once option is selected - Submit Event 
     $('.new-centre-submit').on('click', function(e){
       e.preventDefault();
-      _fetchData();
+      _updateData();      
     });
     
   };

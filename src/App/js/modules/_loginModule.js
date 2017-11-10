@@ -21,6 +21,7 @@ var _LoginModule = (function (window) {
     //Setting session storage with User data
     var userDataToStore = {
       "UserName": data.userName,
+      "FullName": data.fullName,
       "Password": $('#authPassword').val(),
       "UserId": data.userId,
       "Token": data.access_token,
