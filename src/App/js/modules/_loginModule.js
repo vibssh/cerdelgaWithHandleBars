@@ -27,6 +27,8 @@ var _LoginModule = (function (window) {
       "Expiry": data[".expires"]
     };
 
+    _TokenHandler.tokenSettings.$token = data.access_token;
+
     sessionStorage.setItem('userData', JSON.stringify(userDataToStore));
 
     console.info(data);

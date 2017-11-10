@@ -39,8 +39,7 @@ var _Profile = (function (window) {
   //Nurse Data GET
   var _getNurseData = function ($clicked) {
     var userData = JSON.parse(sessionStorage.getItem("userData"));
-    _Settings.$bearerToken = userData.Token;
-    
+    //_Settings.$bearerToken = userData.Token;
 
     //Ajax Call to Get User Data
     var clickedId = $($clicked).data('id');
@@ -56,17 +55,25 @@ var _Profile = (function (window) {
 
     if(currentTime >= futureTime) {
        console.info("currentTime is greater than future time i am firing getuser api")
-       _TokenHandler.init();  
-       _Settings.$bearerToken =  userData.Token;    
+       _TokenHandler.init(_fetchNurseData);
+    } else {
+      TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
     }
-
-    TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
+      
+    
   };
 
   var _getUserBeforeSend = function(xhr){
-    xhr.setRequestHeader('Authorization', 'bearer '+ _Settings.$bearerToken);
+    console.info('BEFORE SEND WITH TOKEN ', _TokenHandler.tokenSettings.$token);
+    console.info('BEFORE SEND WITH tokenSettings ', _TokenHandler.tokenSettings);
+    xhr.setRequestHeader('Authorization', 'bearer '+ _TokenHandler.tokenSettings.$token);
   };
 
+  var _fetchNurseData = function (){
+    //_Settings.$bearerToken =  _TokenHandler.token;  
+    console.info('Fetch nursdata callback ');
+    TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
+  }
 
 
   var _getNurseSuccess = function (data) {
