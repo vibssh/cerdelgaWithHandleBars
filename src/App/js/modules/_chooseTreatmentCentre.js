@@ -79,8 +79,9 @@ var _ChooseTreatmentCentre = (function(window){
     // });
 
     //Display the Treatment Choice Screen on click of change-centre link
-    $('.change-centre').on('click', function(e){
+    $(document).on('click', '.change-centre', function(e){
       e.preventDefault();
+      console.info('Change Centre is clicked');
       _displayChoiceScreen();
     });
 

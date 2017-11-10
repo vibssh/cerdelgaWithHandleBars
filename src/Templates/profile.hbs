@@ -235,7 +235,6 @@
                 </a>
               </div>
               <div class="form-link">
-                <a href="#" class="incorrect-centre" data-id="{{Id}}">These details are incorrect</a>
                 <a href="#" class="change-centre" data-id="{{Id}}">Change my treatment centre</a>
               </div>
               {{/each}}
@@ -293,7 +292,7 @@
           </div>
 
           <!-- Add New Treatment Centre -->
-          <div class="add-treatment-centre hide-me">
+          {{!-- <div class="add-treatment-centre hide-me">
             <h2>Add A New Treatment Centre</h2>
             <form id="add-treatment-centre">
               <div class="form-field">
@@ -340,7 +339,7 @@
 
           <div class="add-treatment-success hide-me">
             <h2>Your Treatment Centre has been added</h2>
-          </div>
+          </div> --}}
 
           <!-- Treatment Centre Choice -->
           <div class="treatment-centre-choice hide-me">
@@ -359,10 +358,10 @@
                 </div>
 
               </div>
-              <!-- Add new Centre -->
+              {{!-- <!-- Add new Centre -->
               <div>
                 <a href="#" class="add-new-centre">My treatment centre isn't in the list</a>
-              </div>
+              </div> --}}
 
               <div class="form-button-wrapper">
                 <div class="form-reset">
@@ -377,7 +376,7 @@
           </div>
         </div>
         <!-- Review Treatment Centre Block -->
-        <div class="treatment-centre-review hide-me">
+        {{!-- <div class="treatment-centre-review hide-me">
           <h4>Your Treatment Centre Details Have Been Sent for Review </h4>
           <span>This will take up to 3 days to be reviewed.</span>
           <div class="info-panel">
@@ -386,7 +385,7 @@
               approved
             </p>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
@@ -395,8 +394,8 @@
 <script type="text/javascript">
   //isLoggedInModule.init();
   //_ProfileDetailsUpdate.init();
-  //updateTreatmentCentre.init();
-  //_ChooseTreatmentCentre.init();
+  updateTreatmentCentre.init();
+  _ChooseTreatmentCentre.init();
   //addTreatmentCentre.init($('#add-treatment-centre'));
 
   $('.back-link').on('click', function (e) {
