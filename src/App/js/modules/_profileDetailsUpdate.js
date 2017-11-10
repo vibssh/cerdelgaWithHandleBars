@@ -51,9 +51,7 @@ var _ProfileDetailsUpdate = (function (window) {
 
     /* Endpoints to update data */
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/0',
-    /* 0 is hard coded this should be tied up with the nurse data api  */
+    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser/'
   };
 
   var bindUIActions = function () {
@@ -148,24 +146,18 @@ var _ProfileDetailsUpdate = (function (window) {
 
   var _updateFullName = function () {
     var newNameValue = $('#newName').val();
+    /* Constructing the data to be sent to update the user info */
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
 
-    var formData = {
+    var $data = {
+      "Id": userData.UserId,
       "FullName": newNameValue,
-      "Email": $('#email').val(),
-      "Password": $('#password').val()
-    };
+      "Password": userData.Password,
+      "TreatmentCentreId": parseInt(userData.TreatmentCentreId)
+     };
 
-    $.ajax({
-      url: _Settings.$nurseEndPoint,
-      type: 'PUT',
-      data: formData,
-      success: function () {
-        _updateFullNameSuccess(formData.FullName);
-      },
-      error: function (xhr) {
-        _updateNameFail(xhr);
-      }
-    });
+     _APIHandler.init(_Settings.$nurseEndPoint, 'POST', true, _updateFullNameSuccess($data.FullName), _updateNameFail, $data);
+    
   };
 
   var _updateFullNameSuccess = function (name) {

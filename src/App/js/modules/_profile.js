@@ -61,6 +61,15 @@ var _Profile = (function (window) {
 
     console.info('Nurse Data ', data);
 
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+
+    
+    userData["TreatmentCentreId"] = data.TreatmentCentreId;
+    console.info('Nurse Success UserData ', userData);
+
+    sessionStorage.removeItem('userData');
+    sessionStorage.setItem('userData', JSON.stringify(userData));
+
     _Settings.$profileData["Nurse"] = [];
     _Settings.$profileData.Nurse.push(nurseData);
 
@@ -83,6 +92,8 @@ var _Profile = (function (window) {
     _Settings.$profileData["TreatmentCentre"] = [];
     _Settings.$profileData.TreatmentCentre.push(treatmentCentreData);
     
+
+
     //Loading the Template
     var $data = _Settings.$profileData;
     _TemplateLoader.init('profile', $data);

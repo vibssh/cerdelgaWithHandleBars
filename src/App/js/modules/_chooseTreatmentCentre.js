@@ -36,8 +36,15 @@ var _ChooseTreatmentCentre = (function(window){
      "TreatmentCentreId": parseInt(_Settings.$selectedItem)
     };
 
-    console.info('Update Data ', $data);
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+        
+    userData["TreatmentCentreId"] = $data.TreatmentCentreId;
+    console.info('Nurse Success UserData ', userData);
+    
+    sessionStorage.removeItem('userData');
+    sessionStorage.setItem('userData', JSON.stringify(userData));
 
+    console.info('Update Data ', $data);
     _APIHandler.init(_Settings.$updateTreatmentCentreEndPoint, 'POST', true, _success, _failure, $data);
   };
   
