@@ -8,7 +8,7 @@ var _Profile = (function (window) {
 
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
     $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/getUser/',
-    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre',
+    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre/',
     /* 0 is hard coded this should be tied up with the nurse data api  */
 
     $profileId: null,
@@ -46,8 +46,7 @@ var _Profile = (function (window) {
     var clickedId = $($clicked).data('id');
     var storedId = userData.UserId;
     _Settings.$profileId = (clickedId) ? clickedId : storedId;
-    _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure, {});
-    
+    _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure);
   };
 
 
@@ -60,13 +59,34 @@ var _Profile = (function (window) {
       'TreatmentCentreId': data.TreatmentCentreId
     };
 
+    console.info('Nurse Data ', data);
+
     _Settings.$profileData["Nurse"] = [];
     _Settings.$profileData.Nurse.push(nurseData);
-    var $data = _Settings.$profileData;
-    console.info('Nurse Data', $data);
-    _TemplateLoader.init('profile', $data);
+
+    //Get Treatment Centre data for that user please
+    _APIHandler.init(_Settings.$treatmentCentreEndPoint +  data.TreatmentCentreId, 'GET', false, _getTreatmentCentreSuccess, _getNurseFailure);
   };
 
+  var _getTreatmentCentreSuccess = function(data){
+    var treatmentCentreData = {
+      'Id': data.Id,
+      'CentreName': data.CentreName,
+      'UnitName': data.UnitName,
+      'StreetName': data.StreetName,
+      'City': data.City,
+      'County': data.County,
+      'PostCode': data.PostCode,
+      'PhoneNumber': data.PhoneNumber
+    };
+
+    _Settings.$profileData["TreatmentCentre"] = [];
+    _Settings.$profileData.TreatmentCentre.push(treatmentCentreData);
+    
+    //Loading the Template
+    var $data = _Settings.$profileData;
+    _TemplateLoader.init('profile', $data);
+  };
   
 
   var _getNurseFailure = function (xhr) {
