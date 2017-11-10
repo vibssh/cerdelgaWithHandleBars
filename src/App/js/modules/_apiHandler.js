@@ -1,8 +1,8 @@
 /**
  * Module : _APIHandler
- * Public Api : _APIHandler.();
- * Created on : 
- * Author : 
+ * Public Api : _APIHandler.init();
+ * Created on : 10.11.2017
+ * Author : Leo Jacobs
  */
 
 var _APIHandler = (function (window) {
@@ -46,14 +46,9 @@ var _APIHandler = (function (window) {
       var userData = JSON.parse(sessionStorage.getItem('userData'));
       var currentTime = new Date().getTime();
       var futureTime = new Date(userData.Expiry).getTime();
-      console.info('Current Time ', currentTime);
-      console.info('Future Time', futureTime);
-
       if (currentTime >= futureTime) {
         _TokenHandler.init(_executeAPI);
-
-      } else {
-        
+      } else {        
           TEWLibrary.fetchData(_PrivateSettings.$endpoint, _PrivateSettings.$apiMethod, {
             $beforeSend: _getUserBeforeSend,
             $data: _PrivateSettings.$params
