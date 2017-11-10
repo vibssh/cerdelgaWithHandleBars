@@ -86,10 +86,13 @@ var _LoginModule = (function (window) {
       };
 
       //Ajax Call Here for login
-      TEWLibrary.fetchData(_privateSettings.$loginEndPoint, 'POST', {
-        $data: $data,
-        $beforeSend: _loginBeforeSend
-      }).done(_loginSuccess).fail(_loginFailure);
+      _APIHandler.init(_privateSettings.$loginEndPoint, 'POST', false, _loginSuccess, _loginFailure, $data);
+
+      
+      // TEWLibrary.fetchData(_privateSettings.$loginEndPoint, 'POST', {
+      //   $data: $data,
+      //   $beforeSend: _loginBeforeSend
+      // }).done(_loginSuccess).fail(_loginFailure);
 
     });
 

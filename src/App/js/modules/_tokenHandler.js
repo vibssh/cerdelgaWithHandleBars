@@ -19,8 +19,6 @@ var _TokenHandler = (function(window){
       "Email": userData.UserName,
       "Password": userData.Password
     };
-    
-
     _PrivateSettings.$callback = callback;
     TEWLibrary.fetchData(_PrivateSettings.$tokenReceiverApi, 'POST', {$data: loginData} ).done(_getTokenSuccess).fail(_getTokenFailure);
   };

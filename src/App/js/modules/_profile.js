@@ -38,6 +38,7 @@ var _Profile = (function (window) {
 
   //Nurse Data GET
   var _getNurseData = function ($clicked) {
+    console.info('clicked');
     var userData = JSON.parse(sessionStorage.getItem("userData"));
     //_Settings.$bearerToken = userData.Token;
 
@@ -45,35 +46,9 @@ var _Profile = (function (window) {
     var clickedId = $($clicked).data('id');
     var storedId = userData.UserId;
     _Settings.$profileId = (clickedId) ? clickedId : storedId;
-    //_Settings.$profileId = $($clicked).data('id');
-
-    //If currentTime is greater or equal to future time fire the _TokenHandler function to receive new Token
-    var currentTime = new Date().getTime();
-    var futureTime = new Date(userData.Expiry).getTime();
-    console.info('Current Time ', currentTime);
-    console.info('Future Time',  futureTime);
-
-    if(currentTime >= futureTime) {
-       console.info("currentTime is greater than future time i am firing getuser api")
-       _TokenHandler.init(_fetchNurseData);
-    } else {
-      TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
-    }
-      
+    _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure, {});
     
   };
-
-  var _getUserBeforeSend = function(xhr){
-    console.info('BEFORE SEND WITH TOKEN ', _TokenHandler.tokenSettings.$token);
-    console.info('BEFORE SEND WITH tokenSettings ', _TokenHandler.tokenSettings);
-    xhr.setRequestHeader('Authorization', 'bearer '+ _TokenHandler.tokenSettings.$token);
-  };
-
-  var _fetchNurseData = function (){
-    //_Settings.$bearerToken =  _TokenHandler.token;  
-    console.info('Fetch nursdata callback ');
-    TEWLibrary.fetchData(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET' , {$beforeSend: _getUserBeforeSend }).done(_getNurseSuccess).fail(_getNurseFailure);
-  }
 
 
   var _getNurseSuccess = function (data) {
@@ -90,8 +65,6 @@ var _Profile = (function (window) {
     var $data = _Settings.$profileData;
     console.info('Nurse Data', $data);
     _TemplateLoader.init('profile', $data);
-
-   // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
   };
 
   
@@ -103,7 +76,6 @@ var _Profile = (function (window) {
   var bindUIActions = function () {
     /* Nurse / Patient Name click Event on the top  */
     $('.link-profile').on('click', function (e) {
-     
       e.preventDefault();
       e.stopPropagation();
       //Call Nurse Template
