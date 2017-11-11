@@ -7,12 +7,30 @@
 var resetSettings,
 resetPassword = {
     settings : {
-        $resetEndPoint: 'http://soa.tew-dev.com/api/emsmock/passwordreset'
+        $resetEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordReset',
+        $resetVerifyEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/passwordResetLoad',
+        $resetValidToken: ''
     },
 
     init: function() {
         resetSettings = this.settings;
         this.bindUIActions();
+
+        /* on Load checking if the token and email are valid  */
+        //capture the email and token to post to reset verify endpoint and on success show the reset password form else on error show error screen
+        var email = _VerifyEmailUrl.getUrlParameter('email');
+        resetSettings.$resetValidToken = _VerifyEmailUrl.getUrlParameter('token');
+       
+        // Data to post to verify endpoint
+      var resetPostData = {
+        'Email': email,
+        'Token': resetSettings.$resetValidToken
+      };
+
+         //Ajax Call Here
+      TEWLibrary.fetchData(resetSettings.$resetVerifyEndPoint, 'POST', {
+        $data: resetPostData
+      }).done(resetPassword._resetVerifySuccess).fail(resetPassword._resetVerifyFailure);
     },
 
     bindUIActions: function() {
@@ -21,6 +39,16 @@ resetPassword = {
             resetPassword.resetPass();
         });
     },
+
+
+    _resetVerifySuccess: function(){
+        $('#reset-pwd-form').fadeIn();
+    },
+
+    _resetVerifyFailure: function(){
+        $('#invalid-resetData').fadeIn();
+    },
+
 
     updatePassword: function() {
         //Capture the data to be updated
@@ -46,15 +74,16 @@ resetPassword = {
     resetPass: function () {
         //Capture the data to be updated
         var email = $('#emailResetPassword').val();
-        var oldPass = $('#oldResetPassword').val();
+        var pass = $('#Password').val();
         var newPass = $('#resetPassword').val();
 
         /* The data below is hardcoded needs to be dynamic when we get the api sorted by 3rd party */
         var postData = {
 
             "Email": email,
-            "Password": oldPass,
-            "NewPassword": newPass
+            "Password": pass,
+            "NewPassword": newPass,
+            "Token": resetSettings.$resetValidToken
         };
         
         //Do Ajax posting here

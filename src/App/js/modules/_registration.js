@@ -1,7 +1,7 @@
 var registrationSettings,
     registration = {
         settings: {
-
+            $treatmentCentreEndPoint : 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre'
         },
 
         /* Initialize the Module */
@@ -36,8 +36,6 @@ var registrationSettings,
             $.validator.addMethod("namecheck", function (value, element) {
                 return value.indexOf(' ') === -1 ? false : true;
             });
-
-
         },
 
         /* Bind Events */
@@ -49,7 +47,7 @@ var registrationSettings,
                 /* Capturing the data to post */
                 var registrationNurseData = {
                     "Email": $('#RegEmail').val(),
-                    "Full Name": $('#RegFullName').val(),
+                    "FullName": $('#RegFullName').val(),
                     "Password": $('#RegPassword').val()
                 };
 
@@ -57,7 +55,26 @@ var registrationSettings,
                 registrationSettings.$newUserData.push(registrationNurseData);
                 registration.stepCompleted();
 
-                console.info('CONTINUE BUTTON CLICKED DATA', registrationSettings.$newUserData);
+
+                /* Getting the List of treatment Centres */
+                $.ajax({
+                    url: registrationSettings.$treatmentCentreEndPoint,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function (data, jqXHR, textStatus) {
+                        console.info(data);
+                        $.each(data, function (index, treatmentcentre) {
+                            //console.info(treatmentcentre);
+                            $('#chooseTreatmentCentre').append('<option value="' + treatmentcentre.Id + '">' + treatmentcentre.CentreName + '</option>');
+                            //nurseViewSettings.$treatmentCentreId = data[0].treatmentcentre.Id;
+                        });
+                    },
+                    error: function (data, jqXHR, textStatus) {
+                        console.info(textStatus.statusText);
+                    }
+                });
+
+               // console.info('CONTINUE BUTTON CLICKED DATA', registrationSettings.$newUserData);
             });
 
             //Back
@@ -74,8 +91,21 @@ var registrationSettings,
             //Finish 
             $(document).on('click', '.finish-btn > a', function (e) {
                 e.preventDefault();
-                var treatmentCentreSelected = $('#chooseTreatmentCentre option:selected')[0].innerText; // Capturing the Chosen Treatment Centre
-                registrationSettings.$newUserData[0]['treatmentCentreChosen'] = treatmentCentreSelected; // To add key value to exisiting User Object
+                var treatmentCentreSelected = $('#chooseTreatmentCentre option:selected').attr('value');
+                // console.info('The data to be sent ', registrationSettings.$newUserData);
+                // console.info('Treatment Centre Selected ID', treatmentCentreSelected);
+                //Adding treatment Centre choosen 
+                if (treatmentCentreSelected !== 0 || treatmentCentreSelected === null || treatmentCentreSelected === undefined){
+                    registrationSettings.$newUserData[0]["TreatmentCentreChosen"] = parseInt(treatmentCentreSelected);
+                 } else {
+                    registrationSettings.$newUserData[0]["TreatmentCentreChosen"] = 0;
+                 }
+                
+                
+
+
+                //var treatmentCentreSelected = $('#chooseTreatmentCentre option:selected')[0].innerText; // Capturing the Chosen Treatment Centre
+                //registrationSettings.$newUserData[0]['treatmentCentreChosen'] = treatmentCentreSelected; // To add key value to exisiting User Object
 
                 //Ajax POSTING
                 TEWLibrary.fetchData(registrationSettings.$registrationEndPoint, 'POST', {
@@ -127,8 +157,8 @@ var registrationSettings,
 
                     RegEmail: {
                         required: "We need your email address to contact you",
-                        email: "Your email address must be in the format of name@domain.com",
-                        domain: "Only NHS email address is allowed to login the system"
+                        email: "Your email address must be in the format of name@domain.com"
+                       // domain: "Only NHS email address is allowed to login the system"
 
                     }
                 }
@@ -137,8 +167,7 @@ var registrationSettings,
 
 
 
-            $('#RegPassword').on('keyup', function () {
-
+            $('input').on('blur keyup', function () {
                 if ($('#registration-form').valid()) {
                     //$('.new-password-validation').removeClass('showMe');// checks form for validity
                     $('.continue-setup-btn a').removeClass('disabled'); // enables button

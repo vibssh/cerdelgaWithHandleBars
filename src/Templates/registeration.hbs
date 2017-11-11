@@ -1,9 +1,9 @@
 <script type="text/javascript">
     (function () {
       showPassword.init();
-        var $endpoint = 'http://soa.tew-dev.com/api/emsmock/register';
+        var $endpoint = 'http://soa-cerdelga.tew-dev.com/api/emsmock/register';
         registration.init($endpoint);
-        updateTreatmentCentre.init();
+        //updateTreatmentCentre.init();
         treatmentCentreChoice.init();
         newPasswordValidation.init($('#RegPassword'));
         addTreatmentCentre.init($('#add-treatment-centre'));
@@ -142,7 +142,7 @@
                   <label for="chooseTreatmentCentre" class="col-md-3">Treatment centre</label>
                   <div class="select-wrapper">
                     <select id="chooseTreatmentCentre" class="col-md-9">
-                      <option value="">Choose a Treatment Centre</option>
+                      <option value="0">Choose a Treatment Centre</option>
                     </select>
                     <div class="select-arrow">
                       <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -151,9 +151,9 @@
 
                 </div>
                 <!-- Add new Centre -->
-                <div>
+                {{!-- <div>
                   <a href="#" class="add-new-centre">My treatment centre isn't in the list</a>
-                </div>
+                </div> --}}
 
                 <!-- Error Message / Loading Message -->
 
@@ -329,7 +329,7 @@
       </div>
 
       <div class="success-blurb">
-        Your account has been created and you will shortly receive a confirmation email. You can now log in to the pack creator.
+        Your account has been created and you will shortly receive a confirmation email to verify your account.
       </div>
 
       <div class="success-verify">
@@ -337,9 +337,9 @@
         <sup>&reg;</sup> Life
       </div>
 
-      <div class="success-continue">
+      {{!-- <div class="success-continue">
         <a href="#" id="verify-link">Return to login</a>
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>

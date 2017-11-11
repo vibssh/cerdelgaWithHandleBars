@@ -3,7 +3,7 @@ var _updateTreatmentCentreSettings,
   updateTreatmentCentre = {
 
     settings: {
-      $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/',
+      $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre/',
       $putUrl: ''
     },
 

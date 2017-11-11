@@ -51,9 +51,7 @@ var _ProfileDetailsUpdate = (function (window) {
 
     /* Endpoints to update data */
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/0',
-    /* 0 is hard coded this should be tied up with the nurse data api  */
+    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser/'
   };
 
   var bindUIActions = function () {
@@ -121,7 +119,7 @@ var _ProfileDetailsUpdate = (function (window) {
     $(document).on('click', '.toggle-password', function (e) {
       e.preventDefault();
       _showPwd($(this));
-  });
+    });
 
 
   }; //End of bindUIActions
@@ -148,24 +146,26 @@ var _ProfileDetailsUpdate = (function (window) {
 
   var _updateFullName = function () {
     var newNameValue = $('#newName').val();
+    /* Constructing the data to be sent to update the user info */
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
 
-    var formData = {
+    var $data = {
+      "Id": userData.UserId,
       "FullName": newNameValue,
-      "Email": $('#email').val(),
-      "Password": $('#password').val()
+      "Password": userData.Password,
+      "TreatmentCentreId": parseInt(userData.TreatmentCentreId)
     };
 
-    $.ajax({
-      url: _Settings.$nurseEndPoint,
-      type: 'PUT',
-      data: formData,
-      success: function () {
-        _updateFullNameSuccess(formData.FullName);
-      },
-      error: function (xhr) {
-        _updateNameFail(xhr);
-      }
-    });
+    //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+
+    userData["FullName"] = $data.FullName;
+
+    sessionStorage.removeItem('userData');
+    sessionStorage.setItem('userData', JSON.stringify(userData));
+
+    _APIHandler.init(_Settings.$nurseEndPoint, 'POST', true, _updateFullNameSuccess($data.FullName), _updateNameFail, $data);
+
   };
 
   var _updateFullNameSuccess = function (name) {
@@ -189,8 +189,9 @@ var _ProfileDetailsUpdate = (function (window) {
 
   /* Checking Current Password matches with the exisiting Password */
   var _currentPasswordValidation = function () {
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
 
-    var existingPassword = $('#password').val();
+    var existingPassword = userData.Password;
     console.info(existingPassword);
     var currentPassword = $('#currentPassword').val();
 
@@ -219,45 +220,59 @@ var _ProfileDetailsUpdate = (function (window) {
     var value = $clickedItem.parent().prev('input').val();
     var valLength = value.length;
     if (valLength > 0) {
-        if ($($clickedItem).hasClass('showPassword')) {
-            $clickedItem.hide();
-            $clickedItem.next('.hidePassword').css('display', 'block');
-            $clickedItem.parent().prev('input').attr('type', 'text');
-        }
+      if ($($clickedItem).hasClass('showPassword')) {
+        $clickedItem.hide();
+        $clickedItem.next('.hidePassword').css('display', 'block');
+        $clickedItem.parent().prev('input').attr('type', 'text');
+      }
 
-        if ($($clickedItem).hasClass('hidePassword')) {
-            $clickedItem.hide();
-            $clickedItem.prev('.showPassword').css('display', 'block');
-            $clickedItem.parent().prev('input').attr('type', 'password');
-        }
+      if ($($clickedItem).hasClass('hidePassword')) {
+        $clickedItem.hide();
+        $clickedItem.prev('.showPassword').css('display', 'block');
+        $clickedItem.parent().prev('input').attr('type', 'password');
+      }
     }
-}
+  }
   //Update Nurse Password
   var _updatePassword = function () {
     var newPasswordValue = $('#newPassword').val();
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
 
-    var updatedFormData = {
-      "FullName": $('#fullName').val(),
-      "Email": $('#email').val(),
-      "Password": newPasswordValue
+
+    var $data = {
+      "Id": userData.UserId,
+      "FullName": userData.FullName,
+      "Password": newPasswordValue,
+      "TreatmentCentreId": parseInt(_Settings.$selectedItem)
     };
 
 
     if (newPasswordValue.length > 0) {
-      TEWLibrary.fetchData(_Settings.$nurseEndPoint, 'PUT', {
-        $data: updatedFormData        
-      }).done(_updatePasswordSuccess(updatedFormData)).fail(_updatePasswordFail);
+      //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
+      var userData = JSON.parse(sessionStorage.getItem("userData"));
+
+      userData["Password"] = $data.Password;
+      console.info('Nurse Success UserData ', userData);
+
+      sessionStorage.removeItem('userData');
+      sessionStorage.setItem('userData', JSON.stringify(userData));
+
+
+      _APIHandler.init(_Settings.$nurseEndPoint, 'POST', true, _updatePasswordSuccess($data), _updatePasswordFail, $data);
+      
     }
   };
 
   var _updatePasswordSuccess = function (data) {
-    
-     $('.password-edit-block').hide();
-     $('#newPassword').val('');
+
+    $('.password-edit-block').hide();
+    $('#newPassword').val('');
 
     //Updating the exisiting input field
-     $('#password').val(data.Password);
-     $('#nurse-password-form').find('.form-field').css('display', 'block');
+    $('#password').val(data.Password);
+    $('#nurse-password-form').find('.form-field').css('display', 'block');
+
+
   };
 
   var _updatePasswordFail = function (xhr) {

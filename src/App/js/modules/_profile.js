@@ -7,20 +7,21 @@ var _Profile = (function (window) {
     $tabs: $('.tabs'),
 
     /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa.cerdelga.tew-dev.com/api/Nurse/0',
-    $treatmentCentreEndPoint: 'http://soa.cerdelga.tew-dev.com/api/TreatmentCentre/0',
+    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/getUser/',
+    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre/',
     /* 0 is hard coded this should be tied up with the nurse data api  */
 
-    $profileId: $('.link-profile').data('id'),
+    $profileId: null,
 
     $profileData: {
       'Nurse': [],
       'TreatmentCentre': []
-    }
+    },
+    $bearerToken : ''
 
   };
 
-
+  
   // Tabs
   var _nurseViewTabs = function ($clickedItem) {
     var tabId = $clickedItem.data('tab');
@@ -35,38 +36,69 @@ var _Profile = (function (window) {
     tab.addClass('active');
   };
 
-  // Nurse Data GET
-  var _getNurseData = function () {
-    // This is called on Login
-    //Ajax Call Here using Multiple Simultaenous call
-    return $.when(
-      $.get(_Settings.$nurseEndPoint, function (data) {
-        _Settings.$profileData.Nurse.push(data);
-      }),
+  //Nurse Data GET
+  var _getNurseData = function ($clicked) {
+    console.info('clicked');
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    //_Settings.$bearerToken = userData.Token;
 
-      $.get(_Settings.$treatmentCentreEndPoint, function (data) {
-        _Settings.$profileData.TreatmentCentre.push(data);
-
-
-      })
-    ).then(_getNurseSuccess);
-
-    //TEWLibrary.fetchData(_Settings.$nurseEndPoint, 'GET', {}).done(_getNurseSuccess).fail(_getNurseFailure);
+    //Ajax Call to Get User Data
+    var clickedId = $($clicked).data('id');
+    var storedId = userData.UserId;
+    _Settings.$profileId = (clickedId) ? clickedId : storedId;
+    _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure);
   };
 
-  var _getNurseSuccess = function () {
+
+  var _getNurseSuccess = function (data) {
     /* This will render the Template */
-    var $data = _Settings.$profileData;
-    console.info('Nurse Data', $data);
-   // $('.link-profile').bind('click'); // Rebinding the click event so that user can go back in the profile section if need be
+    var nurseData = {
+      'Id': data.Id,
+      'FullName': data.FullName,
+      'Email': data.Email,
+      'TreatmentCentreId': data.TreatmentCentreId
+    };
+
+    console.info('Nurse Data ', data);
+
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+
+    
+    userData["TreatmentCentreId"] = data.TreatmentCentreId;
+    console.info('Nurse Success UserData ', userData);
+
+    sessionStorage.removeItem('userData');
+    sessionStorage.setItem('userData', JSON.stringify(userData));
+
+    _Settings.$profileData["Nurse"] = [];
+    _Settings.$profileData.Nurse.push(nurseData);
+
+    //Get Treatment Centre data for that user please
+    _APIHandler.init(_Settings.$treatmentCentreEndPoint +  data.TreatmentCentreId, 'GET', false, _getTreatmentCentreSuccess, _getNurseFailure);
   };
 
-  // This methods pulls in the Template for Nurse Details View Pageb
-  var _viewProfile = function(){
+  var _getTreatmentCentreSuccess = function(data){
+    var treatmentCentreData = {
+      'Id': data.Id,
+      'CentreName': data.CentreName,
+      'UnitName': data.UnitName,
+      'StreetName': data.StreetName,
+      'City': data.City,
+      'County': data.County,
+      'PostCode': data.PostCode,
+      'PhoneNumber': data.PhoneNumber
+    };
+
+    _Settings.$profileData["TreatmentCentre"] = [];
+    _Settings.$profileData.TreatmentCentre.push(treatmentCentreData);
+    
+
+
+    //Loading the Template
     var $data = _Settings.$profileData;
     _TemplateLoader.init('profile', $data);
   };
-
+  
 
   var _getNurseFailure = function (xhr) {
     console.info(xhr.status);
@@ -78,7 +110,7 @@ var _Profile = (function (window) {
       e.preventDefault();
       e.stopPropagation();
       //Call Nurse Template
-      _viewProfile();
+      _getNurseData($(this));
     });
 
 

@@ -1,7 +1,7 @@
 var _ForgottenPassword = (function (window) {
   'use strict';
   var _pvtSettings = {
-    $forgottenPwdReqEndPoint: 'http://soa.tew-dev.com/api/emsmock/forgotPasswordRequest'
+    $forgottenPwdReqEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/forgotPasswordRequest'
   };
 
   var _loginBeforeSend = function () {
@@ -13,9 +13,9 @@ var _ForgottenPassword = (function (window) {
   var _forgottenSuccess = function(){
     $('.forgotten').hide();
     $('.forgotten-success').addClass('reveal');
-    setTimeout(function () {
-        window.location = "/";
-    }, 10000);
+    // setTimeout(function () {
+    //     window.location = "/";
+    // }, 10000);
   };
 
   var _forgottenFailure = function (xhr) {

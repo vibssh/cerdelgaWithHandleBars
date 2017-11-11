@@ -11,7 +11,6 @@
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="nurse-title">{{FullName}}</h1>
-
         <!-- Tab Navigation -->
         <nav class="nurse-tab-nav">
           <ul class="nurse-tab">
@@ -80,7 +79,6 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
             </div>
-
           </form>
 
           <form id="nurse-password-form">
@@ -88,7 +86,7 @@
               <h2> Password </h2>
               <div class="form-field">
                 <label for="password" class="col-md-3">Password</label>
-                <input type="password" value="{{Password}}" id="password" class="col-md-9" disabled="disabled" />
+                <input type="password" value="itsnotapassword" id="password"  class="col-md-9" disabled="disabled" />
                 <a href="#" class="edit password-edit-btn">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
@@ -237,7 +235,6 @@
                 </a>
               </div>
               <div class="form-link">
-                <a href="#" class="incorrect-centre" data-id="{{Id}}">These details are incorrect</a>
                 <a href="#" class="change-centre" data-id="{{Id}}">Change my treatment centre</a>
               </div>
               {{/each}}
@@ -295,7 +292,7 @@
           </div>
 
           <!-- Add New Treatment Centre -->
-          <div class="add-treatment-centre hide-me">
+          {{!-- <div class="add-treatment-centre hide-me">
             <h2>Add A New Treatment Centre</h2>
             <form id="add-treatment-centre">
               <div class="form-field">
@@ -342,7 +339,7 @@
 
           <div class="add-treatment-success hide-me">
             <h2>Your Treatment Centre has been added</h2>
-          </div>
+          </div> --}}
 
           <!-- Treatment Centre Choice -->
           <div class="treatment-centre-choice hide-me">
@@ -361,10 +358,10 @@
                 </div>
 
               </div>
-              <!-- Add new Centre -->
+              {{!-- <!-- Add new Centre -->
               <div>
                 <a href="#" class="add-new-centre">My treatment centre isn't in the list</a>
-              </div>
+              </div> --}}
 
               <div class="form-button-wrapper">
                 <div class="form-reset">
@@ -379,7 +376,7 @@
           </div>
         </div>
         <!-- Review Treatment Centre Block -->
-        <div class="treatment-centre-review hide-me">
+        {{!-- <div class="treatment-centre-review hide-me">
           <h4>Your Treatment Centre Details Have Been Sent for Review </h4>
           <span>This will take up to 3 days to be reviewed.</span>
           <div class="info-panel">
@@ -388,18 +385,18 @@
               approved
             </p>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  isLoggedInModule.init();
+  //isLoggedInModule.init();
   _ProfileDetailsUpdate.init();
   updateTreatmentCentre.init();
   _ChooseTreatmentCentre.init();
-  addTreatmentCentre.init($('#add-treatment-centre'));
+  //addTreatmentCentre.init($('#add-treatment-centre'));
 
   $('.back-link').on('click', function (e) {
     e.preventDefault();
