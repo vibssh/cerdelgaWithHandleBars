@@ -5,22 +5,19 @@ var _Profile = (function (window) {
     // Tabs
     $trigger: $('.nurse-tab-link'),
     $tabs: $('.tabs'),
-
-    /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
+    //EndPoints    
     $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/getUser/',
-    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre/',
-    /* 0 is hard coded this should be tied up with the nurse data api  */
-
+    $treatmentCentreEndPoint: 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre/',    
     $profileId: null,
-
     $profileData: {
       'Nurse': [],
       'TreatmentCentre': []
     },
-    $bearerToken : ''
+    $bearerToken : '',
+
+    $userData: null
 
   };
-
   
   // Tabs
   var _nurseViewTabs = function ($clickedItem) {
@@ -37,18 +34,13 @@ var _Profile = (function (window) {
   };
 
   //Nurse Data GET
-  var _getNurseData = function ($clicked) {
-    console.info('clicked');
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-    //_Settings.$bearerToken = userData.Token;
-
-    //Ajax Call to Get User Data
-    var clickedId = $($clicked).data('id');
-    var storedId = userData.UserId;
+  var _getNurseData = function ($clicked) {               
+    var clickedId = $($clicked).data('id');    
+    var storedId = _Settings.$userData.UserId;
     _Settings.$profileId = (clickedId) ? clickedId : storedId;
+    //Ajax Call to Get User Data
     _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure);
   };
-
 
   var _getNurseSuccess = function (data) {
     /* This will render the Template */
@@ -58,17 +50,11 @@ var _Profile = (function (window) {
       'Email': data.Email,
       'TreatmentCentreId': data.TreatmentCentreId
     };
-
-    console.info('Nurse Data ', data);
-
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-
     
-    userData["TreatmentCentreId"] = data.TreatmentCentreId;
-    console.info('Nurse Success UserData ', userData);
+    //_Settings.$userData["TreatmentCentreId"] = data.TreatmentCentreId;    
 
-    sessionStorage.removeItem('userData');
-    sessionStorage.setItem('userData', JSON.stringify(userData));
+    //sessionStorage.removeItem('userData');
+    //sessionStorage.setItem('userData', JSON.stringify(_Settings.$userData));
 
     _Settings.$profileData["Nurse"] = [];
     _Settings.$profileData.Nurse.push(nurseData);
@@ -91,20 +77,20 @@ var _Profile = (function (window) {
 
     _Settings.$profileData["TreatmentCentre"] = [];
     _Settings.$profileData.TreatmentCentre.push(treatmentCentreData);
-    
 
-
-    //Loading the Template
+    //Template Data
     var $data = _Settings.$profileData;
     _TemplateLoader.init('profile', $data);
   };
-  
 
   var _getNurseFailure = function (xhr) {
     console.info(xhr.status);
   }
 
   var bindUIActions = function () {
+    //Getting User Data from the session Storage Initially
+    _Settings.$userData = JSON.parse(sessionStorage.getItem('userData'));
+
     /* Nurse / Patient Name click Event on the top  */
     $('.link-profile').on('click', function (e) {
       e.preventDefault();
@@ -121,7 +107,7 @@ var _Profile = (function (window) {
     });
   };
 
-  // 
+  // Public API
   return {
     init: bindUIActions,
     getNurseData: _getNurseData,
