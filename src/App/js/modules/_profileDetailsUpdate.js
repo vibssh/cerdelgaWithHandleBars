@@ -49,12 +49,16 @@ var _ProfileDetailsUpdate = (function (window) {
     $special: $('.new-password-item').find('.special'),
     $strength: $('.new-password-item').find('.strength'),
 
-    /* Endpoints to update data */
-    /* Currently hard Coded to be 0 but when we get the login API we can tie this to the user profile */
-    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser/'
+    /* Endpoints to update data */    
+    $nurseEndPoint: 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser/',
+
+    //User Data
+    $userData: null
   };
 
   var bindUIActions = function () {
+    /* Getting the initial UserData from the session storage */
+    _Settings.$userData = JSON.parse(sessionStorage.getItem('userData'));
 
     /* Full Name Edit Field show Event */
     $(document).on('click', '.name-edit-btn', function (e) {
@@ -146,23 +150,21 @@ var _ProfileDetailsUpdate = (function (window) {
 
   var _updateFullName = function () {
     var newNameValue = $('#newName').val();
-    /* Constructing the data to be sent to update the user info */
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-
+    /* Constructing the data to be sent to update the user info */    
     var $data = {
-      "Id": userData.UserId,
+      "Id": _Settings.$userData.UserId,
       "FullName": newNameValue,
-      "Password": userData.Password,
-      "TreatmentCentreId": parseInt(userData.TreatmentCentreId)
+      "Password": _Settings.$userData.Password,
+      "TreatmentCentreId": parseInt(_Settings.$userData.TreatmentCentreId)
     };
 
     //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    //var userData = JSON.parse(sessionStorage.getItem("userData"));
 
-    userData["FullName"] = $data.FullName;
+    _Settings.$userData["FullName"] = $data.FullName;
 
     sessionStorage.removeItem('userData');
-    sessionStorage.setItem('userData', JSON.stringify(userData));
+    sessionStorage.setItem('userData', JSON.stringify(_Settings.$userData));
 
     _APIHandler.init(_Settings.$nurseEndPoint, 'POST', true, _updateFullNameSuccess($data.FullName), _updateNameFail, $data);
 
@@ -189,9 +191,7 @@ var _ProfileDetailsUpdate = (function (window) {
 
   /* Checking Current Password matches with the exisiting Password */
   var _currentPasswordValidation = function () {
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-
-    var existingPassword = userData.Password;
+    var existingPassword = _Settings.$userData.Password;
     console.info(existingPassword);
     var currentPassword = $('#currentPassword').val();
 
@@ -236,12 +236,10 @@ var _ProfileDetailsUpdate = (function (window) {
   //Update Nurse Password
   var _updatePassword = function () {
     var newPasswordValue = $('#newPassword').val();
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-
 
     var $data = {
-      "Id": userData.UserId,
-      "FullName": userData.FullName,
+      "Id": _Settings.$userData.UserId,
+      "FullName": _Settings.$userData.FullName,
       "Password": newPasswordValue,
       "TreatmentCentreId": parseInt(_Settings.$selectedItem)
     };
@@ -249,14 +247,9 @@ var _ProfileDetailsUpdate = (function (window) {
 
     if (newPasswordValue.length > 0) {
       //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
-      var userData = JSON.parse(sessionStorage.getItem("userData"));
-
-      userData["Password"] = $data.Password;
-      console.info('Nurse Success UserData ', userData);
-
+      _Settings.$userData["Password"] = $data.Password;
       sessionStorage.removeItem('userData');
-      sessionStorage.setItem('userData', JSON.stringify(userData));
-
+      sessionStorage.setItem('userData', JSON.stringify(_Settings.$userData));
 
       _APIHandler.init(_Settings.$nurseEndPoint, 'POST', true, _updatePasswordSuccess($data), _updatePasswordFail, $data);
       

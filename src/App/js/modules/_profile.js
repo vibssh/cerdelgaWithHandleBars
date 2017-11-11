@@ -49,13 +49,8 @@ var _Profile = (function (window) {
       'FullName': data.FullName,
       'Email': data.Email,
       'TreatmentCentreId': data.TreatmentCentreId
-    };
-    
-    //_Settings.$userData["TreatmentCentreId"] = data.TreatmentCentreId;    
-
-    //sessionStorage.removeItem('userData');
-    //sessionStorage.setItem('userData', JSON.stringify(_Settings.$userData));
-
+    };   
+  
     _Settings.$profileData["Nurse"] = [];
     _Settings.$profileData.Nurse.push(nurseData);
 
