@@ -11,7 +11,8 @@ var _ChooseTreatmentCentre = (function(window){
   var _Settings = {
     $chooseTreatmentCentreEndPoint : 'http://soa-cerdelga.tew-dev.com/api/TreatmentCentre',
     $updateTreatmentCentreEndPoint : 'http://soa-cerdelga.tew-dev.com/api/emsmock/updateUser',
-    $selectedItem: null
+    $selectedItem: null,
+    $userData: null
   }
 
   /* Methods*/
@@ -27,25 +28,19 @@ var _ChooseTreatmentCentre = (function(window){
 
   var _updateData = function(){
     //Construct the Data to post to the updateUser Endpoint
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    
     
     var $data = {
-     "Id": userData.UserId,
-     "FullName": userData.FullName,
-     "Password": userData.Password,
+     "Id": _Settings.$userData.UserId,
+     "FullName": _Settings.$userData.FullName,
+     "Password": _Settings.$userData.Password,
      "TreatmentCentreId": parseInt(_Settings.$selectedItem)
     };
 
-    //Resetting the userdata in sessionstorage with new value of Treatment Centre ID
-    var userData = JSON.parse(sessionStorage.getItem("userData"));
-        
-    userData["TreatmentCentreId"] = $data.TreatmentCentreId;
-    console.info('Nurse Success UserData ', userData);
-    
+    //Resetting the userdata in sessionstorage with new value of Treatment Centre ID   
+    _Settings.$userData["TreatmentCentreId"] = $data.TreatmentCentreId;
     sessionStorage.removeItem('userData');
-    sessionStorage.setItem('userData', JSON.stringify(userData));
-
-    console.info('Update Data ', $data);
+    sessionStorage.setItem('userData', JSON.stringify(_Settings.$userData));
     _APIHandler.init(_Settings.$updateTreatmentCentreEndPoint, 'POST', true, _success, _failure, $data);
   };
   
@@ -53,7 +48,6 @@ var _ChooseTreatmentCentre = (function(window){
   var _success = function(){
     //Getting newly Selected Treatment Centre Data
     TEWLibrary.fetchData(_Settings.$chooseTreatmentCentreEndPoint + "/" + parseInt(_Settings.$selectedItem), 'GET').done(_fetchSuccess).fail(_failure);
-
   };
 
   var _fetchSuccess = function(data){
@@ -74,6 +68,9 @@ var _ChooseTreatmentCentre = (function(window){
 
  /* Events */
   var _bindUIActions = function(){ 
+    //Getting the User data from the session 
+    _Settings.$userData = JSON.parse(sessionStorage.getItem("userData"));
+
     //Display the Treatment Choice Screen on click of change-centre link
     $(document).on('click', '.change-centre', function(e){
       e.preventDefault();
