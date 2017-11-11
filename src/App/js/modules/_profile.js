@@ -36,8 +36,9 @@ var _Profile = (function (window) {
   //Nurse Data GET
   var _getNurseData = function ($clicked) {               
     var clickedId = $($clicked).data('id');    
-    var storedId = _Settings.$userData.UserId;
-    _Settings.$profileId = (clickedId) ? clickedId : storedId;
+    //var storedId = _Settings.$userData.UserId;
+    //_Settings.$profileId = (clickedId) ? clickedId : storedId;
+    _Settings.$profileId = clickedId;
     //Ajax Call to Get User Data
     _APIHandler.init(_Settings.$nurseEndPoint + _Settings.$profileId, 'GET', true, _getNurseSuccess, _getNurseFailure);
   };
@@ -85,7 +86,7 @@ var _Profile = (function (window) {
   var bindUIActions = function () {
     //Getting User Data from the session Storage Initially
     _Settings.$userData = JSON.parse(sessionStorage.getItem('userData'));
-
+    console.info(_Settings.$userData);
     /* Nurse / Patient Name click Event on the top  */
     $('.link-profile').on('click', function (e) {
       e.preventDefault();

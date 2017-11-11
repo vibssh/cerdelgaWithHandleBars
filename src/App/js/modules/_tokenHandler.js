@@ -8,28 +8,27 @@
 var _TokenHandler = (function(window){
 'use strict';
   var _PrivateSettings = {
-    $tokenReceiverApi : 'http://soa-cerdelga.tew-dev.com/api/emsmock/login', // Login Endpoint 
-    $token:'',
-    $callback: null
+    $tokenReceiverApi : 'http://soa-cerdelga.tew-dev.com/api/emsmock/login', // Login Endpoint     
+    $callback: null,
+    $userData: null,
+    $token: ''
   }
  
   var init = function(callback){
-    var userData = JSON.parse(sessionStorage.getItem('userData'));
+    _PrivateSettings.$userData = JSON.parse(sessionStorage.getItem('userData'));    
     var loginData = {
-      "Email": userData.UserName,
-      "Password": userData.Password
+      "Email": _PrivateSettings.$userData.UserName,
+      "Password": _PrivateSettings.$userData.Password
     };
     _PrivateSettings.$callback = callback;
     TEWLibrary.fetchData(_PrivateSettings.$tokenReceiverApi, 'POST', {$data: loginData} ).done(_getTokenSuccess).fail(_getTokenFailure);
   };
 
   var _getTokenSuccess = function(data){
-    //Setting session storage with User data
-    console.info('Login Success', data);
-     var userData = JSON.parse(sessionStorage.getItem('userData'));
+    //Setting session storage with User data         
     var userDataToStore = {
       "UserName": data.userName,
-      "Password": userData.Password,
+      "Password": _PrivateSettings.$userData.Password,
       "UserId": data.userId,
       "Token": data.access_token,
       "Expiry": data[".expires"]
